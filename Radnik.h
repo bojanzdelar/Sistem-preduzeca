@@ -11,23 +11,23 @@ class Radnik {
 protected:
     string ime;
     string prezime;
-    double visinaPlate;
+    double plata;
     Radnik *nadredjeni;
 
 public:
     Radnik();
-    Radnik(string ime, string prezime, double visinaPlate, Radnik *nadredjeni);
+    Radnik(string ime, string prezime, double plata, Radnik *nadredjeni);
     virtual ~Radnik();
 
     string getIme();
     void setIme(string ime);
     string getPrezime();
     void setPrezime(string prezime);
-    double getVisinaPlate();
-    void setVisinaPlate(double visinaPlate);
+    double getPlata();
+    void setPlata(double plata);
     Radnik* getNadredjeni();
     void setNadredjeni(Radnik *nadredjeni);
-    //virtual string getPosao() = 0;
+    virtual string getPosao() = 0;
 };
 
 #endif

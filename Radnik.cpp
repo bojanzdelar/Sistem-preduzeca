@@ -4,8 +4,8 @@ Radnik::Radnik() {
 
 }
 
-Radnik::Radnik(string ime, string prezime, double visinaPlate, Radnik *nadredjeni) 
-: ime(ime), prezime(prezime), visinaPlate(visinaPlate), nadredjeni(nadredjeni) {
+Radnik::Radnik(string ime, string prezime, double plata, Radnik *nadredjeni) 
+: ime(ime), prezime(prezime), plata(plata), nadredjeni(nadredjeni) {
 
 }
 
@@ -29,12 +29,12 @@ void Radnik::setPrezime(string prezime) {
     this->prezime = prezime;
 }
 
-double Radnik::getVisinaPlate() {
-    return visinaPlate;
+double Radnik::getPlata() {
+    return plata;
 }
 
-void Radnik::setVisinaPlate(double visinaPlate) {
-    this->visinaPlate = visinaPlate;
+void Radnik::setPlata(double plata) {
+    this->plata = plata;
 }
 
 Radnik* Radnik::getNadredjeni() {
