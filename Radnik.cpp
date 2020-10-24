@@ -4,8 +4,8 @@ Radnik::Radnik() {
 
 }
 
-Radnik::Radnik(string ime, string prezime, double plata, Radnik *nadredjeni) 
-: ime(ime), prezime(prezime), plata(plata), nadredjeni(nadredjeni) {
+Radnik::Radnik(string id, string ime, string prezime, double plata, vector<Nagrada*> nagrade, Radnik *nadredjeni) 
+: id(id), ime(ime), prezime(prezime), plata(plata), nagrade(nagrade), nadredjeni(nadredjeni) {
 
 }
 

@@ -12,7 +12,8 @@ private:
 
 public:
     Racunovodja();
-    Racunovodja(string ime, string prezime, double plata, Radnik *nadredjeni, string izdavacLicence, double maksimalniPrihod);
+    Racunovodja(string id, string ime, string prezime, double plata, vector<Nagrada*> nagrade, Radnik *nadredjeni, 
+        string izdavacLicence, double maksimalniPrihod);
     virtual ~Racunovodja();
 
     string getIzdavacLicence();

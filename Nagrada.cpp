@@ -4,8 +4,8 @@ Nagrada::Nagrada() {
 
 }
 
-Nagrada::Nagrada(Radnik* radnik, int procenti, Datum pocetak, Datum kraj)
-: radnik(radnik), procenti(procenti), pocetak(pocetak), kraj(kraj) {
+Nagrada::Nagrada(string radnikId, int procenti, Datum pocetak, Datum kraj)
+: radnikId(radnikId), procenti(procenti), pocetak(pocetak), kraj(kraj) {
 
 }
 
@@ -13,12 +13,12 @@ Nagrada::~Nagrada() {
 
 }
 
-Radnik* Nagrada::getRadnik() {
-    return radnik;
+string Nagrada::getRadnikId() {
+    return radnikId;
 }
 
-void Nagrada::setRadnik(Radnik* radnik) {
-    this->radnik = radnik;
+void Nagrada::setRadnikId(string radnikId) {
+    this->radnikId = radnikId;
 }
 
 int Nagrada::getProcenti() {

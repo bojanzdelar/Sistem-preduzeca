@@ -2,21 +2,27 @@
 #define RADNIK_H
 
 #include <string>
+#include <vector>
+
+#include "Nagrada.h"
 
 using namespace std;
 
 // Svaki radnik je predstavljen apstraktnom klasom koja od atributa sadrži 
 // ime, prezime, visinu plate i podataka o nadređenom radniku
+// Radnik istovremeno može imati više bonusa.
 class Radnik {
 protected:
+    string id;
     string ime;
     string prezime;
     double plata;
+    vector<Nagrada*> nagrade;
     Radnik *nadredjeni;
 
 public:
     Radnik();
-    Radnik(string ime, string prezime, double plata, Radnik *nadredjeni);
+    Radnik(string id, string ime, string prezime, double plata, vector<Nagrada*> nagrade, Radnik *nadredjeni);
     virtual ~Radnik();
 
     string getIme();
