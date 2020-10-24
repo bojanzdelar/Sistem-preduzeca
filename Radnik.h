@@ -30,4 +30,4 @@ public:
     virtual string getPosao() = 0;
 };
 
-#endif
+#endif // RADNIK_H
