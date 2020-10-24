@@ -13,7 +13,7 @@ Revizor::~Revizor() {
 
 }
 
-vector<Datum> Revizor::getRevizije() {
+vector<Datum> Revizor::getRevizije() const {
     return revizije;
 }
 
@@ -21,6 +21,6 @@ void Revizor::setRevizije(vector<Datum> revizije) {
     this->revizije = revizije;
 }
 
-string Revizor::getPosao() {
+string Revizor::getPosao() const {
     return "revizor";
 }

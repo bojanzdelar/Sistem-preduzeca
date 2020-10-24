@@ -20,13 +20,13 @@ public:
     Nagrada(string radnikId, int procenti, Datum pocetak, Datum kraj);
     virtual ~Nagrada();
     
-    string getRadnikId();
+    string getRadnikId() const;
     void setRadnikId(string radnikId);
-    int getProcenti();
+    int getProcenti() const;
     void setProcenti(int procenti);
-    Datum getPocetak();
+    Datum getPocetak() const;
     void setPocetak(Datum pocetak);
-    Datum getKraj();
+    Datum getKraj() const;
     void setKraj(Datum kraj);
 };
 

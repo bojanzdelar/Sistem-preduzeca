@@ -15,9 +15,9 @@ public:
         vector<Datum> revizije);
     virtual ~Revizor();
 
-    vector<Datum> getRevizije();
+    vector<Datum> getRevizije() const;
     void setRevizije(vector<Datum> revizije);
-    virtual string getPosao();
+    virtual string getPosao() const;
 };
 
 #endif // REVIZOR_H

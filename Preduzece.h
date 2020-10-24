@@ -17,13 +17,13 @@ public:
     Preduzece(string naziv, int maticniBroj, int pib, vector<Odeljenje*> odeljenja);
     virtual ~Preduzece();
 
-    string getNaziv();
+    string getNaziv() const;
     void setNaziv(string naziv);
-    int getMaticniBroj();
+    int getMaticniBroj() const;
     void setMaticniBroj(int maticniBroj);
-    int getPib();
+    int getPib() const;
     void setPib(int pib);
-    vector<Odeljenje*> getOdeljenja();
+    vector<Odeljenje*> getOdeljenja() const;
     void setOdeljenja(vector<Odeljenje*> odeljenja);
 };
 

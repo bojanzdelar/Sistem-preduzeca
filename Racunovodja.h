@@ -16,11 +16,11 @@ public:
         string izdavacLicence, double maksimalniPrihod);
     virtual ~Racunovodja();
 
-    string getIzdavacLicence();
+    string getIzdavacLicence() const;
     void setIzdavacLicence(string izdavacLicence);
-    double getMaksimalniPrihod();
+    double getMaksimalniPrihod() const;
     void setMaksimalniPrihod(double maksimalniPrihod);
-    virtual string getPosao();
+    virtual string getPosao() const;
 };
 
 #endif // RACUNOVODJA_H

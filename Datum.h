@@ -12,11 +12,11 @@ public:
     Datum(int godina, int mesec, int dan);
     virtual ~Datum();
 
-    int getGodina();
+    int getGodina() const;
     void setGodina(int godina);
-    int getMesec();
+    int getMesec() const;
     void setMesec(int mesec);
-    int getDan();
+    int getDan() const;
     void setDan(int dan);
 };
 

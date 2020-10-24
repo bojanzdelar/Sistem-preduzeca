@@ -14,7 +14,7 @@ Komercijalista::~Komercijalista() {
 
 }
 
-vector<string> Komercijalista::getPoslovniKontakti() {
+vector<string> Komercijalista::getPoslovniKontakti() const {
     return poslovniKontakti;
 }
 
@@ -22,6 +22,6 @@ void Komercijalista::setPoslovniKontakti() {
     this->poslovniKontakti = poslovniKontakti;
 }
 
-string Komercijalista::getPosao() {
+string Komercijalista::getPosao() const {
     return "komercijalista";
 }

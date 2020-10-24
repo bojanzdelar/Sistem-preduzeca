@@ -13,7 +13,7 @@ Odeljenje::~Odeljenje() {
 
 }
 
-string Odeljenje::getNaziv() {
+string Odeljenje::getNaziv() const {
     return naziv;
 }
 
@@ -21,7 +21,7 @@ void Odeljenje::setNaziv(string naziv) {
     this->naziv = naziv;
 }
 
-Radnik* Odeljenje::getSef() {
+Radnik* Odeljenje::getSef() const {
     return sef;
 }
 
@@ -29,7 +29,7 @@ void Odeljenje::setSef(Radnik* sef) {
     this->sef = sef;
 }
 
-vector<Radnik*> Odeljenje::getZaposleni() {
+vector<Radnik*> Odeljenje::getZaposleni() const {
     return zaposleni;
 }
 

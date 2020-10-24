@@ -13,7 +13,7 @@ Datum::~Datum() {
 
 }
 
-int Datum::getGodina() {
+int Datum::getGodina() const {
     return godina;
 }
 
@@ -21,7 +21,7 @@ void Datum::setGodina(int godina) {
     this->godina = godina;
 }
 
-int Datum::getMesec() {
+int Datum::getMesec() const {
     return mesec;
 }
 
@@ -29,7 +29,7 @@ void Datum::setMesec(int mesec) {
     this->mesec = mesec;
 }
 
-int Datum::getDan() {
+int Datum::getDan() const {
     return dan;
 }
 

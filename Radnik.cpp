@@ -13,7 +13,7 @@ Radnik::~Radnik() {
 
 }
 
-string Radnik::getIme() {
+string Radnik::getIme() const {
     return ime;
 }
 
@@ -21,7 +21,7 @@ void Radnik::setIme(string ime) {
     this->ime = ime;
 }
 
-string Radnik::getPrezime() {
+string Radnik::getPrezime() const {
     return prezime;
 }
 
@@ -29,7 +29,7 @@ void Radnik::setPrezime(string prezime) {
     this->prezime = prezime;
 }
 
-double Radnik::getPlata() {
+double Radnik::getPlata() const {
     return plata;
 }
 
@@ -37,7 +37,7 @@ void Radnik::setPlata(double plata) {
     this->plata = plata;
 }
 
-Radnik* Radnik::getNadredjeni() {
+Radnik* Radnik::getNadredjeni() const {
     return nadredjeni;
 }
 

@@ -25,15 +25,15 @@ public:
     Radnik(string id, string ime, string prezime, double plata, vector<Nagrada*> nagrade, Radnik *nadredjeni);
     virtual ~Radnik();
 
-    string getIme();
+    string getIme() const;
     void setIme(string ime);
-    string getPrezime();
+    string getPrezime() const;
     void setPrezime(string prezime);
-    double getPlata();
+    double getPlata() const;
     void setPlata(double plata);
-    Radnik* getNadredjeni();
+    Radnik* getNadredjeni() const;
     void setNadredjeni(Radnik *nadredjeni);
-    virtual string getPosao() = 0;
+    virtual string getPosao() const = 0;
 };
 
 #endif // RADNIK_H

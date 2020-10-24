@@ -14,7 +14,7 @@ Racunovodja::~Racunovodja() {
 
 }
 
-string Racunovodja::getIzdavacLicence() {
+string Racunovodja::getIzdavacLicence() const {
     return izdavacLicence;
 }
 
@@ -22,7 +22,7 @@ void Racunovodja::setIzdavacLicence(string izdavacLicence) {
     this->izdavacLicence;
 }
 
-double Racunovodja::getMaksimalniPrihod() {
+double Racunovodja::getMaksimalniPrihod() const {
     return maksimalniPrihod;
 }
 
@@ -31,6 +31,6 @@ void Racunovodja::setMaksimalniPrihod(double maksimalniPrihod)
     this->maksimalniPrihod = maksimalniPrihod;
 }
 
-string Racunovodja::getPosao() {
+string Racunovodja::getPosao() const {
     return "racunovodja";
 }

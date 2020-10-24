@@ -13,7 +13,7 @@ Preduzece::~Preduzece() {
 
 }
 
-string Preduzece::getNaziv() {
+string Preduzece::getNaziv() const {
     return naziv;
 }
 
@@ -21,7 +21,7 @@ void Preduzece::setNaziv(string naziv) {
     this->naziv = naziv;
 }
 
-int Preduzece::getMaticniBroj() {
+int Preduzece::getMaticniBroj() const {
     return maticniBroj;
 }
 
@@ -29,7 +29,7 @@ void Preduzece::setMaticniBroj(int maticniBroj) {
     this->maticniBroj = maticniBroj;
 }
 
-int Preduzece::getPib() {
+int Preduzece::getPib() const {
     return pib;
 }
 
@@ -37,7 +37,7 @@ void Preduzece::setPib(int pib) {
     this->pib = pib;
 }
 
-vector<Odeljenje*> Preduzece::getOdeljenja() {
+vector<Odeljenje*> Preduzece::getOdeljenja() const {
     return odeljenja;
 }
 

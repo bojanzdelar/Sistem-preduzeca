@@ -14,9 +14,9 @@ public:
         Radnik *nadredjeni, vector<string> poslovniKontakti);
     virtual ~Komercijalista();
 
-    vector<string> getPoslovniKontakti();
+    vector<string> getPoslovniKontakti() const;
     void setPoslovniKontakti();
-    virtual string getPosao();
+    virtual string getPosao() const;
 };
 
 #endif // KOMERCIJALISTA_H

@@ -18,11 +18,11 @@ public:
     Odeljenje(string naziv, Radnik* sef, vector<Radnik*> zaposleni);
     virtual ~Odeljenje();
 
-    string getNaziv();
+    string getNaziv() const;
     void setNaziv(string naziv);
-    Radnik* getSef();
+    Radnik* getSef() const;
     void setSef(Radnik* sef);
-    vector<Radnik*> getZaposleni();
+    vector<Radnik*> getZaposleni() const;
     void setZaposleni(vector<Radnik*> zaposleni);
 
     void zaposli(Radnik* radnik);
