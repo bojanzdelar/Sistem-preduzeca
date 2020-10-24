@@ -4,7 +4,7 @@ Revizor::Revizor() : Radnik() {
 
 }
 
-Revizor::Revizor(string ime, string prezime, double plata, Radnik *nadredjeni, vector<string> revizije)
+Revizor::Revizor(string ime, string prezime, double plata, Radnik *nadredjeni, vector<Datum> revizije)
 : Radnik(ime, prezime, plata, nadredjeni), revizije(revizije) {
 
 }
@@ -13,11 +13,11 @@ Revizor::~Revizor() {
 
 }
 
-vector<string> Revizor::getRevizije() {
+vector<Datum> Revizor::getRevizije() {
     return revizije;
 }
 
-void Revizor::setRevizije(vector<string> revizije) {
+void Revizor::setRevizije(vector<Datum> revizije) {
     this->revizije = revizije;
 }
 
