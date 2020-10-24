@@ -18,7 +18,7 @@ string Racunovodja::getIzdavacLicence() {
 }
 
 void Racunovodja::setIzdavacLicence(string izdavacLicence) {
-    this->izdavacLicence
+    this->izdavacLicence;
 }
 
 double Racunovodja::getMaksimalniPrihod() {
