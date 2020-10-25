@@ -7,15 +7,15 @@
 #include <FL/Fl_Table_Row.H>
 #include <FL/fl_draw.H>
 
-#include "../model/Radnik.h"
+#include "../model/KolekcijaRadnika.h"
 
 class TabelaRadnik : public Fl_Table_Row {
 protected:
-    vector<Radnik*> radnici;
+    KolekcijaRadnika radnici;
     virtual void draw_cell(TableContext context, int red, int kolona, int x, int y, int w, int h);
 
 public:
-    TabelaRadnik(int x, int y, int w, int h, vector<Radnik*> radnici);
+    TabelaRadnik(int x, int y, int w, int h, KolekcijaRadnika radnici);
     virtual ~TabelaRadnik();
 };
 
