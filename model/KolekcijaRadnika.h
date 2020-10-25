@@ -8,7 +8,7 @@
 #include "Radnik.h"
 #include "TabelarnaKolekcija.h"
 
-class KolekcijaRadnika {
+class KolekcijaRadnika : public TabelarnaKolekcija {
 private:
     vector<Radnik*> radnici;
 
