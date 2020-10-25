@@ -6,6 +6,7 @@
 #include <sstream>
 
 #include "Radnik.h"
+#include "TabelarnaKolekcija.h"
 
 class KolekcijaRadnika {
 private:
@@ -19,11 +20,11 @@ public:
     vector<Radnik*> getRadnici();
     void setRadnici(vector<Radnik*> radnici);
 
-    int kolone();
-    int redovi();
-    string zaglavljeKolone(int kolona);
-    string zaglavljeRedova(int red);
-    string vrednostPolja(int kolona, int red);
+    virtual int kolone();
+    virtual int redovi();
+    virtual string zaglavljeKolone(int kolona);
+    virtual string zaglavljeRedova(int red);
+    virtual string vrednostPolja(int kolona, int red);
 };
 
 #endif // KOLEKCIJA_RADNIKA_H
