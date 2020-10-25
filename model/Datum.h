@@ -1,6 +1,12 @@
 #ifndef DATUM_H
 #define DATUM_H
 
+#include <iostream>
+
+#include "../Util.h"
+
+using namespace std;
+
 class Datum {
 private:
     int godina;
@@ -18,6 +24,12 @@ public:
     void setMesec(int mesec);
     int getDan() const;
     void setDan(int dan);
+
+    friend istream& operator>>(istream& input, Datum &datum);
+    friend ostream& operator<<(ostream& output, const Datum &datum);
 };
+
+istream& operator>>(istream& input, Datum &datum);
+ostream& operator<<(ostream& output, const Datum &datum);
 
 #endif // DATUM_H
