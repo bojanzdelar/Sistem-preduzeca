@@ -5,7 +5,7 @@
 
 #include <sstream>
 
-#include "Radnik.h"
+#include "../model/Radnik.h"
 #include "TabelarnaKolekcija.h"
 
 class KolekcijaRadnika : public TabelarnaKolekcija {

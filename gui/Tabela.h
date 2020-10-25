@@ -7,7 +7,7 @@
 #include <FL/Fl_Table_Row.H>
 #include <FL/fl_draw.H>
 
-#include "../model/TabelarnaKolekcija.h"
+#include "../kolekcije/TabelarnaKolekcija.h"
 
 class Tabela : public Fl_Table_Row {
 protected:
