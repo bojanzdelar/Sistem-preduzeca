@@ -1,26 +1,26 @@
-#include "TabelaRadnik.h"
+#include "Tabela.h"
 
-TabelaRadnik::TabelaRadnik(int x, int y, int w, int h, KolekcijaRadnika radnici) 
-: Fl_Table_Row(x, y, w, h), radnici(radnici) {
+Tabela::Tabela(int x, int y, int w, int h, TabelarnaKolekcija *kolekcija) 
+: Fl_Table_Row(x, y, w, h), kolekcija(kolekcija){
     end();
-    cols(radnici.kolone());
-    rows(radnici.redovi());
+    cols(kolekcija->kolone());
+    rows(kolekcija->redovi());
     col_header(1);
     row_header(1);
 }
 
-TabelaRadnik::~TabelaRadnik() {
+Tabela::~Tabela() {
 
 }
 
-void TabelaRadnik::draw_cell(TableContext context, int red, int kolona, int x, int y, int w, int h) {
+void Tabela::draw_cell(TableContext context, int red, int kolona, int x, int y, int w, int h) {
     switch (context) {
 	case CONTEXT_COL_HEADER:
 	    fl_push_clip(x, y, w, h); 
         {           
             fl_draw_box(FL_THIN_UP_BOX,x, y, w, h, col_header_color());
             fl_color(FL_BLACK);
-            fl_draw(radnici.zaglavljeKolone(kolona).c_str(), x, y, w, h, FL_ALIGN_CENTER);
+            fl_draw(kolekcija->zaglavljeKolone(kolona).c_str(), x, y, w, h, FL_ALIGN_CENTER);
 	    }
 	    fl_pop_clip();
 	    return;
@@ -30,7 +30,7 @@ void TabelaRadnik::draw_cell(TableContext context, int red, int kolona, int x, i
         {
             fl_draw_box(FL_THIN_UP_BOX, x, y, w, h, row_header_color());
             fl_color(FL_BLACK);
-            fl_draw(radnici.zaglavljeRedova(red).c_str(), x, y, w, h, FL_ALIGN_CENTER);
+            fl_draw(kolekcija->zaglavljeRedova(red).c_str(), x, y, w, h, FL_ALIGN_CENTER);
 	    }
 	    fl_pop_clip();
 	    return;
@@ -44,7 +44,7 @@ void TabelaRadnik::draw_cell(TableContext context, int red, int kolona, int x, i
 
             // tekst            
             fl_color(FL_BLACK);
-            fl_draw(radnici.vrednostPolja(kolona,red).c_str(), x, y, w, h, FL_ALIGN_CENTER);
+            fl_draw(kolekcija->vrednostPolja(kolona,red).c_str(), x, y, w, h, FL_ALIGN_CENTER);
 
             // ivica
             fl_color(color()); 

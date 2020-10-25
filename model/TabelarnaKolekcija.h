@@ -6,6 +6,7 @@
 using namespace std;
 
 class TabelarnaKolekcija {
+public:
     virtual int kolone() = 0;
     virtual int redovi() = 0;
     virtual string zaglavljeKolone(int kolona) = 0;
