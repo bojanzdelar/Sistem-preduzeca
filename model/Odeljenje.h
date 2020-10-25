@@ -9,6 +9,7 @@
 // radnicima. U odeljenju obezbediti metode za zapošljavanje novih radnika i za davanje otkaza već zaposlenim radnicima.
 class Odeljenje {
 private:
+    string id;
     string naziv;
     Radnik* sef;
     vector<Radnik*> zaposleni;
@@ -19,6 +20,8 @@ public:
     Odeljenje(string naziv, Radnik* sef, vector<Radnik*> zaposleni, string preduzece);
     virtual ~Odeljenje();
 
+    string getId() const;
+    void setId(string id);
     string getNaziv() const;
     void setNaziv(string naziv);
     Radnik* getSef() const;

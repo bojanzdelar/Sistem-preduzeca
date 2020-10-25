@@ -22,7 +22,7 @@ void KolekcijaOdeljenja::setOdeljenja(vector<Odeljenje*> odeljenja) {
 }
 
 int KolekcijaOdeljenja::kolone() {
-    return 3;
+    return 4;
 }
 
 int KolekcijaOdeljenja::redovi() {
@@ -31,12 +31,15 @@ int KolekcijaOdeljenja::redovi() {
 
 string KolekcijaOdeljenja::zaglavljeKolone(int kolona) {
     if (kolona == 0) {
+        return "ID";
+    }
+    else if (kolona == 1) {
         return "Naziv";
     } 
-    else if (kolona == 1) {
+    else if (kolona == 2) {
         return "Sef";
     } 
-    else if (kolona == 2) {
+    else if (kolona == 3) {
         return "Preduzece";
     } 
     else {
@@ -52,12 +55,15 @@ string KolekcijaOdeljenja::zaglavljeRedova(int red) {
 
 string KolekcijaOdeljenja::vrednostPolja(int kolona, int red) {
     if (kolona == 0) {
+        return odeljenja.at(red)->getId();
+    }
+    else if (kolona == 1) {
         return odeljenja.at(red)->getNaziv();
     } 
-    else if (kolona == 1) {
+    else if (kolona == 2) {
         return odeljenja.at(red)->getSef()->getId();
     } 
-    else if (kolona == 2) {
+    else if (kolona == 3) {
         return odeljenja.at(red)->getPreduzece();
     }
     else {

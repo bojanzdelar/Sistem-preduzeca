@@ -41,13 +41,13 @@ istream& operator>>(istream& input, Datum &datum) {
     string linija;
     getline(input, linija);
     vector<string> elementi = tokenizacija(linija);
-    datum.godina = stoi(elementi[0]);
-    datum.mesec = stoi(elementi[0]);
     datum.dan = stoi(elementi[0]);
+    datum.mesec = stoi(elementi[0]);
+    datum.godina = stoi(elementi[0]);
     return input;
 }
 
 ostream& operator<<(ostream& output, const Datum &datum) {
-    output << datum.godina << "-" << datum.mesec << "-" << datum.dan;
+    output << datum.dan << "-" << datum.mesec << "-" << datum.godina;
     return output;
 }

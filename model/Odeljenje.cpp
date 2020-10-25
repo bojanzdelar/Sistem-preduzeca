@@ -13,6 +13,14 @@ Odeljenje::~Odeljenje() {
 
 }
 
+string Odeljenje::getId() const {
+    return id;
+}
+
+void Odeljenje::setId(string id) {
+    this->id = id;
+}
+
 string Odeljenje::getNaziv() const {
     return naziv;
 }
