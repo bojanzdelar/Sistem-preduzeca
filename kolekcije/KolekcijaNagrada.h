@@ -16,8 +16,8 @@ public:
     KolekcijaNagrada(vector<Nagrada*> nagrade);
     virtual ~KolekcijaNagrada();
 
-    vector<Nagrada*> getOdeljenja();
-    void setOdeljenja(vector<Nagrada*> nagrade);
+    vector<Nagrada*> getNagrade();
+    void setNagrade(vector<Nagrada*> nagrade);
 
     virtual int kolone();
     virtual int redovi();

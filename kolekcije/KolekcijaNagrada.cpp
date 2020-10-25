@@ -13,11 +13,11 @@ KolekcijaNagrada::~KolekcijaNagrada() {
 
 }
 
-vector<Nagrada*> KolekcijaNagrada::getOdeljenja() {
+vector<Nagrada*> KolekcijaNagrada::getNagrade() {
     return nagrade;
 }
 
-void KolekcijaNagrada::setOdeljenja(vector<Nagrada*> nagrade) {
+void KolekcijaNagrada::setNagrade(vector<Nagrada*> nagrade) {
     this->nagrade = nagrade;
 }
 
