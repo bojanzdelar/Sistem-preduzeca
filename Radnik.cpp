@@ -13,6 +13,14 @@ Radnik::~Radnik() {
 
 }
 
+string Radnik::getId() const {
+    return id;
+}
+
+void Radnik::setId(string id) {
+    this->id = id;
+}
+
 string Radnik::getIme() const {
     return ime;
 }

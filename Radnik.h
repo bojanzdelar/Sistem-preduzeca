@@ -25,6 +25,8 @@ public:
     Radnik(string id, string ime, string prezime, double plata, vector<Nagrada*> nagrade, Radnik *nadredjeni);
     virtual ~Radnik();
 
+    string getId() const;
+    void setId(string id);
     string getIme() const;
     void setIme(string ime);
     string getPrezime() const;
