@@ -4,8 +4,8 @@ Odeljenje::Odeljenje() {
 
 }
 
-Odeljenje::Odeljenje(string naziv, Radnik* sef, vector<Radnik*> zaposleni) 
-: naziv(naziv), sef(sef), zaposleni(zaposleni) {
+Odeljenje::Odeljenje(string naziv, Radnik* sef, vector<Radnik*> zaposleni, string preduzece) 
+: naziv(naziv), sef(sef), zaposleni(zaposleni), preduzece(preduzece) {
 
 }
 
@@ -35,6 +35,14 @@ vector<Radnik*> Odeljenje::getZaposleni() const {
 
 void Odeljenje::setZaposleni(vector<Radnik*> zaposleni) {
     this->zaposleni = zaposleni;
+}
+
+string Odeljenje::getPreduzece() const {
+    return preduzece;
+}
+
+void Odeljenje::setPreduzece(string preduzece) {
+    this->preduzece = preduzece;
 }
 
 void Odeljenje::zaposli(Radnik* radnik) {

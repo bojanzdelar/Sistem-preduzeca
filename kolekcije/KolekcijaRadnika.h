@@ -1,5 +1,3 @@
-// nazovi tabela radnika?
-
 #ifndef KOLEKCIJA_RADNIKA_H
 #define KOLEKCIJA_RADNIKA_H
 
