@@ -26,6 +26,10 @@ public:
     vector<Odeljenje*> *getOdeljenja() const;
     void setOdeljenja(vector<Odeljenje*> *odeljenja);
 
+    double minimalnaPlata();
+    double prosecnaPlata();
+    double maksimalnaPlata();
+
     friend istream& operator>>(istream &input, Preduzece *preduzece);
     friend ostream& operator<<(ostream &output, const Preduzece *preduzece);
 };

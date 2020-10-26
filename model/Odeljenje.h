@@ -32,6 +32,10 @@ public:
     string getPreduzece() const;
     void setPreduzece(string preduzece);
 
+    double minimalnaPlata();
+    double prosecnaPlata();
+    double maksimalnaPlata();
+
     void zaposli(Radnik* radnik);
     void otkaz(int indeks);
 

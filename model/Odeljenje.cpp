@@ -53,6 +53,36 @@ void Odeljenje::setPreduzece(string preduzece) {
     this->preduzece = preduzece;
 }
 
+double Odeljenje::minimalnaPlata() {
+    double min = zaposleni->size() ? zaposleni->at(0)->getPlata() : -1;
+    for (size_t i = 1; i < zaposleni->size(); i++) {
+        double plata = zaposleni->at(i)->getPlata();
+        if (min > plata) {
+            min = plata;
+        }
+    }
+    return min;
+}
+
+double Odeljenje::prosecnaPlata() {
+    double prosek = 0;
+     for (size_t i = 0; i < zaposleni->size(); i++) {
+         prosek += zaposleni->at(i)->getPlata();
+    }
+    return prosek / zaposleni->size();
+}
+
+double Odeljenje::maksimalnaPlata() {
+    double max = zaposleni->size() ? zaposleni->at(0)->getPlata() : -1;
+    for (size_t i = 1; i < zaposleni->size(); i++) {
+        double plata = zaposleni->at(i)->getPlata();
+        if (max < plata) {
+            max = plata;
+        }
+    }
+    return max;
+}
+
 void Odeljenje::zaposli(Radnik* radnik) {
     zaposleni->push_back(radnik);
 }
