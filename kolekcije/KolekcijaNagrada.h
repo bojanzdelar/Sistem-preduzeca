@@ -24,6 +24,9 @@ public:
     virtual string zaglavljeKolone(int kolona);
     virtual string zaglavljeRedova(int red);
     virtual string vrednostPolja(int kolona, int red);
+
+    friend istream& operator>>(istream &input, KolekcijaNagrada &kolekcijaNagrada);
+    friend ostream& operator<<(ostream &output, const KolekcijaNagrada &kolekcijaNagrada);
 };
 
 #endif // KOLEKCIJA_ODELJENJA_H

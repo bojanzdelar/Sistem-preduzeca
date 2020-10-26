@@ -63,3 +63,24 @@ string KolekcijaPreduzeca::vrednostPolja(int kolona, int red) {
     }
     return out.str();
 }
+
+istream& operator>>(istream &input, KolekcijaPreduzeca &kolekcijaPreduzeca) {
+    string linija = "";
+    while (linija != "#preduzece") {
+        getline(input, linija);
+    }
+    while (input.peek() != '#' && input.peek() != EOF) { 
+        Preduzece *preduzece = new Preduzece();
+        input >> preduzece;
+        kolekcijaPreduzeca.preduzeca.push_back(preduzece);
+    }
+    return input;
+}
+
+ostream& operator<<(ostream &output, const KolekcijaPreduzeca &kolekcijaPreduzeca) {
+    output << "#preduzece" << endl;
+    for (Preduzece *preduzece : kolekcijaPreduzeca.preduzeca) {
+        output << preduzece;
+    }
+    return output;
+}

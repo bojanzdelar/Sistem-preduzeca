@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Nagrada.h"
+#include "../Util.h"
 
 using namespace std;
 
@@ -17,12 +18,14 @@ protected:
     string ime;
     string prezime;
     double plata;
+    string odeljenje;
     vector<Nagrada*> nagrade;
+    string idNadredjeni; // pomoc za ucitavanje iz datoteke
     Radnik *nadredjeni;
 
 public:
     Radnik();
-    Radnik(string id, string ime, string prezime, double plata, vector<Nagrada*> nagrade, Radnik *nadredjeni);
+    Radnik(string id, string ime, string prezime, double plata, vector<Nagrada*> nagrade, string odeljenje, Radnik *nadredjeni);
     virtual ~Radnik();
 
     string getId() const;
@@ -33,9 +36,18 @@ public:
     void setPrezime(string prezime);
     double getPlata() const;
     void setPlata(double plata);
+    string getOdeljenje() const;
+    void setOdeljenje(string odeljenje);
+    string getIdNadredjeni() const;
     Radnik* getNadredjeni() const;
     void setNadredjeni(Radnik *nadredjeni);
     virtual string getPosao() const = 0;
+
+    virtual void procitaj(istream &input, vector<string> elementi) = 0;
+    virtual void zapisi(ostream &output) const = 0;
+
+    friend istream& operator>>(istream &input, Radnik *radnik);
+    friend ostream& operator<<(ostream &output, const Radnik *radnik);
 };
 
 #endif // RADNIK_H

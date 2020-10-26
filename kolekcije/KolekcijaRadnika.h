@@ -4,6 +4,9 @@
 #include <sstream>
 
 #include "../model/Radnik.h"
+#include "../model/Racunovodja.h"
+#include "../model/Revizor.h"
+#include "../model/Komercijalista.h"
 #include "TabelarnaKolekcija.h"
 
 class KolekcijaRadnika : public TabelarnaKolekcija {
@@ -23,6 +26,9 @@ public:
     virtual string zaglavljeKolone(int kolona);
     virtual string zaglavljeRedova(int red);
     virtual string vrednostPolja(int kolona, int red);
+
+    friend istream& operator>>(istream &input, KolekcijaRadnika &kolekcijaRadnika);
+    friend ostream& operator<<(ostream &output, const KolekcijaRadnika &kolekcijaRadnika);
 };
 
 #endif // KOLEKCIJA_RADNIKA_H

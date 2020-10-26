@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "Radnik.h"
+#include "Revizor.h" 
 
 // Odeljenje je opisano nazivom i u sebi sadrži podatke o šefu odeljenja i trenutno zaposlenim
 // radnicima. U odeljenju obezbediti metode za zapošljavanje novih radnika i za davanje otkaza već zaposlenim radnicima.
@@ -33,6 +34,9 @@ public:
 
     void zaposli(Radnik* radnik);
     void otkaz(int indeks);
+
+    friend istream& operator>>(istream &input, Odeljenje *odeljenje);
+    friend ostream& operator<<(ostream &output, const Odeljenje *odeljenje);
 };
 
 #endif // ODELJENJE_H

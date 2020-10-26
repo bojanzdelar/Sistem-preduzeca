@@ -69,3 +69,24 @@ string KolekcijaNagrada::vrednostPolja(int kolona, int red) {
     }
     return out.str();
 }
+
+istream& operator>>(istream &input, KolekcijaNagrada &kolekcijaNagrada) {
+    string linija = "";
+    while (linija != "#nagrada") {
+        getline(input, linija);
+    }
+    while (input.peek() != '#' && input.peek() != EOF) { 
+        Nagrada *nagrada = new Nagrada();
+        input >> nagrada;
+        kolekcijaNagrada.nagrade.push_back(nagrada);
+    }
+    return input;
+}
+
+ostream& operator<<(ostream &output, const KolekcijaNagrada &kolekcijaNagrada) {
+    output << "#nagrada" << endl;
+    for (Nagrada *nagrada : kolekcijaNagrada.nagrade) {
+        output << nagrada;
+    }
+    return output;
+}

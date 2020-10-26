@@ -63,3 +63,21 @@ void Odeljenje::otkaz(int indeks) {
     }
     zaposleni.erase(zaposleni.begin() + indeks);
 }
+
+istream& operator>>(istream &input, Odeljenje *odeljenje) {
+    string linija;
+    getline(input, linija);
+    vector<string> elementi = tokenizacija(linija, SEP);
+    odeljenje->id = elementi[0];
+    odeljenje->naziv = elementi[1];
+    Radnik *sef = new Revizor(); // privremeno, samo da se sacuva id sefa
+    sef->setId(elementi[2]);
+    odeljenje->sef = sef;
+    odeljenje->preduzece = elementi[3];
+    return input;
+}
+
+ostream& operator<<(ostream &output, const Odeljenje *odeljenje) {
+    output << odeljenje->id << SEP << odeljenje->naziv << SEP << odeljenje->sef->getId() << SEP << odeljenje->preduzece << endl;
+    return output;
+}

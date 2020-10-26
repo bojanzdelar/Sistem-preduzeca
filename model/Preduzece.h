@@ -25,6 +25,9 @@ public:
     void setPib(int pib);
     vector<Odeljenje*> getOdeljenja() const;
     void setOdeljenja(vector<Odeljenje*> odeljenja);
+
+    friend istream& operator>>(istream &input, Preduzece *preduzece);
+    friend ostream& operator<<(ostream &output, const Preduzece *preduzece);
 };
 
 #endif // PREDUZECE_H

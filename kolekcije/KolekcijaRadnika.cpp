@@ -83,3 +83,35 @@ string KolekcijaRadnika::vrednostPolja(int kolona, int red) {
     } 
     return out.str();
 }
+
+istream& operator>>(istream &input, KolekcijaRadnika &kolekcijaRadnika) {
+    string linija = "";
+    while (linija != "#radnik") {
+        getline(input, linija);
+    }
+    while (input.peek() != '#' && input.peek() != EOF) { 
+        Radnik *radnik;
+        string posao;
+        getline(input, posao);
+        if (posao == "racunovodja") {
+            radnik = new Racunovodja();
+        } 
+        else if (posao == "revizor") {
+            radnik = new Revizor();
+        }
+        else if (posao == "komercijalista") {
+            radnik = new Komercijalista();
+        } 
+        input >> radnik;
+        kolekcijaRadnika.radnici.push_back(radnik);
+    }
+    return input;
+}
+
+ostream& operator<<(ostream &output, const KolekcijaRadnika &kolekcijaRadnika) {
+    output << "#radnik" << endl;
+    for (Radnik *radnik : kolekcijaRadnika.radnici) {
+        output << radnik;
+    }
+    return output;
+}

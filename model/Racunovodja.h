@@ -12,8 +12,8 @@ private:
 
 public:
     Racunovodja();
-    Racunovodja(string id, string ime, string prezime, double plata, vector<Nagrada*> nagrade, Radnik *nadredjeni, 
-        string izdavacLicence, double maksimalniPrihod);
+    Racunovodja(string id, string ime, string prezime, double plata, vector<Nagrada*> nagrade, string odeljenje,
+        Radnik *nadredjeni, string izdavacLicence, double maksimalniPrihod);
     virtual ~Racunovodja();
 
     string getIzdavacLicence() const;
@@ -21,6 +21,9 @@ public:
     double getMaksimalniPrihod() const;
     void setMaksimalniPrihod(double maksimalniPrihod);
     virtual string getPosao() const;
+
+    virtual void procitaj(istream &input, vector<string> elementi);
+    virtual void zapisi(ostream &output) const;
 };
 
 #endif // RACUNOVODJA_H

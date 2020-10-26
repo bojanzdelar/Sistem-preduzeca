@@ -44,3 +44,18 @@ vector<Odeljenje*> Preduzece::getOdeljenja() const {
 void Preduzece::setOdeljenja(vector<Odeljenje*> odeljenja) {
     this->odeljenja = odeljenja;
 }
+
+istream& operator>>(istream &input, Preduzece *preduzece) {
+    string linija;
+    getline(input, linija);
+    vector<string> elementi = tokenizacija(linija, SEP);
+    preduzece->naziv = elementi[0];
+    preduzece->maticniBroj = stoi(elementi[1]);
+    preduzece->pib = stoi(elementi[2]);
+    return input;
+}
+
+ostream& operator<<(ostream &output, const Preduzece *preduzece) {
+    output << preduzece->naziv << SEP << preduzece->maticniBroj << SEP << preduzece->pib << endl;
+    return output;
+}

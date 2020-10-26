@@ -16,6 +16,7 @@ private:
 public:
     Datum();
     Datum(int godina, int mesec, int dan);
+    Datum(string input);
     virtual ~Datum();
 
     int getGodina() const;
@@ -28,8 +29,5 @@ public:
     friend istream& operator>>(istream& input, Datum &datum);
     friend ostream& operator<<(ostream& output, const Datum &datum);
 };
-
-istream& operator>>(istream& input, Datum &datum);
-ostream& operator<<(ostream& output, const Datum &datum);
 
 #endif // DATUM_H

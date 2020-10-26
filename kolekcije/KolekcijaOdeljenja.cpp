@@ -70,3 +70,24 @@ string KolekcijaOdeljenja::vrednostPolja(int kolona, int red) {
         return "";
     } 
 }
+
+istream& operator>>(istream &input, KolekcijaOdeljenja &kolekcijaOdeljenja) {
+    string linija = "";
+    while (linija != "#odeljenje") {
+        getline(input, linija);
+    }
+    while (input.peek() != '#' && input.peek() != EOF) { 
+        Odeljenje *odeljenje = new Odeljenje();
+        input >> odeljenje;
+        kolekcijaOdeljenja.odeljenja.push_back(odeljenje);
+    }
+    return input;
+}
+
+ostream& operator<<(ostream &output, const KolekcijaOdeljenja &kolekcijaOdeljenja) {
+    output << "#odeljenje" << endl;
+    for (Odeljenje *odeljenje : kolekcijaOdeljenja.odeljenja) {
+        output << odeljenje;
+    }
+    return output;
+}

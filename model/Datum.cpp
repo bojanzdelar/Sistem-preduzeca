@@ -9,6 +9,13 @@ Datum::Datum(int godina, int mesec, int dan)
 
 }
 
+Datum::Datum(string input) {
+    vector<string> elementi = tokenizacija(input, "-");
+    dan = stoi(elementi[0]);
+    mesec = stoi(elementi[1]);
+    godina = stoi(elementi[2]);
+}
+
 Datum::~Datum() {
 
 }
@@ -40,10 +47,7 @@ void Datum::setDan(int dan) {
 istream& operator>>(istream& input, Datum &datum) {
     string linija;
     getline(input, linija);
-    vector<string> elementi = tokenizacija(linija);
-    datum.dan = stoi(elementi[0]);
-    datum.mesec = stoi(elementi[0]);
-    datum.godina = stoi(elementi[0]);
+    datum = Datum(linija);
     return input;
 }
 

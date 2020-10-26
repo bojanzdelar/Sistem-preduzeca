@@ -4,9 +4,9 @@ Racunovodja::Racunovodja() : Radnik() {
 
 }
 
-Racunovodja::Racunovodja(string id, string ime, string prezime, double plata, vector<Nagrada*> nagrade, Radnik *nadredjeni, 
-    string izdavacLicence, double maksimalniPrihod) 
-: Radnik(id, ime, prezime, plata, nagrade, nadredjeni), izdavacLicence(izdavacLicence),  maksimalniPrihod(maksimalniPrihod) {
+Racunovodja::Racunovodja(string id, string ime, string prezime, double plata, vector<Nagrada*> nagrade, string odeljenje, 
+    Radnik *nadredjeni, string izdavacLicence, double maksimalniPrihod) 
+: Radnik(id, ime, prezime, plata, nagrade, odeljenje, nadredjeni), izdavacLicence(izdavacLicence),  maksimalniPrihod(maksimalniPrihod) {
 
 }
                                                    
@@ -33,4 +33,15 @@ void Racunovodja::setMaksimalniPrihod(double maksimalniPrihod)
 
 string Racunovodja::getPosao() const {
     return "racunovodja";
+}
+
+void Racunovodja::procitaj(istream &input, vector<string> elementi) {
+    Radnik::procitaj(input, elementi);
+    izdavacLicence = elementi[6];
+    maksimalniPrihod = stod(elementi[7]);
+}
+
+void Racunovodja::zapisi(ostream &output) const {
+    Radnik::zapisi(output);
+    output << SEP << izdavacLicence << SEP << maksimalniPrihod << endl;
 }

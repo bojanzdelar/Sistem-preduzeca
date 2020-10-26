@@ -7,6 +7,8 @@
 
 using namespace std;
 
+const string SEP = ";"; // separator
+
 // Nagrada se specificira kao privremeno uvećanje plate koje je izraženo procentualno i ima važenje u zadatom vremenskom periodu
 class Nagrada {
 private:
@@ -28,6 +30,9 @@ public:
     void setPocetak(Datum pocetak);
     Datum getKraj() const;
     void setKraj(Datum kraj);
+
+    friend istream& operator>>(istream &input, Nagrada *nagrada);
+    friend ostream& operator<<(ostream &output, const Nagrada* nagrada);
 };
 
 #endif // NAGRADA_H
