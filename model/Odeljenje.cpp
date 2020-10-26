@@ -1,10 +1,11 @@
 #include "Odeljenje.h"
+#include "Preduzece.h"
 
 Odeljenje::Odeljenje() {
     zaposleni = new vector<Radnik*>;
 }
 
-Odeljenje::Odeljenje(string naziv, Radnik* sef, vector<Radnik*> *zaposleni, string preduzece) 
+Odeljenje::Odeljenje(string naziv, Radnik* sef, vector<Radnik*> *zaposleni, Preduzece *preduzece) 
 : naziv(naziv), sef(sef), zaposleni(zaposleni), preduzece(preduzece) {
 
 }
@@ -45,11 +46,11 @@ void Odeljenje::setZaposleni(vector<Radnik*> *zaposleni) {
     this->zaposleni = zaposleni;
 }
 
-string Odeljenje::getPreduzece() const {
+Preduzece* Odeljenje::getPreduzece() const {
     return preduzece;
 }
 
-void Odeljenje::setPreduzece(string preduzece) {
+void Odeljenje::setPreduzece(Preduzece *preduzece) {
     this->preduzece = preduzece;
 }
 
@@ -103,11 +104,13 @@ istream& operator>>(istream &input, Odeljenje *odeljenje) {
     Radnik *sef = new Revizor(); // privremeno, samo da se sacuva id sefa
     sef->setId(elementi[2]);
     odeljenje->sef = sef;
-    odeljenje->preduzece = elementi[3];
+    Preduzece *preduzece = new Preduzece();
+    preduzece->setMaticniBroj(stoi(elementi[3]));
+    odeljenje->preduzece = preduzece;
     return input;
 }
 
 ostream& operator<<(ostream &output, const Odeljenje *odeljenje) {
-    output << odeljenje->id << SEP << odeljenje->naziv << SEP << odeljenje->sef->getId() << SEP << odeljenje->preduzece << endl;
+    output << odeljenje->id << SEP << odeljenje->naziv << SEP << odeljenje->sef->getId() << SEP << odeljenje->preduzece->getMaticniBroj() << endl;
     return output;
 }

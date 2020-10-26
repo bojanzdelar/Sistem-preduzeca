@@ -4,7 +4,9 @@
 #include <vector>
 
 #include "Radnik.h"
-#include "Revizor.h" 
+#include "Revizor.h"
+
+class Preduzece; 
 
 // Odeljenje je opisano nazivom i u sebi sadrži podatke o šefu odeljenja i trenutno zaposlenim
 // radnicima. U odeljenju obezbediti metode za zapošljavanje novih radnika i za davanje otkaza već zaposlenim radnicima.
@@ -14,11 +16,11 @@ private:
     string naziv;
     Radnik* sef;
     vector<Radnik*>* zaposleni;
-    string preduzece;
+    Preduzece *preduzece;
 
 public:
     Odeljenje();
-    Odeljenje(string naziv, Radnik* sef, vector<Radnik*>* zaposleni, string preduzece);
+    Odeljenje(string naziv, Radnik* sef, vector<Radnik*>* zaposleni, Preduzece *preduzece);
     virtual ~Odeljenje();
 
     string getId() const;
@@ -29,8 +31,8 @@ public:
     void setSef(Radnik* sef);
     vector<Radnik*> *getZaposleni() const;
     void setZaposleni(vector<Radnik*>* zaposleni);
-    string getPreduzece() const;
-    void setPreduzece(string preduzece);
+    Preduzece* getPreduzece() const;
+    void setPreduzece(Preduzece *preduzece);
 
     double minimalnaPlata();
     double prosecnaPlata();

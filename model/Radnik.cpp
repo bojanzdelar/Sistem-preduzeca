@@ -1,10 +1,11 @@
 #include "Radnik.h"
+#include "Odeljenje.h"
 
 Radnik::Radnik() {
     nagrade = new vector<Nagrada*>;
 }
 
-Radnik::Radnik(string id, string ime, string prezime, double plata, vector<Nagrada*> *nagrade, string odeljenje, Radnik *nadredjeni) 
+Radnik::Radnik(string id, string ime, string prezime, double plata, vector<Nagrada*> *nagrade, Odeljenje *odeljenje, Radnik *nadredjeni) 
 : id(id), ime(ime), prezime(prezime), plata(plata), odeljenje(odeljenje), nagrade(nagrade), nadredjeni(nadredjeni) {
 
 }
@@ -45,11 +46,11 @@ void Radnik::setPlata(double plata) {
     this->plata = plata;
 }
 
-string Radnik::getOdeljenje() const {
+Odeljenje* Radnik::getOdeljenje() const {
     return odeljenje;
 }
 
-void Radnik::setOdeljenje(string odeljenje) {
+void Radnik::setOdeljenje(Odeljenje *odeljenje) {
     this->odeljenje = odeljenje;
 }
 
@@ -78,13 +79,15 @@ void Radnik::procitaj(istream &input, vector<string> elementi) {
     ime = elementi[1];
     prezime = elementi[2];
     plata = stod(elementi[3]);
-    odeljenje = elementi[4];
+    Odeljenje *odeljenje = new Odeljenje();
+    odeljenje->setId(elementi[4]);
+    this->odeljenje = odeljenje;
     idNadredjeni = elementi[5];
 }
 
 void Radnik::zapisi(ostream &output) const {
     output << getPosao() << endl;
-    output << id << SEP << ime << SEP << prezime << SEP << plata << SEP << odeljenje << SEP << idNadredjeni;
+    output << id << SEP << ime << SEP << prezime << SEP << plata << SEP << odeljenje->getId() << SEP << idNadredjeni;
 }
 
 istream& operator>>(istream& input, Radnik* radnik) {

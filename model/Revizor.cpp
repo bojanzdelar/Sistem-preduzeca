@@ -4,7 +4,7 @@ Revizor::Revizor() : Radnik() {
 
 }
 
-Revizor::Revizor(string id, string ime, string prezime, double plata, vector<Nagrada*> *nagrade, string odeljenje, Radnik *nadredjeni, vector<Datum> revizije)
+Revizor::Revizor(string id, string ime, string prezime, double plata, vector<Nagrada*> *nagrade, Odeljenje* odeljenje, Radnik *nadredjeni, vector<Datum> revizije)
 : Radnik(id, ime, prezime, plata, nagrade, odeljenje, nadredjeni), revizije(revizije) {
 
 }

@@ -8,6 +8,8 @@
 
 using namespace std;
 
+class Odeljenje;
+
 // Svaki radnik je predstavljen apstraktnom klasom koja od atributa sadrži 
 // ime, prezime, visinu plate i podataka o nadređenom radniku
 // Radnik istovremeno može imati više bonusa.
@@ -17,14 +19,14 @@ protected:
     string ime;
     string prezime;
     double plata;
-    string odeljenje;
+    Odeljenje *odeljenje;
     vector<Nagrada*> *nagrade;
     string idNadredjeni; // pomoc za ucitavanje iz datoteke
     Radnik *nadredjeni;
 
 public:
     Radnik();
-    Radnik(string id, string ime, string prezime, double plata, vector<Nagrada*> *nagrade, string odeljenje, Radnik *nadredjeni);
+    Radnik(string id, string ime, string prezime, double plata, vector<Nagrada*> *nagrade, Odeljenje *odeljenje, Radnik *nadredjeni);
     virtual ~Radnik();
 
     string getId() const;
@@ -35,8 +37,8 @@ public:
     void setPrezime(string prezime);
     double getPlata() const;
     void setPlata(double plata);
-    string getOdeljenje() const;
-    void setOdeljenje(string odeljenje);
+    Odeljenje* getOdeljenje() const;
+    void setOdeljenje(Odeljenje *odeljenje);
     vector<Nagrada*>* getNagrade() const;
     void setNagrade(vector<Nagrada*> *nagrade);
     string getIdNadredjeni() const;

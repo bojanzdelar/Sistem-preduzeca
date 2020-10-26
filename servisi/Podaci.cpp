@@ -3,8 +3,9 @@
 void popuniPreduzeca(KolekcijaPreduzeca &kolekcijaPreduzeca, const KolekcijaOdeljenja &kolekcijaOdeljenja) {
     for (Preduzece *preduzece : kolekcijaPreduzeca.getPreduzeca()) {
         for (Odeljenje *odeljenje : kolekcijaOdeljenja.getOdeljenja()) {
-            if (preduzece->getNaziv() == odeljenje->getPreduzece()) {
+            if (preduzece->getMaticniBroj() == odeljenje->getPreduzece()->getMaticniBroj()) {
                 preduzece->getOdeljenja()->push_back(odeljenje);
+                odeljenje->setPreduzece(preduzece);
             }
         }
     }
@@ -14,8 +15,9 @@ void popuniOdeljenja(KolekcijaOdeljenja &kolekcijaOdeljenja, const KolekcijaRadn
     for (Odeljenje *odeljenje : kolekcijaOdeljenja.getOdeljenja()) {
         for (Radnik *radnik : KolekcijaRadnika.getRadnici()) {
             // Dodela zaposlenog odeljenju
-            if (odeljenje->getId() == radnik->getOdeljenje()) {
+            if (odeljenje->getId() == radnik->getOdeljenje()->getId()) {
                 odeljenje->getZaposleni()->push_back(radnik);
+                radnik->setOdeljenje(odeljenje);
             }
             // Dodela sefa odeljenju
             if (odeljenje->getSef()->getId() == radnik->getId()) {
@@ -39,8 +41,9 @@ void dodeliNadredjene(KolekcijaRadnika &kolekcijaRadnika) {
 void dodeliNagrade(KolekcijaRadnika &kolekcijaRadnika, const KolekcijaNagrada &kolekcijaNagrada) {
     for (Radnik *radnik : kolekcijaRadnika.getRadnici()) {
         for (Nagrada *nagrada : kolekcijaNagrada.getNagrade()) {
-            if (radnik->getId() == nagrada->getRadnikId()) {
+            if (radnik->getId() == nagrada->getRadnik()->getId()) {
                 radnik->getNagrade()->push_back(nagrada);
+                nagrada->setRadnik(radnik);
             }
         }
     }

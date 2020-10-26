@@ -4,6 +4,7 @@
 #include <sstream>
 
 #include "../model/Odeljenje.h"
+#include "../model/Preduzece.h"
 #include "TabelarnaKolekcija.h"
 
 class KolekcijaOdeljenja : public TabelarnaKolekcija {

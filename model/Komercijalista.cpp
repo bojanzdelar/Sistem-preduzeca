@@ -5,7 +5,7 @@ Komercijalista::Komercijalista() : Radnik() {
 }
 
 Komercijalista::Komercijalista(string id, string ime, string prezime, double plata, vector<Nagrada*> *nagrade, 
-    string odeljenje, Radnik *nadredjeni, vector<string> poslovniKontakti)
+    Odeljenje* odeljenje, Radnik *nadredjeni, vector<string> poslovniKontakti)
 : Radnik(id, ime, prezime, plata, nagrade, odeljenje, nadredjeni), poslovniKontakti(poslovniKontakti) {
 
 }

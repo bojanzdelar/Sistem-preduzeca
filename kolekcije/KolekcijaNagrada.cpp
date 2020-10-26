@@ -56,7 +56,7 @@ string KolekcijaNagrada::zaglavljeRedova(int red) const {
 string KolekcijaNagrada::vrednostPolja(int kolona, int red) const {
     ostringstream out;
     if (kolona == 0) {
-        out << nagrade.at(red)->getRadnikId();
+        out << nagrade.at(red)->getRadnik()->getId();
     } 
     else if (kolona == 1) {
         out << nagrade.at(red)->getProcenti();

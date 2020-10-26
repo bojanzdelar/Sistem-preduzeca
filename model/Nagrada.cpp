@@ -1,11 +1,13 @@
 #include "Nagrada.h"
+#include "Radnik.h"
+#include "Revizor.h"
 
 Nagrada::Nagrada() {
 
 }
 
-Nagrada::Nagrada(string radnikId, int procenti, Datum pocetak, Datum kraj)
-: radnikId(radnikId), procenti(procenti), pocetak(pocetak), kraj(kraj) {
+Nagrada::Nagrada(Radnik *radnik, int procenti, Datum pocetak, Datum kraj)
+: radnik(radnik), procenti(procenti), pocetak(pocetak), kraj(kraj) {
 
 }
 
@@ -13,12 +15,12 @@ Nagrada::~Nagrada() {
 
 }
 
-string Nagrada::getRadnikId() const {
-    return radnikId;
+Radnik* Nagrada::getRadnik() const {
+    return radnik;
 }
 
-void Nagrada::setRadnikId(string radnikId) {
-    this->radnikId = radnikId;
+void Nagrada::setRadnik(Radnik *radnik) {
+    this->radnik = radnik;
 }
 
 int Nagrada::getProcenti() const {
@@ -49,7 +51,9 @@ istream& operator>>(istream &input, Nagrada *nagrada) {
     string linija;
     getline(input, linija);
     vector<string> elementi = tokenizacija(linija, SEP);
-    nagrada->radnikId = elementi[0];
+    Radnik *radnik = new Revizor(); // privremeno za cuvanje id radnika
+    radnik->setId(elementi[0]);
+    nagrada->radnik = radnik;
     nagrada->procenti = stoi(elementi[1]);
     nagrada->pocetak = Datum(elementi[2]);
     nagrada->kraj = Datum(elementi[3]);
@@ -57,6 +61,6 @@ istream& operator>>(istream &input, Nagrada *nagrada) {
 }
 
 ostream& operator<<(ostream &output, const Nagrada *nagrada) {
-    output << nagrada->radnikId << SEP << nagrada->procenti << SEP << nagrada->pocetak << SEP << nagrada->kraj << endl;
+    output << nagrada->radnik->getId() << SEP << nagrada->procenti << SEP << nagrada->pocetak << SEP << nagrada->kraj << endl;
     return output;
 }

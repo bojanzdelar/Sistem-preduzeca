@@ -54,21 +54,20 @@ string KolekcijaOdeljenja::zaglavljeRedova(int red) const {
 }
 
 string KolekcijaOdeljenja::vrednostPolja(int kolona, int red) const {
+    ostringstream out;
     if (kolona == 0) {
-        return odeljenja.at(red)->getId();
+        out << odeljenja.at(red)->getId();
     }
     else if (kolona == 1) {
-        return odeljenja.at(red)->getNaziv();
+        out << odeljenja.at(red)->getNaziv();
     } 
     else if (kolona == 2) {
-        return odeljenja.at(red)->getSef()->getId();
+        out << odeljenja.at(red)->getSef()->getId();
     } 
     else if (kolona == 3) {
-        return odeljenja.at(red)->getPreduzece();
+        out << odeljenja.at(red)->getPreduzece()->getMaticniBroj();
     }
-    else {
-        return "";
-    } 
+    return out.str();
 }
 
 istream& operator>>(istream &input, KolekcijaOdeljenja &kolekcijaOdeljenja) {

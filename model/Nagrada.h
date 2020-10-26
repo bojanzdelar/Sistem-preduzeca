@@ -9,21 +9,23 @@ using namespace std;
 
 const string SEP = ";"; // separator
 
+class Radnik;
+
 // Nagrada se specificira kao privremeno uvećanje plate koje je izraženo procentualno i ima važenje u zadatom vremenskom periodu
 class Nagrada {
 private:
-    string radnikId;
+    Radnik *radnik;
     int procenti;
     Datum pocetak;
     Datum kraj;
 
 public:
     Nagrada();
-    Nagrada(string radnikId, int procenti, Datum pocetak, Datum kraj);
+    Nagrada(Radnik *radnik, int procenti, Datum pocetak, Datum kraj);
     virtual ~Nagrada();
     
-    string getRadnikId() const;
-    void setRadnikId(string radnikId);
+    Radnik* getRadnik() const;
+    void setRadnik(Radnik *radnik);
     int getProcenti() const;
     void setProcenti(int procenti);
     Datum getPocetak() const;
