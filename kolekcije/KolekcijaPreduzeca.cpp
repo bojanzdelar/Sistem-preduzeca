@@ -13,7 +13,7 @@ KolekcijaPreduzeca::~KolekcijaPreduzeca() {
 
 }
 
-vector<Preduzece*> KolekcijaPreduzeca::getPreduzeca() {
+vector<Preduzece*> KolekcijaPreduzeca::getPreduzeca() const {
     return preduzeca;
 }
 
@@ -21,15 +21,15 @@ void KolekcijaPreduzeca::setPreduzeca(vector<Preduzece*> preduzeca) {
     this->preduzeca = preduzeca;
 }
 
-int KolekcijaPreduzeca::kolone() {
+int KolekcijaPreduzeca::kolone() const {
     return 3;
 }
 
-int KolekcijaPreduzeca::redovi() {
+int KolekcijaPreduzeca::redovi() const {
     return preduzeca.size();
 }
 
-string KolekcijaPreduzeca::zaglavljeKolone(int kolona) {
+string KolekcijaPreduzeca::zaglavljeKolone(int kolona) const {
     if (kolona == 0) {
         return "Naziv";
     } 
@@ -44,13 +44,13 @@ string KolekcijaPreduzeca::zaglavljeKolone(int kolona) {
     }
 }
 
-string KolekcijaPreduzeca::zaglavljeRedova(int red) {
+string KolekcijaPreduzeca::zaglavljeRedova(int red) const {
     ostringstream out;
     out << red + 1;
     return out.str();
 }
 
-string KolekcijaPreduzeca::vrednostPolja(int kolona, int red) {
+string KolekcijaPreduzeca::vrednostPolja(int kolona, int red) const {
     ostringstream out;
     if (kolona == 0) {
         out << preduzeca.at(red)->getNaziv();

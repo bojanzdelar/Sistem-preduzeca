@@ -13,7 +13,7 @@ KolekcijaOdeljenja::~KolekcijaOdeljenja() {
 
 }
 
-vector<Odeljenje*> KolekcijaOdeljenja::getOdeljenja() {
+vector<Odeljenje*> KolekcijaOdeljenja::getOdeljenja() const {
     return odeljenja;
 }
 
@@ -21,15 +21,15 @@ void KolekcijaOdeljenja::setOdeljenja(vector<Odeljenje*> odeljenja) {
     this->odeljenja = odeljenja;
 }
 
-int KolekcijaOdeljenja::kolone() {
+int KolekcijaOdeljenja::kolone() const {
     return 4;
 }
 
-int KolekcijaOdeljenja::redovi() {
+int KolekcijaOdeljenja::redovi() const {
     return odeljenja.size();
 }
 
-string KolekcijaOdeljenja::zaglavljeKolone(int kolona) {
+string KolekcijaOdeljenja::zaglavljeKolone(int kolona) const {
     if (kolona == 0) {
         return "ID";
     }
@@ -47,13 +47,13 @@ string KolekcijaOdeljenja::zaglavljeKolone(int kolona) {
     }
 }
 
-string KolekcijaOdeljenja::zaglavljeRedova(int red) {
+string KolekcijaOdeljenja::zaglavljeRedova(int red) const {
     ostringstream out;
     out << red + 1;
     return out.str();
 }
 
-string KolekcijaOdeljenja::vrednostPolja(int kolona, int red) {
+string KolekcijaOdeljenja::vrednostPolja(int kolona, int red) const {
     if (kolona == 0) {
         return odeljenja.at(red)->getId();
     }

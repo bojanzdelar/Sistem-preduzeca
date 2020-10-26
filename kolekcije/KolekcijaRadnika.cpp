@@ -13,7 +13,7 @@ KolekcijaRadnika::~KolekcijaRadnika() {
 
 }
 
-vector<Radnik*> KolekcijaRadnika::getRadnici() {
+vector<Radnik*> KolekcijaRadnika::getRadnici() const {
     return radnici;
 }
 
@@ -21,15 +21,15 @@ void KolekcijaRadnika::setRadnici(vector<Radnik*> radnici) {
     this->radnici = radnici;
 }
 
-int KolekcijaRadnika::kolone() {
+int KolekcijaRadnika::kolone() const {
     return 6;
 }
 
-int KolekcijaRadnika::redovi() {
+int KolekcijaRadnika::redovi() const {
     return radnici.size();
 }
 
-string KolekcijaRadnika::zaglavljeKolone(int kolona) {
+string KolekcijaRadnika::zaglavljeKolone(int kolona) const {
     if (kolona == 0) {
         return "Posao";
     } 
@@ -53,13 +53,13 @@ string KolekcijaRadnika::zaglavljeKolone(int kolona) {
     }
 }
 
-string KolekcijaRadnika::zaglavljeRedova(int red) {
+string KolekcijaRadnika::zaglavljeRedova(int red) const {
     ostringstream out;
     out << red + 1;
     return out.str();
 }
 
-string KolekcijaRadnika::vrednostPolja(int kolona, int red) {
+string KolekcijaRadnika::vrednostPolja(int kolona, int red) const {
     Radnik* radnik = radnici.at(red);
     ostringstream out;
     if (kolona == 0) {

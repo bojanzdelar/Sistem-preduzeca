@@ -15,14 +15,14 @@ public:
     KolekcijaPreduzeca(vector<Preduzece*> preduzeca);
     virtual ~KolekcijaPreduzeca();
 
-    vector<Preduzece*> getPreduzeca();
+    vector<Preduzece*> getPreduzeca() const;
     void setPreduzeca(vector<Preduzece*> preduzeca);
 
-    virtual int kolone();
-    virtual int redovi();
-    virtual string zaglavljeKolone(int kolona);
-    virtual string zaglavljeRedova(int red);
-    virtual string vrednostPolja(int kolona, int red);
+    virtual int kolone() const;
+    virtual int redovi() const;
+    virtual string zaglavljeKolone(int kolona) const;
+    virtual string zaglavljeRedova(int red) const;
+    virtual string vrednostPolja(int kolona, int red) const;
 
     friend istream& operator>>(istream &input, KolekcijaPreduzeca &kolekcijaPreduzeca);
     friend ostream& operator<<(ostream &output, const KolekcijaPreduzeca &KolekcijaPreduzeca);

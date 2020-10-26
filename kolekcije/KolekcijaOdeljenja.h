@@ -15,14 +15,14 @@ public:
     KolekcijaOdeljenja(vector<Odeljenje*> odeljenja);
     virtual ~KolekcijaOdeljenja();
 
-    vector<Odeljenje*> getOdeljenja();
+    vector<Odeljenje*> getOdeljenja() const;
     void setOdeljenja(vector<Odeljenje*> odeljenja);
 
-    virtual int kolone();
-    virtual int redovi();
-    virtual string zaglavljeKolone(int kolona);
-    virtual string zaglavljeRedova(int red);
-    virtual string vrednostPolja(int kolona, int red);
+    virtual int kolone() const;
+    virtual int redovi() const;
+    virtual string zaglavljeKolone(int kolona) const;
+    virtual string zaglavljeRedova(int red) const;
+    virtual string vrednostPolja(int kolona, int red) const;
 
     friend istream& operator>>(istream &input, KolekcijaOdeljenja &kolekcijaOdeljenja);
     friend ostream& operator<<(ostream &output, const KolekcijaOdeljenja &kolekcijaOdeljenja);

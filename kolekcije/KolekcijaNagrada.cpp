@@ -13,7 +13,7 @@ KolekcijaNagrada::~KolekcijaNagrada() {
 
 }
 
-vector<Nagrada*> KolekcijaNagrada::getNagrade() {
+vector<Nagrada*> KolekcijaNagrada::getNagrade() const {
     return nagrade;
 }
 
@@ -21,15 +21,15 @@ void KolekcijaNagrada::setNagrade(vector<Nagrada*> nagrade) {
     this->nagrade = nagrade;
 }
 
-int KolekcijaNagrada::kolone() {
+int KolekcijaNagrada::kolone() const {
     return 4;
 }
 
-int KolekcijaNagrada::redovi() {
+int KolekcijaNagrada::redovi() const {
     return nagrade.size();
 }
 
-string KolekcijaNagrada::zaglavljeKolone(int kolona) {
+string KolekcijaNagrada::zaglavljeKolone(int kolona) const {
     if (kolona == 0) {
         return "ID radnika";
     } 
@@ -47,13 +47,13 @@ string KolekcijaNagrada::zaglavljeKolone(int kolona) {
     }
 }
 
-string KolekcijaNagrada::zaglavljeRedova(int red) {
+string KolekcijaNagrada::zaglavljeRedova(int red) const {
     ostringstream out;
     out << red + 1;
     return out.str();
 }
 
-string KolekcijaNagrada::vrednostPolja(int kolona, int red) {
+string KolekcijaNagrada::vrednostPolja(int kolona, int red) const {
     ostringstream out;
     if (kolona == 0) {
         out << nagrade.at(red)->getRadnikId();
