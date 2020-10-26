@@ -3,6 +3,7 @@
 
 #include <vector>
 
+#include "PoslovnaJedinica.h"
 #include "Radnik.h"
 #include "Revizor.h"
 
@@ -10,7 +11,7 @@ class Preduzece;
 
 // Odeljenje je opisano nazivom i u sebi sadrži podatke o šefu odeljenja i trenutno zaposlenim
 // radnicima. U odeljenju obezbediti metode za zapošljavanje novih radnika i za davanje otkaza već zaposlenim radnicima.
-class Odeljenje {
+class Odeljenje : public PoslovnaJedinica {
 private:
     string id;
     string naziv;
@@ -34,9 +35,9 @@ public:
     Preduzece* getPreduzece() const;
     void setPreduzece(Preduzece *preduzece);
 
-    double minimalnaPlata();
-    double prosecnaPlata();
-    double maksimalnaPlata();
+    virtual double minimalnaPlata() const;
+    virtual double prosecnaPlata() const;
+    virtual double maksimalnaPlata() const;
 
     void zaposli(Radnik* radnik);
     void otkaz(int indeks);

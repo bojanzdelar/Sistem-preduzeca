@@ -54,7 +54,7 @@ void Odeljenje::setPreduzece(Preduzece *preduzece) {
     this->preduzece = preduzece;
 }
 
-double Odeljenje::minimalnaPlata() {
+double Odeljenje::minimalnaPlata() const {
     double min = zaposleni->size() ? zaposleni->at(0)->getPlata() : -1;
     for (size_t i = 1; i < zaposleni->size(); i++) {
         double plata = zaposleni->at(i)->getPlata();
@@ -65,7 +65,7 @@ double Odeljenje::minimalnaPlata() {
     return min;
 }
 
-double Odeljenje::prosecnaPlata() {
+double Odeljenje::prosecnaPlata() const {
     double prosek = 0;
      for (size_t i = 0; i < zaposleni->size(); i++) {
          prosek += zaposleni->at(i)->getPlata();
@@ -73,7 +73,7 @@ double Odeljenje::prosecnaPlata() {
     return prosek / zaposleni->size();
 }
 
-double Odeljenje::maksimalnaPlata() {
+double Odeljenje::maksimalnaPlata() const {
     double max = zaposleni->size() ? zaposleni->at(0)->getPlata() : -1;
     for (size_t i = 1; i < zaposleni->size(); i++) {
         double plata = zaposleni->at(i)->getPlata();

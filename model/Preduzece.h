@@ -5,7 +5,7 @@
 
 // Preduzeće je opisano nazivom, matičnim brojem i poreskim identifikacionim brojem - pib. 
 // Svako preduzeće se sastoji iz proizvoljnog broja odeljenja
-class Preduzece {
+class Preduzece : public PoslovnaJedinica {
 private: 
     string naziv;
     int maticniBroj;
@@ -26,9 +26,9 @@ public:
     vector<Odeljenje*> *getOdeljenja() const;
     void setOdeljenja(vector<Odeljenje*> *odeljenja);
 
-    double minimalnaPlata();
-    double prosecnaPlata();
-    double maksimalnaPlata();
+    virtual double minimalnaPlata() const;
+    virtual double prosecnaPlata() const;
+    virtual double maksimalnaPlata() const;
 
     friend istream& operator>>(istream &input, Preduzece *preduzece);
     friend ostream& operator<<(ostream &output, const Preduzece *preduzece);

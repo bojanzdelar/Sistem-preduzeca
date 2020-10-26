@@ -45,7 +45,7 @@ void Preduzece::setOdeljenja(vector<Odeljenje*> *odeljenja) {
     this->odeljenja = odeljenja;
 }
 
-double Preduzece::minimalnaPlata() {
+double Preduzece::minimalnaPlata() const {
     double min = odeljenja->size() ? odeljenja->at(0)->minimalnaPlata() : -1;
     for (size_t i = 1; i < odeljenja->size(); i++) {
         double plata = odeljenja->at(i)->minimalnaPlata();
@@ -57,7 +57,7 @@ double Preduzece::minimalnaPlata() {
 }
 
 // nije najprezicnija matematicka formula za prosek
-double Preduzece::prosecnaPlata() {
+double Preduzece::prosecnaPlata() const {
     double prosek = 0;
      for (size_t i = 0; i < odeljenja->size(); i++) {
          prosek += odeljenja->at(i)->prosecnaPlata(); 
@@ -65,7 +65,7 @@ double Preduzece::prosecnaPlata() {
     return prosek / odeljenja->size();
 }
 
-double Preduzece::maksimalnaPlata() {
+double Preduzece::maksimalnaPlata() const {
     double max = odeljenja->size() ? odeljenja->at(0)->maksimalnaPlata() : -1;
     for (size_t i = 1; i < odeljenja->size(); i++) {
         double plata = odeljenja->at(i)->maksimalnaPlata();
