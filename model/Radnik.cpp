@@ -1,10 +1,10 @@
 #include "Radnik.h"
 
 Radnik::Radnik() {
-
+    nagrade = new vector<Nagrada*>;
 }
 
-Radnik::Radnik(string id, string ime, string prezime, double plata, vector<Nagrada*> nagrade, string odeljenje, Radnik *nadredjeni) 
+Radnik::Radnik(string id, string ime, string prezime, double plata, vector<Nagrada*> *nagrade, string odeljenje, Radnik *nadredjeni) 
 : id(id), ime(ime), prezime(prezime), plata(plata), odeljenje(odeljenje), nagrade(nagrade), nadredjeni(nadredjeni) {
 
 }
@@ -51,6 +51,14 @@ string Radnik::getOdeljenje() const {
 
 void Radnik::setOdeljenje(string odeljenje) {
     this->odeljenje = odeljenje;
+}
+
+vector<Nagrada*>* Radnik::getNagrade() const {
+    return nagrade;
+}
+
+void Radnik::setNagrade(vector<Nagrada*> *nagrade) {
+    this->nagrade = nagrade;
 }
 
 string Radnik::getIdNadredjeni() const {

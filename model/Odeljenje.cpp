@@ -1,10 +1,10 @@
 #include "Odeljenje.h"
 
 Odeljenje::Odeljenje() {
-
+    zaposleni = new vector<Radnik*>;
 }
 
-Odeljenje::Odeljenje(string naziv, Radnik* sef, vector<Radnik*> zaposleni, string preduzece) 
+Odeljenje::Odeljenje(string naziv, Radnik* sef, vector<Radnik*> *zaposleni, string preduzece) 
 : naziv(naziv), sef(sef), zaposleni(zaposleni), preduzece(preduzece) {
 
 }
@@ -37,11 +37,11 @@ void Odeljenje::setSef(Radnik* sef) {
     this->sef = sef;
 }
 
-vector<Radnik*> Odeljenje::getZaposleni() const {
+vector<Radnik*>* Odeljenje::getZaposleni() const {
     return zaposleni;
 }
 
-void Odeljenje::setZaposleni(vector<Radnik*> zaposleni) {
+void Odeljenje::setZaposleni(vector<Radnik*> *zaposleni) {
     this->zaposleni = zaposleni;
 }
 
@@ -54,14 +54,14 @@ void Odeljenje::setPreduzece(string preduzece) {
 }
 
 void Odeljenje::zaposli(Radnik* radnik) {
-    zaposleni.push_back(radnik);
+    zaposleni->push_back(radnik);
 }
 
 void Odeljenje::otkaz(int indeks) {
-    if (indeks < 0 || indeks >= zaposleni.size()) {
+    if (indeks < 0 || indeks >= zaposleni->size()) {
         return;
     }
-    zaposleni.erase(zaposleni.begin() + indeks);
+    zaposleni->erase(zaposleni->begin() + indeks);
 }
 
 istream& operator>>(istream &input, Odeljenje *odeljenje) {

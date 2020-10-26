@@ -13,12 +13,12 @@ private:
     string id;
     string naziv;
     Radnik* sef;
-    vector<Radnik*> zaposleni;
+    vector<Radnik*>* zaposleni;
     string preduzece;
 
 public:
     Odeljenje();
-    Odeljenje(string naziv, Radnik* sef, vector<Radnik*> zaposleni, string preduzece);
+    Odeljenje(string naziv, Radnik* sef, vector<Radnik*>* zaposleni, string preduzece);
     virtual ~Odeljenje();
 
     string getId() const;
@@ -27,8 +27,8 @@ public:
     void setNaziv(string naziv);
     Radnik* getSef() const;
     void setSef(Radnik* sef);
-    vector<Radnik*> getZaposleni() const;
-    void setZaposleni(vector<Radnik*> zaposleni);
+    vector<Radnik*> *getZaposleni() const;
+    void setZaposleni(vector<Radnik*>* zaposleni);
     string getPreduzece() const;
     void setPreduzece(string preduzece);
 

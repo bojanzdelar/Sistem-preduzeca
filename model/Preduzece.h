@@ -10,11 +10,11 @@ private:
     string naziv;
     int maticniBroj;
     int pib;
-    vector<Odeljenje*> odeljenja;
+    vector<Odeljenje*> *odeljenja;
 
 public:
     Preduzece();
-    Preduzece(string naziv, int maticniBroj, int pib, vector<Odeljenje*> odeljenja);
+    Preduzece(string naziv, int maticniBroj, int pib, vector<Odeljenje*> *odeljenja);
     virtual ~Preduzece();
 
     string getNaziv() const;
@@ -23,8 +23,8 @@ public:
     void setMaticniBroj(int maticniBroj);
     int getPib() const;
     void setPib(int pib);
-    vector<Odeljenje*> getOdeljenja() const;
-    void setOdeljenja(vector<Odeljenje*> odeljenja);
+    vector<Odeljenje*> *getOdeljenja() const;
+    void setOdeljenja(vector<Odeljenje*> *odeljenja);
 
     friend istream& operator>>(istream &input, Preduzece *preduzece);
     friend ostream& operator<<(ostream &output, const Preduzece *preduzece);

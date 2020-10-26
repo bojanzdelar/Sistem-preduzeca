@@ -10,7 +10,7 @@ private:
 
 public:
     Komercijalista();
-    Komercijalista(string id, string ime, string prezime, double plata, vector<Nagrada*> nagrade, 
+    Komercijalista(string id, string ime, string prezime, double plata, vector<Nagrada*> *nagrade, 
         string odeljenje, Radnik *nadredjeni, vector<string> poslovniKontakti);
     virtual ~Komercijalista();
 

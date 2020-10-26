@@ -12,7 +12,7 @@ private:
 
 public:
     Racunovodja();
-    Racunovodja(string id, string ime, string prezime, double plata, vector<Nagrada*> nagrade, string odeljenje,
+    Racunovodja(string id, string ime, string prezime, double plata, vector<Nagrada*> *nagrade, string odeljenje,
         Radnik *nadredjeni, string izdavacLicence, double maksimalniPrihod);
     virtual ~Racunovodja();
 

@@ -1,10 +1,10 @@
 #include "Preduzece.h"
 
 Preduzece::Preduzece() {
-
+    odeljenja = new vector<Odeljenje*>;
 }
 
-Preduzece::Preduzece(string naziv, int maticniBroj, int pib, vector<Odeljenje*> odeljenja)
+Preduzece::Preduzece(string naziv, int maticniBroj, int pib, vector<Odeljenje*> *odeljenja)
 : naziv(naziv), maticniBroj(maticniBroj), pib(pib), odeljenja(odeljenja) {
 
 }
@@ -37,11 +37,11 @@ void Preduzece::setPib(int pib) {
     this->pib = pib;
 }
 
-vector<Odeljenje*> Preduzece::getOdeljenja() const {
+vector<Odeljenje*> *Preduzece::getOdeljenja() const {
     return odeljenja;
 }
 
-void Preduzece::setOdeljenja(vector<Odeljenje*> odeljenja) {
+void Preduzece::setOdeljenja(vector<Odeljenje*> *odeljenja) {
     this->odeljenja = odeljenja;
 }
 

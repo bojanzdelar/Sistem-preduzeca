@@ -18,13 +18,13 @@ protected:
     string prezime;
     double plata;
     string odeljenje;
-    vector<Nagrada*> nagrade;
+    vector<Nagrada*> *nagrade;
     string idNadredjeni; // pomoc za ucitavanje iz datoteke
     Radnik *nadredjeni;
 
 public:
     Radnik();
-    Radnik(string id, string ime, string prezime, double plata, vector<Nagrada*> nagrade, string odeljenje, Radnik *nadredjeni);
+    Radnik(string id, string ime, string prezime, double plata, vector<Nagrada*> *nagrade, string odeljenje, Radnik *nadredjeni);
     virtual ~Radnik();
 
     string getId() const;
@@ -37,6 +37,8 @@ public:
     void setPlata(double plata);
     string getOdeljenje() const;
     void setOdeljenje(string odeljenje);
+    vector<Nagrada*>* getNagrade() const;
+    void setNagrade(vector<Nagrada*> *nagrade);
     string getIdNadredjeni() const;
     Radnik* getNadredjeni() const;
     void setNadredjeni(Radnik *nadredjeni);

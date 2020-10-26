@@ -11,7 +11,7 @@ private:
 
 public:
     Revizor();
-    Revizor(string id, string ime, string prezime, double plata, vector<Nagrada*> nagrade, string odeljenje,
+    Revizor(string id, string ime, string prezime, double plata, vector<Nagrada*> *nagrade, string odeljenje,
         Radnik *nadredjeni, vector<Datum> revizije);
     virtual ~Revizor();
 
