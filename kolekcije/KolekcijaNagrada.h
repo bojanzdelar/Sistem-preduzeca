@@ -8,22 +8,17 @@
 #include "../model/Radnik.h"
 #include "TabelarnaKolekcija.h"
 
-class KolekcijaNagrada : public TabelarnaKolekcija {
+class KolekcijaNagrada : public TabelarnaKolekcija<Nagrada*> {
 private:
-    vector<Nagrada*> nagrade;
+    vector<Nagrada*> kolekcija;
 
 public:
     KolekcijaNagrada();
-    KolekcijaNagrada(vector<Nagrada*> nagrade);
+    KolekcijaNagrada(vector<Nagrada*> kolekcija);
     virtual ~KolekcijaNagrada();
 
-    vector<Nagrada*> getNagrade() const;
-    void setNagrade(vector<Nagrada*> nagrade);
-
     virtual int kolone() const;
-    virtual int redovi() const;
     virtual string zaglavljeKolone(int kolona) const;
-    virtual string zaglavljeRedova(int red) const;
     virtual string vrednostPolja(int kolona, int red) const;
 
     friend istream& operator>>(istream &input, KolekcijaNagrada &kolekcijaNagrada);

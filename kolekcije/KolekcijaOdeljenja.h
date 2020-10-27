@@ -7,22 +7,14 @@
 #include "../model/Preduzece.h"
 #include "TabelarnaKolekcija.h"
 
-class KolekcijaOdeljenja : public TabelarnaKolekcija {
-private:
-    vector<Odeljenje*> odeljenja;
-
+class KolekcijaOdeljenja : public TabelarnaKolekcija<Odeljenje*> {
 public:
     KolekcijaOdeljenja();
-    KolekcijaOdeljenja(vector<Odeljenje*> odeljenja);
+    KolekcijaOdeljenja(vector<Odeljenje*> kolekcija);
     virtual ~KolekcijaOdeljenja();
 
-    vector<Odeljenje*> getOdeljenja() const;
-    void setOdeljenja(vector<Odeljenje*> odeljenja);
-
     virtual int kolone() const;
-    virtual int redovi() const;
     virtual string zaglavljeKolone(int kolona) const;
-    virtual string zaglavljeRedova(int red) const;
     virtual string vrednostPolja(int kolona, int red) const;
 
     friend istream& operator>>(istream &input, KolekcijaOdeljenja &kolekcijaOdeljenja);

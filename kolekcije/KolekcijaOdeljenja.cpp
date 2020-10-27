@@ -4,8 +4,7 @@ KolekcijaOdeljenja::KolekcijaOdeljenja() {
 
 }
 
-KolekcijaOdeljenja::KolekcijaOdeljenja(vector<Odeljenje*> odeljenja) 
-: odeljenja(odeljenja) {
+KolekcijaOdeljenja::KolekcijaOdeljenja(vector<Odeljenje*> kolekcija) : TabelarnaKolekcija(kolekcija) {
 
 }
 
@@ -13,20 +12,8 @@ KolekcijaOdeljenja::~KolekcijaOdeljenja() {
 
 }
 
-vector<Odeljenje*> KolekcijaOdeljenja::getOdeljenja() const {
-    return odeljenja;
-}
-
-void KolekcijaOdeljenja::setOdeljenja(vector<Odeljenje*> odeljenja) {
-    this->odeljenja = odeljenja;
-}
-
 int KolekcijaOdeljenja::kolone() const {
     return 4;
-}
-
-int KolekcijaOdeljenja::redovi() const {
-    return odeljenja.size();
 }
 
 string KolekcijaOdeljenja::zaglavljeKolone(int kolona) const {
@@ -47,25 +34,19 @@ string KolekcijaOdeljenja::zaglavljeKolone(int kolona) const {
     }
 }
 
-string KolekcijaOdeljenja::zaglavljeRedova(int red) const {
-    ostringstream out;
-    out << red + 1;
-    return out.str();
-}
-
 string KolekcijaOdeljenja::vrednostPolja(int kolona, int red) const {
     ostringstream out;
     if (kolona == 0) {
-        out << odeljenja.at(red)->getId();
+        out << kolekcija.at(red)->getId();
     }
     else if (kolona == 1) {
-        out << odeljenja.at(red)->getNaziv();
+        out << kolekcija.at(red)->getNaziv();
     } 
     else if (kolona == 2) {
-        out << odeljenja.at(red)->getSef()->getId();
+        out << kolekcija.at(red)->getSef()->getId();
     } 
     else if (kolona == 3) {
-        out << odeljenja.at(red)->getPreduzece()->getMaticniBroj();
+        out << kolekcija.at(red)->getPreduzece()->getMaticniBroj();
     }
     return out.str();
 }
@@ -78,14 +59,14 @@ istream& operator>>(istream &input, KolekcijaOdeljenja &kolekcijaOdeljenja) {
     while (input.peek() != '#' && input.peek() != EOF) { 
         Odeljenje *odeljenje = new Odeljenje();
         input >> odeljenje;
-        kolekcijaOdeljenja.odeljenja.push_back(odeljenje);
+        kolekcijaOdeljenja.kolekcija.push_back(odeljenje);
     }
     return input;
 }
 
 ostream& operator<<(ostream &output, const KolekcijaOdeljenja &kolekcijaOdeljenja) {
     output << "#odeljenje" << endl;
-    for (Odeljenje *odeljenje : kolekcijaOdeljenja.odeljenja) {
+    for (Odeljenje *odeljenje : kolekcijaOdeljenja.kolekcija) {
         output << odeljenje;
     }
     return output;

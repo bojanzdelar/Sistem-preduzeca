@@ -4,29 +4,16 @@ KolekcijaRadnika::KolekcijaRadnika() {
 
 }
 
-KolekcijaRadnika::KolekcijaRadnika(vector<Radnik*> radnici) 
-: radnici(radnici) {
+KolekcijaRadnika::KolekcijaRadnika(vector<Radnik*> kolekcija) : TabelarnaKolekcija(kolekcija) {
 
-}
+} 
 
 KolekcijaRadnika::~KolekcijaRadnika() {
 
 }
 
-vector<Radnik*> KolekcijaRadnika::getRadnici() const {
-    return radnici;
-}
-
-void KolekcijaRadnika::setRadnici(vector<Radnik*> radnici) {
-    this->radnici = radnici;
-}
-
 int KolekcijaRadnika::kolone() const {
     return 6;
-}
-
-int KolekcijaRadnika::redovi() const {
-    return radnici.size();
 }
 
 string KolekcijaRadnika::zaglavljeKolone(int kolona) const {
@@ -53,33 +40,27 @@ string KolekcijaRadnika::zaglavljeKolone(int kolona) const {
     }
 }
 
-string KolekcijaRadnika::zaglavljeRedova(int red) const {
-    ostringstream out;
-    out << red + 1;
-    return out.str();
-}
-
 string KolekcijaRadnika::vrednostPolja(int kolona, int red) const {
-    Radnik* radnik = radnici.at(red);
+    Radnik* radnik = kolekcija.at(red);
     ostringstream out;
     if (kolona == 0) {
-        out << radnici.at(red)->getPosao();
+        out << kolekcija.at(red)->getPosao();
     } 
     else if (kolona == 1) {
-        out << radnici.at(red)->getId();
+        out << kolekcija.at(red)->getId();
     } 
     else if (kolona == 2) {
-        out << radnici.at(red)->getIme();
+        out << kolekcija.at(red)->getIme();
     } 
     else if (kolona == 3) {
-        out << radnici.at(red)->getPrezime();
+        out << kolekcija.at(red)->getPrezime();
     } 
     else if (kolona == 4) {
         out.precision(2);
-        out << fixed << radnici.at(red)->getPlata();
+        out << fixed << kolekcija.at(red)->getPlata();
     } 
     else if (kolona == 5) {
-        out << radnici.at(red)->getNadredjeni()->getId();
+        out << kolekcija.at(red)->getNadredjeni()->getId();
     } 
     return out.str();
 }
@@ -103,14 +84,14 @@ istream& operator>>(istream &input, KolekcijaRadnika &kolekcijaRadnika) {
             radnik = new Komercijalista();
         } 
         input >> radnik;
-        kolekcijaRadnika.radnici.push_back(radnik);
+        kolekcijaRadnika.kolekcija.push_back(radnik);
     }
     return input;
 }
 
 ostream& operator<<(ostream &output, const KolekcijaRadnika &kolekcijaRadnika) {
     output << "#radnik" << endl;
-    for (Radnik *radnik : kolekcijaRadnika.radnici) {
+    for (Radnik *radnik : kolekcijaRadnika.kolekcija) {
         output << radnik;
     }
     return output;
