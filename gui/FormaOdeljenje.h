@@ -13,7 +13,7 @@ private:
     Fl_Input *idInput;
     Fl_Input *nazivInput;
     Fl_Input *sefInput;
-    Fl_Input *preduzeceInput;
+    Fl_Int_Input *preduzeceInput;
     Fl_Button *dodaj;
     Fl_Button *izmeni;
     Fl_Button *ukloni;
