@@ -2,7 +2,7 @@
 #define KOLEKCIJA_PREDUZECA_H
 
 #include "../model/Preduzece.h"
-#include "TabelarnaKolekcija.h"
+#include "TabelarnaKolekcija.hpp"
 
 class KolekcijaPreduzeca : public TabelarnaKolekcija<Preduzece*> {
 public:

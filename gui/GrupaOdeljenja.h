@@ -5,7 +5,7 @@
 #include <FL/Fl_Int_Input.H>
 #include <FL/Fl_Button.H>
 
-#include "Tabela.h"
+#include "Tabela.hpp"
 #include "../kolekcije/KolekcijaOdeljenja.h"
 
 class GrupaOdeljenja : public Fl_Group {

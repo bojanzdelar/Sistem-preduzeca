@@ -7,7 +7,7 @@
 #include <FL/Fl_Table_Row.H>
 #include <FL/fl_draw.H>
 
-#include "../kolekcije/TabelarnaKolekcija.h"
+#include "../kolekcije/TabelarnaKolekcija.hpp"
 
 template <typename T>
 class Tabela : public Fl_Table_Row {
@@ -37,6 +37,16 @@ Tabela<T>::Tabela(int x, int y, int w, int h, TabelarnaKolekcija<T> *kolekcija)
 template <typename T>
 Tabela<T>::~Tabela() {
 
+}
+
+template <typename T>
+TabelarnaKolekcija<T>* Tabela<T>::getKolekcija() {
+    return kolekcija;
+}
+
+template <typename T>
+void Tabela<T>::setKolekcija(TabelarnaKolekcija<T> *kolekcija) {
+    this->kolekcija = kolekcija;
 }
 
 template <typename T>

@@ -30,8 +30,7 @@ void GrupaPreduzeca::dodaj(Fl_Widget *widget, void *data) {
         return;
     }
     Preduzece *preduzece = new Preduzece(naziv, stoi(maticniBroj), stoi(pib));
-
-
+    grupa->tabela->getKolekcija()->dodaj(preduzece);
 }
 
 void GrupaPreduzeca::prikazi(Fl_Widget *widget, void *data) {

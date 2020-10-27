@@ -1,8 +1,8 @@
 #include "Podaci.h"
 
 void popuniPreduzeca(KolekcijaPreduzeca &kolekcijaPreduzeca, const KolekcijaOdeljenja &kolekcijaOdeljenja) {
-    for (Preduzece *preduzece : kolekcijaPreduzeca.getPreduzeca()) {
-        for (Odeljenje *odeljenje : kolekcijaOdeljenja.getOdeljenja()) {
+    for (Preduzece *preduzece : kolekcijaPreduzeca.getKolekcija()) {
+        for (Odeljenje *odeljenje : kolekcijaOdeljenja.getKolekcija()) {
             if (preduzece->getMaticniBroj() == odeljenje->getPreduzece()->getMaticniBroj()) {
                 preduzece->getOdeljenja()->push_back(odeljenje);
                 odeljenje->setPreduzece(preduzece);
@@ -12,8 +12,8 @@ void popuniPreduzeca(KolekcijaPreduzeca &kolekcijaPreduzeca, const KolekcijaOdel
 }
 
 void popuniOdeljenja(KolekcijaOdeljenja &kolekcijaOdeljenja, const KolekcijaRadnika &KolekcijaRadnika) {
-    for (Odeljenje *odeljenje : kolekcijaOdeljenja.getOdeljenja()) {
-        for (Radnik *radnik : KolekcijaRadnika.getRadnici()) {
+    for (Odeljenje *odeljenje : kolekcijaOdeljenja.getKolekcija()) {
+        for (Radnik *radnik : KolekcijaRadnika.getKolekcija()) {
             // Dodela zaposlenog odeljenju
             if (odeljenje->getId() == radnik->getOdeljenje()->getId()) {
                 odeljenje->getZaposleni()->push_back(radnik);
@@ -28,8 +28,8 @@ void popuniOdeljenja(KolekcijaOdeljenja &kolekcijaOdeljenja, const KolekcijaRadn
 }
 
 void dodeliNadredjene(KolekcijaRadnika &kolekcijaRadnika) {
-    for (Radnik *sef : kolekcijaRadnika.getRadnici()) {
-        for (Radnik *radnik : kolekcijaRadnika.getRadnici()) {
+    for (Radnik *sef : kolekcijaRadnika.getKolekcija()) {
+        for (Radnik *radnik : kolekcijaRadnika.getKolekcija()) {
             if (sef->getId() == radnik->getIdNadredjeni()) {
                 radnik->setNadredjeni(sef);
             }
@@ -39,8 +39,8 @@ void dodeliNadredjene(KolekcijaRadnika &kolekcijaRadnika) {
 }
 
 void dodeliNagrade(KolekcijaRadnika &kolekcijaRadnika, const KolekcijaNagrada &kolekcijaNagrada) {
-    for (Radnik *radnik : kolekcijaRadnika.getRadnici()) {
-        for (Nagrada *nagrada : kolekcijaNagrada.getNagrade()) {
+    for (Radnik *radnik : kolekcijaRadnika.getKolekcija()) {
+        for (Nagrada *nagrada : kolekcijaNagrada.getKolekcija()) {
             if (radnik->getId() == nagrada->getRadnik()->getId()) {
                 radnik->getNagrade()->push_back(nagrada);
                 nagrada->setRadnik(radnik);

@@ -1,5 +1,5 @@
-#ifndef TABELARNA_KOLEKCIJA_H
-#define TABELARNA_KOLEKCIJA_H
+#ifndef TABELARNA_KOLEKCIJA_HPP
+#define TABELARNA_KOLEKCIJA_HPP
 
 #include <string>
 #include <vector>
@@ -72,4 +72,4 @@ void TabelarnaKolekcija<T>::ukloni(int red) {
     kolekcija.erase(kolekcija.begin() + red);
 }
 
-#endif // TABELARNA_KOLEKCIJA_H
+#endif // TABELARNA_KOLEKCIJA_HPP

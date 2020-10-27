@@ -6,7 +6,7 @@
 #include <FL/Fl_Choice.H>
 #include <FL/Fl_Button.H>
 
-#include "Tabela.h"
+#include "Tabela.hpp"
 #include "../kolekcije/KolekcijaRadnika.h"
 
 const int MAX_REVIZIJE = 5;

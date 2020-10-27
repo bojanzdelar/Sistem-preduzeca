@@ -5,7 +5,7 @@
 #include "../model/Racunovodja.h"
 #include "../model/Revizor.h"
 #include "../model/Komercijalista.h"
-#include "TabelarnaKolekcija.h"
+#include "TabelarnaKolekcija.hpp"
 
 class KolekcijaRadnika : public TabelarnaKolekcija<Radnik*> {
 public:

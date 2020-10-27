@@ -3,7 +3,7 @@
 
 #include "../model/Odeljenje.h"
 #include "../model/Preduzece.h"
-#include "TabelarnaKolekcija.h"
+#include "TabelarnaKolekcija.hpp"
 
 class KolekcijaOdeljenja : public TabelarnaKolekcija<Odeljenje*> {
 public:

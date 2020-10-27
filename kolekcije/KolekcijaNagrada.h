@@ -3,7 +3,7 @@
 
 #include "../model/Nagrada.h"
 #include "../model/Radnik.h"
-#include "TabelarnaKolekcija.h"
+#include "TabelarnaKolekcija.hpp"
 
 class KolekcijaNagrada : public TabelarnaKolekcija<Nagrada*> {
 private:
