@@ -1,8 +1,6 @@
 #ifndef KOLEKCIJA_RADNIKA_H
 #define KOLEKCIJA_RADNIKA_H
 
-#include <sstream>
-
 #include "../model/Radnik.h"
 #include "../model/Racunovodja.h"
 #include "../model/Revizor.h"

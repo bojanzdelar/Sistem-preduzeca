@@ -1,8 +1,6 @@
 #ifndef KOLEKCIJA_ODELJENJA_H
 #define KOLEKCIJA_ODELJENJA_H
 
-#include <sstream>
-
 #include "../model/Odeljenje.h"
 #include "../model/Preduzece.h"
 #include "TabelarnaKolekcija.h"

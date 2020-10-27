@@ -1,8 +1,6 @@
 #ifndef KOLEKCIJA_PREDUZECA_H
 #define KOLEKCIJA_PREDUZECA_H
 
-#include <sstream>
-
 #include "../model/Preduzece.h"
 #include "TabelarnaKolekcija.h"
 

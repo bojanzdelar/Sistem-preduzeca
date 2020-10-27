@@ -1,9 +1,6 @@
 #ifndef KOLEKCIJA_NAGRADA_H
 #define KOLEKCIJA_NAGRADA_H
 
-#include <vector>
-#include <sstream>
-
 #include "../model/Nagrada.h"
 #include "../model/Radnik.h"
 #include "TabelarnaKolekcija.h"
