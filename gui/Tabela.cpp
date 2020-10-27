@@ -2,11 +2,12 @@
 
 Tabela::Tabela(int x, int y, int w, int h, TabelarnaKolekcija *kolekcija) 
 : Fl_Table_Row(x, y, w, h), kolekcija(kolekcija){
-    end();
     cols(kolekcija->kolone());
     rows(kolekcija->redovi());
     col_header(1);
     row_header(1);
+    Fl_Table_Row::type(SELECT_SINGLE);
+    end();
 }
 
 Tabela::~Tabela() {
