@@ -9,11 +9,11 @@
 #include "../model/Nagrada.h"
 
 class FormaNagrada : public Fl_Group {
-private:
-    Fl_Input *radnikInput;
-    Fl_Int_Input *procentiInput;
-    Fl_Input *pocetakInput;
-    Fl_Input *krajInput;
+protected:
+    Fl_Input *radnik;
+    Fl_Int_Input *procenti;
+    Fl_Input *pocetak;
+    Fl_Input *kraj;
     Fl_Button *dodaj;
     Fl_Button *izmeni;
     Fl_Button *ukloni;

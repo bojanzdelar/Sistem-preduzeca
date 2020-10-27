@@ -9,11 +9,11 @@
 #include "../model/Odeljenje.h"
 
 class FormaOdeljenje : public Fl_Group {
-private:
-    Fl_Input *idInput;
-    Fl_Input *nazivInput;
-    Fl_Input *sefInput;
-    Fl_Int_Input *preduzeceInput;
+protected:
+    Fl_Input *id;
+    Fl_Input *naziv;
+    Fl_Input *sef;
+    Fl_Int_Input *preduzece;
     Fl_Button *dodaj;
     Fl_Button *izmeni;
     Fl_Button *ukloni;

@@ -9,10 +9,10 @@
 #include "../model/Preduzece.h"
 
 class FormaPreduzece : public Fl_Group {
-private:
-    Fl_Input *nazivInput;
-    Fl_Int_Input *maticniBrojInput;
-    Fl_Int_Input *pibInput;
+protected:
+    Fl_Input *naziv;
+    Fl_Int_Input *maticniBroj;
+    Fl_Int_Input *pib;
     Fl_Button *dodaj;
     Fl_Button *izmeni;
     Fl_Button *ukloni;
