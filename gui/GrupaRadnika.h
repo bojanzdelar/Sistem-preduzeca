@@ -33,9 +33,10 @@ protected:
     Fl_Choice *brojPoslovnihKontakta;
     Fl_Input *kontakti[MAX_KONTAKTI];
     
-    Fl_Button *dodaj;
-    Fl_Button *izmeni;
-    Fl_Button *ukloni;
+    Fl_Button *dodajButton;
+    Fl_Button *prikaziButton;
+    Fl_Button *izmeniButton;
+    Fl_Button *ukloniButton;
     
     static void promeniPosao(Fl_Widget *widget, void *data);
     static void promeniBrojRevizija(Fl_Widget *widget, void *data);

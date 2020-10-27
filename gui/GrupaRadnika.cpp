@@ -38,9 +38,10 @@ GrupaRadnika::GrupaRadnika(int x, int y, int w, int h, KolekcijaRadnika *radnici
     brojPoslovnihKontakta->value(0);
     brojPoslovnihKontakta->callback(promeniBrojKontakta, this);
 
-    dodaj = new Fl_Button(x + 500, y + 250, 50, 30, "Dodaj");
-    izmeni = new Fl_Button(x + 566, y + 250, 50, 30, "Izmeni");
-    ukloni = new Fl_Button(x + 632, y + 250, 50, 30, "Ukloni");
+    dodajButton = new Fl_Button(x + 500, y + 250, 50, 30, "Dodaj");
+    prikaziButton = new Fl_Button(x + 500, y + 290, 50, 30, "Prikazi");
+    izmeniButton = new Fl_Button(x + 566, y + 250, 50, 30, "Izmeni");
+    ukloniButton = new Fl_Button(x + 632, y + 250, 50, 30, "Ukloni");
 
     posao->do_callback();
     end();

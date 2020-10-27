@@ -7,9 +7,10 @@ GrupaNagrada::GrupaNagrada(int x, int y, int w, int h, KolekcijaNagrada *nagrade
     procenti = new Fl_Int_Input(x + 500, y + 50, 150, 30, "Procenti:");
     pocetak = new Fl_Input(x + 500, y + 90, 150, 30, "Datum pocetka\n(dd-mm-gggg):");
     kraj = new Fl_Int_Input(x + 500, y + 130, 150, 30, "Datum kraja\n(dd-mm-gggg)");
-    dodaj = new Fl_Button(x + 500, y + 180, 50, 30, "Dodaj");
-    izmeni = new Fl_Button(x + 566, y + 180, 50, 30, "Izmeni");
-    ukloni = new Fl_Button(x + 632, y + 180, 50, 30, "Ukloni");
+    dodajButton = new Fl_Button(x + 500, y + 180, 50, 30, "Dodaj");
+    prikaziButton = new Fl_Button(x + 500, y + 230, 50, 30, "Prikazi");
+    izmeniButton = new Fl_Button(x + 566, y + 180, 50, 30, "Izmeni");
+    ukloniButton = new Fl_Button(x + 632, y + 180, 50, 30, "Ukloni");
 
     end();
 }

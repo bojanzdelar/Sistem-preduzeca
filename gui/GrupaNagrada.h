@@ -15,9 +15,10 @@ protected:
     Fl_Int_Input *procenti;
     Fl_Input *pocetak;
     Fl_Input *kraj;
-    Fl_Button *dodaj;
-    Fl_Button *izmeni;
-    Fl_Button *ukloni;
+    Fl_Button *dodajButton;
+    Fl_Button *prikaziButton;
+    Fl_Button *izmeniButton;
+    Fl_Button *ukloniButton;
 
 public:
     GrupaNagrada(int x, int y, int w, int h, KolekcijaNagrada *nagrade, const char *label = "Nagrade");
