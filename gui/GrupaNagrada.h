@@ -10,7 +10,7 @@
 
 class GrupaNagrada : public Fl_Group {
 protected:
-    Tabela *tabela;
+    Tabela<Nagrada*> *tabela;
     Fl_Input *radnik;
     Fl_Int_Input *procenti;
     Fl_Input *pocetak;

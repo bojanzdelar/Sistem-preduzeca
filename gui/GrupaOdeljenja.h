@@ -10,7 +10,7 @@
 
 class GrupaOdeljenja : public Fl_Group {
 protected:
-    Tabela *tabela;
+    Tabela<Odeljenje*> *tabela;
     Fl_Input *id;
     Fl_Input *naziv;
     Fl_Input *sef;

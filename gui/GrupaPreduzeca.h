@@ -10,7 +10,7 @@
 
 class GrupaPreduzeca : public Fl_Group {
 protected:
-    Tabela *tabela;
+    Tabela<Preduzece*> *tabela;
     Fl_Input *naziv;
     Fl_Int_Input *maticniBroj;
     Fl_Int_Input *pib;
@@ -18,6 +18,11 @@ protected:
     Fl_Button *prikaziButton;
     Fl_Button *izmeniButton;
     Fl_Button *ukloniButton;
+
+    static void dodaj(Fl_Widget *widget, void *data);
+    static void prikazi(Fl_Widget *widget, void *data);
+    static void izmeni(Fl_Widget *widget, void *data);
+    static void ukloni(Fl_Widget *widget, void *data);
 
 public:
     GrupaPreduzeca(int x, int y, int w, int h, KolekcijaPreduzeca *preduzeca, const char *label = "Preduzeca");

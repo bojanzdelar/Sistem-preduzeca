@@ -14,7 +14,7 @@ const int MAX_KONTAKTI = 5;
 
 class GrupaRadnika : public Fl_Group {
 protected:
-    Tabela *tabela;
+    Tabela<Radnik*> *tabela;
     Fl_Input *id;
     Fl_Input *ime;
     Fl_Input *prezime;

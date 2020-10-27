@@ -2,7 +2,7 @@
 
 GrupaRadnika::GrupaRadnika(int x, int y, int w, int h, KolekcijaRadnika *radnici, const char *label) 
 : Fl_Group(x, y, w, h, label) {
-    Tabela *tabela = new Tabela(x + 50, x + 50, 300, 300, radnici);
+    Tabela<Radnik*> *tabela = new Tabela<Radnik*>(x + 50, x + 50, 300, 300, radnici);
     id = new Fl_Input(x + 500, y + 10, 150, 30, "ID:");
     ime = new Fl_Input(x + 500, y + 50, 150, 30, "Ime:");
     prezime = new Fl_Input(x + 500, y + 90, 150, 30, "Prezime:");
