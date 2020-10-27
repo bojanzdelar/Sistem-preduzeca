@@ -1,19 +1,20 @@
-#ifndef FORMA_RADNIK_H
-#define FORMA_RADNIK_H
+#ifndef GRUPA_RADNIKA_H
+#define GRUPA_RADNIKA_H
 
-#include <FL/Fl_Group.H>
 #include <FL/Fl_Input.H>
 #include <FL/Fl_Float_Input.H>
 #include <FL/Fl_Choice.H>
 #include <FL/Fl_Button.H>
 
-#include "../model/Radnik.h"
+#include "Tabela.h"
+#include "../kolekcije/KolekcijaRadnika.h"
 
 const int MAX_REVIZIJE = 5;
 const int MAX_KONTAKTI = 5;
 
-class FormaRadnik : public Fl_Group {
+class GrupaRadnika : public Fl_Group {
 protected:
+    Tabela *tabela;
     Fl_Input *id;
     Fl_Input *ime;
     Fl_Input *prezime;
@@ -41,8 +42,8 @@ protected:
     static void promeniBrojKontakta(Fl_Widget *widget, void *data);
 
 public:
-    FormaRadnik(int x, int y, int w, int h, const char *label = "Podaci o radniku");
-    virtual ~FormaRadnik();
+    GrupaRadnika(int x, int y, int w, int h, KolekcijaRadnika *radnici, const char *label = "Radnici");
+    virtual ~GrupaRadnika();
 };
 
-#endif // FORMA_RADNIK_H
+#endif // GRUPA_RADNIKA_H
