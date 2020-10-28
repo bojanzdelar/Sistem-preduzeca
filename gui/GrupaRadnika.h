@@ -42,6 +42,11 @@ protected:
     static void promeniPosao(Fl_Widget *widget, void *data);
     static void promeniBrojRevizija(Fl_Widget *widget, void *data);
     static void promeniBrojKontakta(Fl_Widget *widget, void *data);
+    
+    static void dodaj(Fl_Widget *widget, void *data);
+    static void prikazi(Fl_Widget *widget, void *data);
+    static void izmeni(Fl_Widget *widget, void *data);
+    static void ukloni(Fl_Widget *widget, void *data);
 
 public:
     GrupaRadnika(int x, int y, int w, int h, Kolekcije *kolekcije, const char *label = "Radnici");

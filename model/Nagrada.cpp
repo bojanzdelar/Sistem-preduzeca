@@ -6,8 +6,8 @@ Nagrada::Nagrada() {
 
 }
 
-Nagrada::Nagrada(Radnik *radnik, int procenti, Datum pocetak, Datum kraj)
-: radnik(radnik), procenti(procenti), pocetak(pocetak), kraj(kraj) {
+Nagrada::Nagrada(Radnik *radnik, int procenti, int brojMeseci)
+: radnik(radnik), procenti(procenti), brojMeseci(brojMeseci) {
 
 }
 
@@ -31,20 +31,12 @@ void Nagrada::setProcenti(int procenti) {
     this->procenti = procenti;
 }
 
-Datum Nagrada::getPocetak() const {
-    return pocetak;
+int Nagrada::getBrojMeseci() const {
+    return brojMeseci;
 }
 
-void Nagrada::setPocetak(Datum pocetak) {
-    this->pocetak = pocetak;
-}
-
-Datum Nagrada::getKraj() const {
-    return kraj;
-}
-
-void Nagrada::setKraj(Datum kraj) {
-    this->kraj = kraj;
+void Nagrada::setBrojMeseci(int brojMeseci) {
+    this->brojMeseci = brojMeseci;
 }
 
 istream& operator>>(istream &input, Nagrada *nagrada) {
@@ -55,12 +47,11 @@ istream& operator>>(istream &input, Nagrada *nagrada) {
     radnik->setId(elementi[0]);
     nagrada->radnik = radnik;
     nagrada->procenti = stoi(elementi[1]);
-    nagrada->pocetak = Datum(elementi[2]);
-    nagrada->kraj = Datum(elementi[3]);
+    nagrada->brojMeseci = stoi(elementi[2]);
     return input;
 }
 
 ostream& operator<<(ostream &output, const Nagrada *nagrada) {
-    output << nagrada->radnik->getId() << SEP << nagrada->procenti << SEP << nagrada->pocetak << SEP << nagrada->kraj << endl;
+    output << nagrada->radnik->getId() << SEP << nagrada->procenti << SEP << nagrada->brojMeseci << endl;
     return output;
 }

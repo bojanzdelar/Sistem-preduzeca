@@ -4,8 +4,8 @@ Racunovodja::Racunovodja() : Radnik() {
 
 }
 
-Racunovodja::Racunovodja(string id, string ime, string prezime, double plata, vector<Nagrada*> *nagrade, Odeljenje* odeljenje, 
-    Radnik *nadredjeni, string izdavacLicence, double maksimalniPrihod) 
+Racunovodja::Racunovodja(string id, string ime, string prezime, double plata, Odeljenje* odeljenje, Radnik *nadredjeni, 
+    string izdavacLicence, double maksimalniPrihod, vector<Nagrada*> *nagrade) 
 : Radnik(id, ime, prezime, plata, nagrade, odeljenje, nadredjeni), izdavacLicence(izdavacLicence),  maksimalniPrihod(maksimalniPrihod) {
 
 }

@@ -12,8 +12,8 @@ private:
 
 public:
     Racunovodja();
-    Racunovodja(string id, string ime, string prezime, double plata, vector<Nagrada*> *nagrade, Odeljenje* odeljenje,
-        Radnik *nadredjeni, string izdavacLicence, double maksimalniPrihod);
+    Racunovodja(string id, string ime, string prezime, double plata, Odeljenje* odeljenje,
+        Radnik *nadredjeni, string izdavacLicence, double maksimalniPrihod, vector<Nagrada*> *nagrade = new vector<Nagrada*>);
     virtual ~Racunovodja();
 
     string getIzdavacLicence() const;

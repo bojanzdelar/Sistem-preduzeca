@@ -88,11 +88,13 @@ void Odeljenje::zaposli(Radnik* radnik) {
     zaposleni->push_back(radnik);
 }
 
-void Odeljenje::otkaz(int indeks) {
-    if (indeks < 0 || indeks >= zaposleni->size()) {
-        return;
+void Odeljenje::otkaz(Radnik* radnik) {
+     for (size_t i = 0; i < zaposleni->size(); i++) {
+        if (radnik == zaposleni->at(i)) {
+            zaposleni->erase(zaposleni->begin() + i);
+            return;
+        }
     }
-    zaposleni->erase(zaposleni->begin() + indeks);
 }
 
 istream& operator>>(istream &input, Odeljenje *odeljenje) {

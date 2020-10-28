@@ -4,8 +4,8 @@ Komercijalista::Komercijalista() : Radnik() {
 
 }
 
-Komercijalista::Komercijalista(string id, string ime, string prezime, double plata, vector<Nagrada*> *nagrade, 
-    Odeljenje* odeljenje, Radnik *nadredjeni, vector<string> poslovniKontakti)
+Komercijalista::Komercijalista(string id, string ime, string prezime, double plata, Odeljenje* odeljenje, 
+    Radnik *nadredjeni, vector<string> poslovniKontakti, vector<Nagrada*> *nagrade)
 : Radnik(id, ime, prezime, plata, nagrade, odeljenje, nadredjeni), poslovniKontakti(poslovniKontakti) {
 
 }
@@ -18,7 +18,7 @@ vector<string> Komercijalista::getPoslovniKontakti() const {
     return poslovniKontakti;
 }
 
-void Komercijalista::setPoslovniKontakti() {
+void Komercijalista::setPoslovniKontakti(vector<string> poslovniKontakti) {
     this->poslovniKontakti = poslovniKontakti;
 }
 

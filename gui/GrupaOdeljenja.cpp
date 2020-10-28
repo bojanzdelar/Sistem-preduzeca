@@ -37,6 +37,7 @@ void GrupaOdeljenja::dodaj(Fl_Widget *widget, void *data) {
     }
     Odeljenje *odeljenje = new Odeljenje(id, naziv, grupa->kolekcije->radnici.dobaviId(sef), grupa->kolekcije->preduzeca.dobavi(stoi(preduzece)));
     grupa->kolekcije->odeljenja.dodaj(odeljenje);
+    odeljenje->getPreduzece()->dodajOdeljenje(odeljenje);
     grupa->tabela->azuriraj();
 }
 
@@ -47,17 +48,11 @@ void GrupaOdeljenja::prikazi(Fl_Widget *widget, void *data) {
         return;
     }
     Odeljenje *odeljenje = grupa->kolekcije->odeljenja.dobavi(red);
-    ostringstream out;
-    out << odeljenje->getId();
-    grupa->id->value(out.str().c_str());
-    out.str("");
-    out << odeljenje->getNaziv();
-    grupa->naziv->value(out.str().c_str());
-    out.str("");
+    grupa->id->value(odeljenje->getId().c_str());
+    grupa->naziv->value(odeljenje->getNaziv().c_str());
     Radnik *sef = odeljenje->getSef(); // provera da li odeljenja ima sefa
-    out << (sef != nullptr ? sef->getId() : "");
-    grupa->sef->value(out.str().c_str());
-    out.str("");
+    grupa->sef->value((sef != nullptr ? sef->getId() : "").c_str());
+    ostringstream out;
     out << odeljenje->getPreduzece()->getMaticniBroj();
     grupa->preduzece->value(out.str().c_str());
 }
@@ -69,7 +64,7 @@ void GrupaOdeljenja::izmeni(Fl_Widget *widget, void *data) {
     string sef = grupa->sef->value();
     string preduzece = grupa->preduzece->value();
     int red = grupa->tabela->izabraniRed();
-    if (id == "" || naziv == "" || preduzece == "" 
+    if (id == "" || naziv == "" || preduzece == "" || red == -1
             || id != grupa->kolekcije->odeljenja.dobavi(red)->getId()
             || (!grupa->kolekcije->radnici.idZauzet(sef) && sef != "") 
             || !grupa->kolekcije->preduzeca.maticniBrojZauzet(stoi(preduzece))) {
@@ -78,7 +73,9 @@ void GrupaOdeljenja::izmeni(Fl_Widget *widget, void *data) {
     Odeljenje *odeljenje = grupa->kolekcije->odeljenja.dobavi(red);
     odeljenje->setNaziv(naziv);
     odeljenje->setSef(grupa->kolekcije->radnici.dobaviId(sef));
+    odeljenje->getPreduzece()->ukloniOdeljenje(odeljenje); // brisanje iz starog preduzeca
     odeljenje->setPreduzece(grupa->kolekcije->preduzeca.dobaviId(stoi(preduzece)));
+    odeljenje->getPreduzece()->dodajOdeljenje(odeljenje); // dodavanje u novo preduzece
     grupa->tabela->azuriraj();
 }
 

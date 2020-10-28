@@ -40,7 +40,7 @@ public:
     virtual double maksimalnaPlata() const;
 
     void zaposli(Radnik* radnik);
-    void otkaz(int indeks);
+    void otkaz(Radnik *radnik);
 
     friend istream& operator>>(istream &input, Odeljenje *odeljenje);
     friend ostream& operator<<(ostream &output, const Odeljenje *odeljenje);

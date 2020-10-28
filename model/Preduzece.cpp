@@ -76,6 +76,19 @@ double Preduzece::maksimalnaPlata() const {
     return max;
 }
 
+void Preduzece::dodajOdeljenje(Odeljenje *odeljenje) {
+    odeljenja->push_back(odeljenje);
+}
+
+void Preduzece::ukloniOdeljenje(Odeljenje* odeljenje) {
+    for (size_t i = 0; i < odeljenja->size(); i++) {
+        if (odeljenje == odeljenja->at(i)) {
+            odeljenja->erase(odeljenja->begin() + i);
+            return;
+        }
+    }
+}
+
 istream& operator>>(istream &input, Preduzece *preduzece) {
     string linija;
     getline(input, linija);

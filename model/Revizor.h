@@ -2,21 +2,20 @@
 #define REVIZOR_H
 
 #include "Radnik.h"
-#include "Datum.h"
 
 // Revizor sadrži spisak datuma kada je vršio revizije u odeljenju u kojem je zaposlen
 class Revizor : public Radnik {
 private:
-    vector<Datum> revizije; 
+    vector<string> revizije; 
 
 public:
     Revizor();
-    Revizor(string id, string ime, string prezime, double plata, vector<Nagrada*> *nagrade, Odeljenje* odeljenje,
-        Radnik *nadredjeni, vector<Datum> revizije);
+    Revizor(string id, string ime, string prezime, double plata, Odeljenje* odeljenje,
+        Radnik *nadredjeni, vector<string> revizije, vector<Nagrada*> *nagrade = new vector<Nagrada*>);
     virtual ~Revizor();
 
-    vector<Datum> getRevizije() const;
-    void setRevizije(vector<Datum> revizije);
+    vector<string> getRevizije() const;
+    void setRevizije(vector<string> revizije);
     virtual string getPosao() const;
 
     virtual void procitaj(istream &input, vector<string> elementi);

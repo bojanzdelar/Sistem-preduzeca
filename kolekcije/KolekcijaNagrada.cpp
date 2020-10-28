@@ -13,7 +13,7 @@ KolekcijaNagrada::~KolekcijaNagrada() {
 }
 
 int KolekcijaNagrada::kolone() const {
-    return 4;
+    return 3;
 }
 
 string KolekcijaNagrada::zaglavljeKolone(int kolona) const {
@@ -24,11 +24,8 @@ string KolekcijaNagrada::zaglavljeKolone(int kolona) const {
         return "Bonus";
     } 
     else if (kolona == 2) {
-        return "Datum pocetka";
+        return "Broj meseci trajanja";
     } 
-    else if (kolona == 3) {
-        return "Datum kraja";
-    }
     else {
         return "";
     }
@@ -43,10 +40,7 @@ string KolekcijaNagrada::vrednostPolja(int kolona, int red) const {
         out << kolekcija.at(red)->getProcenti();
     } 
     else if (kolona == 2) {
-        out << kolekcija.at(red)->getPocetak();
-    }
-    else if (kolona == 3) {
-        out << kolekcija.at(red)->getKraj();
+        out << kolekcija.at(red)->getBrojMeseci();
     }
     return out.str();
 }

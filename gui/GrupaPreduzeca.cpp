@@ -44,10 +44,8 @@ void GrupaPreduzeca::prikazi(Fl_Widget *widget, void *data) {
         return;
     }
     Preduzece *preduzece = grupa->kolekcije->preduzeca.dobavi(red);
+    grupa->naziv->value(preduzece->getNaziv().c_str());
     ostringstream out;
-    out << preduzece->getNaziv();
-    grupa->naziv->value(out.str().c_str());
-    out.str("");
     out << preduzece->getMaticniBroj();
     grupa->maticniBroj->value(out.str().c_str());
     out.str("");

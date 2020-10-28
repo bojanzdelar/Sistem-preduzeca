@@ -1,9 +1,10 @@
 #ifndef NAGRADA_H
 #define NAGRADA_H
 
+#include <iostream>
 #include <string>
 
-#include "Datum.h"
+#include "../servisi/Util.h"
 
 using namespace std;
 
@@ -16,22 +17,19 @@ class Nagrada {
 private:
     Radnik *radnik;
     int procenti;
-    Datum pocetak;
-    Datum kraj;
+    int brojMeseci;
 
 public:
     Nagrada();
-    Nagrada(Radnik *radnik, int procenti, Datum pocetak, Datum kraj);
+    Nagrada(Radnik *radnik, int procenti, int brojMeseci);
     virtual ~Nagrada();
     
     Radnik* getRadnik() const;
     void setRadnik(Radnik *radnik);
     int getProcenti() const;
     void setProcenti(int procenti);
-    Datum getPocetak() const;
-    void setPocetak(Datum pocetak);
-    Datum getKraj() const;
-    void setKraj(Datum kraj);
+    int getBrojMeseci() const;
+    void setBrojMeseci(int brojMeseci);
 
     friend istream& operator>>(istream &input, Nagrada *nagrada);
     friend ostream& operator<<(ostream &output, const Nagrada* nagrada);

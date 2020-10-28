@@ -4,7 +4,7 @@ Revizor::Revizor() : Radnik() {
 
 }
 
-Revizor::Revizor(string id, string ime, string prezime, double plata, vector<Nagrada*> *nagrade, Odeljenje* odeljenje, Radnik *nadredjeni, vector<Datum> revizije)
+Revizor::Revizor(string id, string ime, string prezime, double plata, Odeljenje* odeljenje, Radnik *nadredjeni, vector<string> revizije, vector<Nagrada*> *nagrade)
 : Radnik(id, ime, prezime, plata, nagrade, odeljenje, nadredjeni), revizije(revizije) {
 
 }
@@ -13,11 +13,11 @@ Revizor::~Revizor() {
 
 }
 
-vector<Datum> Revizor::getRevizije() const {
+vector<string> Revizor::getRevizije() const {
     return revizije;
 }
 
-void Revizor::setRevizije(vector<Datum> revizije) {
+void Revizor::setRevizije(vector<string> revizije) {
     this->revizije = revizije;
 }
 
@@ -29,7 +29,7 @@ string Revizor::getPosao() const {
 void Revizor::procitaj(istream &input, vector<string> elementi) {
     Radnik::procitaj(input, elementi);
     for (size_t i = 6; i < elementi.size(); i++) {
-        revizije.push_back(Datum(elementi[i]));
+        revizije.push_back(elementi[i]);
     }
 }
 

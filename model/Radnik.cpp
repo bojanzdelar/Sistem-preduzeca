@@ -87,7 +87,7 @@ void Radnik::procitaj(istream &input, vector<string> elementi) {
 
 void Radnik::zapisi(ostream &output) const {
     output << getPosao() << endl;
-    output << id << SEP << ime << SEP << prezime << SEP << plata << SEP << odeljenje->getId() << SEP << idNadredjeni;
+    output << id << SEP << ime << SEP << prezime << SEP << plata << SEP << odeljenje->getId() << SEP << nadredjeni->getId();
 }
 
 istream& operator>>(istream& input, Radnik* radnik) {

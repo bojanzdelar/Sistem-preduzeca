@@ -30,6 +30,9 @@ public:
     virtual double prosecnaPlata() const;
     virtual double maksimalnaPlata() const;
 
+    void dodajOdeljenje(Odeljenje *odeljenje);
+    void ukloniOdeljenje(Odeljenje *odeljenje);
+
     friend istream& operator>>(istream &input, Preduzece *preduzece);
     friend ostream& operator<<(ostream &output, const Preduzece *preduzece);
 };
