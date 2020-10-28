@@ -7,13 +7,14 @@
 #include <FL/Fl_Button.H>
 
 #include "Tabela.hpp"
-#include "../kolekcije/KolekcijaRadnika.h"
+#include "../kolekcije/Kolekcije.h"
 
 const int MAX_REVIZIJE = 5;
 const int MAX_KONTAKTI = 5;
 
 class GrupaRadnika : public Fl_Group {
 protected:
+    Kolekcije *kolekcije;
     Tabela<Radnik*> *tabela;
     Fl_Input *id;
     Fl_Input *ime;
@@ -43,7 +44,7 @@ protected:
     static void promeniBrojKontakta(Fl_Widget *widget, void *data);
 
 public:
-    GrupaRadnika(int x, int y, int w, int h, KolekcijaRadnika *radnici, const char *label = "Radnici");
+    GrupaRadnika(int x, int y, int w, int h, Kolekcije *kolekcije, const char *label = "Radnici");
     virtual ~GrupaRadnika();
 };
 

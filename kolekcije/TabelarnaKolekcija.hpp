@@ -23,6 +23,7 @@ public:
     virtual string zaglavljeKolone(int kolona) const = 0;
     string zaglavljeRedova(int red) const;
     virtual string vrednostPolja(int kolona, int red) const = 0;
+    T dobavi(int red);
     void dodaj(T t);
     void ukloni(int red);
 };
@@ -57,6 +58,14 @@ string TabelarnaKolekcija<T>::zaglavljeRedova(int red) const {
     ostringstream out;
     out << red + 1;
     return out.str();
+}
+
+template <typename T>
+T TabelarnaKolekcija<T>::dobavi(int red) {
+    if (red < 0 || red >= redovi()) {
+        return T();
+    }
+    return kolekcija.at(red);
 }
 
 template <typename T>

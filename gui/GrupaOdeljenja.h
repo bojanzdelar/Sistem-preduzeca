@@ -6,10 +6,11 @@
 #include <FL/Fl_Button.H>
 
 #include "Tabela.hpp"
-#include "../kolekcije/KolekcijaOdeljenja.h"
+#include "../kolekcije/Kolekcije.h"
 
 class GrupaOdeljenja : public Fl_Group {
 protected:
+    Kolekcije *kolekcije;
     Tabela<Odeljenje*> *tabela;
     Fl_Input *id;
     Fl_Input *naziv;
@@ -21,7 +22,7 @@ protected:
     Fl_Button *ukloniButton;
 
 public:
-    GrupaOdeljenja(int x, int y, int w, int h, KolekcijaOdeljenja *odeljenja, const char *label = "Odeljenja");
+    GrupaOdeljenja(int x, int y, int w, int h, Kolekcije *kolekcije, const char *label = "Odeljenja");
     virtual ~GrupaOdeljenja();
 };
 

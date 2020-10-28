@@ -6,10 +6,11 @@
 #include <FL/Fl_Button.H>
 
 #include "Tabela.hpp"
-#include "../kolekcije/KolekcijaPreduzeca.h"
+#include "../kolekcije/Kolekcije.h"
 
 class GrupaPreduzeca : public Fl_Group {
 protected:
+    Kolekcije *kolekcije;
     Tabela<Preduzece*> *tabela;
     Fl_Input *naziv;
     Fl_Int_Input *maticniBroj;
@@ -25,7 +26,7 @@ protected:
     static void ukloni(Fl_Widget *widget, void *data);
 
 public:
-    GrupaPreduzeca(int x, int y, int w, int h, KolekcijaPreduzeca *preduzeca, const char *label = "Preduzeca");
+    GrupaPreduzeca(int x, int y, int w, int h, Kolekcije *kolekcije, const char *label = "Preduzeca");
     virtual ~GrupaPreduzeca();
 };
 

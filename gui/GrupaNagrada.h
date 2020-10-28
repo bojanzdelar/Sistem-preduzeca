@@ -6,10 +6,11 @@
 #include <FL/Fl_Button.H>
 
 #include "Tabela.hpp"
-#include "../kolekcije/KolekcijaNagrada.h"
+#include "../kolekcije/Kolekcije.h"
 
 class GrupaNagrada : public Fl_Group {
 protected:
+    Kolekcije* kolekcije;
     Tabela<Nagrada*> *tabela;
     Fl_Input *radnik;
     Fl_Int_Input *procenti;
@@ -21,7 +22,7 @@ protected:
     Fl_Button *ukloniButton;
 
 public:
-    GrupaNagrada(int x, int y, int w, int h, KolekcijaNagrada *nagrade, const char *label = "Nagrade");
+    GrupaNagrada(int x, int y, int w, int h, Kolekcije *kolekcije, const char *label = "Nagrade");
     virtual ~GrupaNagrada();
 };
 
