@@ -1,6 +1,7 @@
 #include "PrikazPlata.h"
 
-PrikazPlata::PrikazPlata(int x, int y, int w, int h) : Fl_Widget(x, y, w, h) {
+PrikazPlata::PrikazPlata(int x, int y, int w, int h) 
+: Fl_Widget(x, y, w, h), radnik(nullptr), poslovnaJedinica(nullptr) {
 
 }
 
@@ -26,12 +27,13 @@ void PrikazPlata::setPoslovnaJedinica(PoslovnaJedinica* poslovnaJedinica) {
     draw();
 }
 
-void PrikazPlata::draw() {
-    double plata = radnik->getPlata();
-    double min = poslovnaJedinica->minimalnaPlata();
-    double max = poslovnaJedinica->maksimalnaPlata();
-    double avg = poslovnaJedinica->prosecnaPlata();
+void PrikazPlata::azuriraj(Radnik *radnik, PoslovnaJedinica *poslovnaJedinica) {
+    this->radnik = radnik;
+    this->poslovnaJedinica = poslovnaJedinica;
+    redraw();
+}
 
+void PrikazPlata::draw() {
     // Pozadina
     fl_color(FL_WHITE);
     fl_rectf(x(), y(), w(), h());
@@ -40,15 +42,27 @@ void PrikazPlata::draw() {
     fl_color(FL_BLACK);
     fl_rect(x(), y(), w(), h());
 
+    if (radnik == nullptr || poslovnaJedinica == nullptr) {
+        return;
+    }
+
+    double plata = radnik->getPlata();
+    double min = poslovnaJedinica->minimalnaPlata();
+    double max = poslovnaJedinica->maksimalnaPlata();
+    double avg = poslovnaJedinica->prosecnaPlata();
+
+    double polozajRadnik = (max - min != 0) ? (x() + w()*(plata-min)/(max-min)) : x();
+    double polozajProsek = (max - min != 0) ? (x() + w()*(avg-min)/(max-min)) : x();
+
     // Linija za platu radnka
     fl_color(FL_RED);
     fl_line_style(FL_SOLID, 4);
-    fl_yxline(x() + w()*(plata-min)/(max-min), y(), y() + h());
+    fl_yxline(polozajRadnik, y(), y() + h());
     
     // Linija za prosecnu platu
     fl_color(FL_YELLOW);
     fl_line_style(FL_SOLID, 4);
-    fl_yxline(x() + w()*(avg-min)/(max-min), y(), y() + h());
+    fl_yxline(polozajProsek, y(), y() + h());
 
     // Vrednosti
     fl_color(FL_BLACK);
@@ -64,9 +78,9 @@ void PrikazPlata::draw() {
 
     out.str("");
     out << plata;
-    fl_draw(out.str().c_str(), x() +w()*(plata-min)/(max-min), y() - 10);
+    fl_draw(out.str().c_str(), polozajRadnik, y() - 10);
 
     out.str("");
     out << avg;
-    fl_draw(out.str().c_str(), x() + w()*(avg-min)/(max-min), y() + h() + 20);
+    fl_draw(out.str().c_str(), polozajProsek, y() + h() + 20);
 }

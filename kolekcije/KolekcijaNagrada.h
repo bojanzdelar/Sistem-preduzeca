@@ -6,9 +6,6 @@
 #include "TabelarnaKolekcija.hpp"
 
 class KolekcijaNagrada : public TabelarnaKolekcija<Nagrada*> {
-private:
-    vector<Nagrada*> kolekcija;
-
 public:
     KolekcijaNagrada();
     KolekcijaNagrada(vector<Nagrada*> kolekcija);

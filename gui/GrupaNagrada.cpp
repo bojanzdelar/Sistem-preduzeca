@@ -72,12 +72,6 @@ void GrupaNagrada::izmeni(Fl_Widget *widget, void *data) {
     nagrada->setProcenti(stoi(procenti));
     nagrada->setBrojMeseci(stoi(brojMeseci));
     grupa->tabela->azuriraj();
-
-    Radnik *radnik = grupa->kolekcije->radnici.dobaviId(radnikId);
-    Nagrada *nagrada = new Nagrada(radnik, stoi(procenti), stoi(brojMeseci));
-    grupa->kolekcije->nagrade.dodaj(nagrada);
-    radnik->getNagrade()->push_back(nagrada);
-    grupa->tabela->azuriraj();
 }
 
 void GrupaNagrada::ukloni(Fl_Widget *widget, void *data) {

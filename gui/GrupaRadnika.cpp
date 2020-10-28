@@ -42,12 +42,15 @@ GrupaRadnika::GrupaRadnika(int x, int y, int w, int h, Kolekcije *kolekcije, con
 
     dodajButton = new Fl_Button(x + 500, y + 250, 50, 30, "Dodaj");
     dodajButton->callback(dodaj, this);
-    prikaziButton = new Fl_Button(x + 500, y + 290, 50, 30, "Prikazi");
+    prikaziButton = new Fl_Button(x + 500, y + 280, 50, 30, "Prikazi");
     prikaziButton->callback(prikazi, this);
     izmeniButton = new Fl_Button(x + 566, y + 250, 50, 30, "Izmeni");
     izmeniButton->callback(izmeni, this);
     ukloniButton = new Fl_Button(x + 632, y + 250, 50, 30, "Ukloni");
     ukloniButton->callback(ukloni, this);
+
+    plateOdeljenje = new PrikazPlata(x + 500, y + 340, 200, 30);
+    platePreduzece = new PrikazPlata(x + 800, y + 340, 200, 30);
 
     posao->do_callback();
     end();
@@ -169,6 +172,8 @@ void GrupaRadnika::dodaj(Fl_Widget *widget, void *data) {
     grupa->kolekcije->radnici.dodaj(radnik);
     odeljenje->zaposli(radnik);
     grupa->tabela->azuriraj();
+    grupa->plateOdeljenje->redraw();
+    grupa->platePreduzece->redraw();
 }
 
 void GrupaRadnika::prikazi(Fl_Widget *widget, void *data) {
@@ -219,6 +224,8 @@ void GrupaRadnika::prikazi(Fl_Widget *widget, void *data) {
         }
     }
     grupa->posao->do_callback();
+    grupa->plateOdeljenje->azuriraj(radnik, radnik->getOdeljenje());
+    grupa->platePreduzece->azuriraj(radnik, radnik->getOdeljenje()->getPreduzece());
 }
 
 void GrupaRadnika::izmeni(Fl_Widget *widget, void *data) {
@@ -291,6 +298,8 @@ void GrupaRadnika::izmeni(Fl_Widget *widget, void *data) {
     radnik->getOdeljenje()->zaposli(radnik);
     radnik->setNadredjeni((id == nadredjeniId) ? radnik : grupa->kolekcije->radnici.dobaviId(nadredjeniId));
     grupa->tabela->azuriraj();
+    grupa->plateOdeljenje->redraw();
+    grupa->platePreduzece->redraw();
 }
 
 void GrupaRadnika::ukloni(Fl_Widget *widget, void *data) {
@@ -301,4 +310,6 @@ void GrupaRadnika::ukloni(Fl_Widget *widget, void *data) {
     }
     grupa->kolekcije->radnici.ukloni(red);
     grupa->tabela->azuriraj();
+    grupa->plateOdeljenje->redraw();
+    grupa->platePreduzece->redraw();
 }

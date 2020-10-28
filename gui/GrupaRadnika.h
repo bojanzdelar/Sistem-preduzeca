@@ -7,6 +7,7 @@
 #include <FL/Fl_Button.H>
 
 #include "Tabela.hpp"
+#include "PrikazPlata.h"
 #include "../kolekcije/Kolekcije.h"
 
 const int MAX_REVIZIJE = 5;
@@ -38,6 +39,9 @@ protected:
     Fl_Button *prikaziButton;
     Fl_Button *izmeniButton;
     Fl_Button *ukloniButton;
+
+    PrikazPlata *plateOdeljenje;
+    PrikazPlata *platePreduzece;
     
     static void promeniPosao(Fl_Widget *widget, void *data);
     static void promeniBrojRevizija(Fl_Widget *widget, void *data);

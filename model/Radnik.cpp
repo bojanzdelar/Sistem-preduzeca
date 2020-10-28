@@ -39,7 +39,11 @@ void Radnik::setPrezime(string prezime) {
 }
 
 double Radnik::getPlata() const {
-    return plata;
+    double plataBonusi = plata;
+    for (size_t i = 0; i < nagrade->size(); i++) {
+        plataBonusi += plataBonusi * nagrade->at(i)->getProcenti() / 100;
+    }
+    return plataBonusi;
 }
 
 void Radnik::setPlata(double plata) {

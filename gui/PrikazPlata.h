@@ -30,6 +30,8 @@ public:
     void setRadnik(Radnik* radnik);
     PoslovnaJedinica* getPoslovnaJednica() const;
     void setPoslovnaJedinica(PoslovnaJedinica* poslovnaJedinica);
+
+    void azuriraj(Radnik *radnik, PoslovnaJedinica *poslovnaJedinica);
 };
 
 #endif // PRIKAZ_PLATA_H
