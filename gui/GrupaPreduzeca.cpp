@@ -2,7 +2,7 @@
 
 GrupaPreduzeca::GrupaPreduzeca(int x, int y, int w, int h, Kolekcije *kolekcije, const char *label) 
 : Fl_Group(x, y, w, h, label), kolekcije(kolekcije) {
-    tabela = new Tabela<Preduzece*>(x + 50, x + 50, 300, 300, &kolekcije->preduzeca);
+    tabela = new Tabela<Preduzece*>(x + 50, y + 50, 300, 300, &kolekcije->preduzeca);
     naziv = new Fl_Input(x + 500, y + 10, 150, 30, "Naziv:");
     maticniBroj = new Fl_Int_Input(x + 500, y + 50, 150, 30, "Maticni broj:");
     maticniBroj->maximum_size(8);
