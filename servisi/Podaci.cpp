@@ -69,7 +69,7 @@ void procitajPodatke(KolekcijaPreduzeca &kolekcijaPreduzeca, KolekcijaOdeljenja 
 
 void ispisiPodatke(KolekcijaPreduzeca &kolekcijaPreduzeca, KolekcijaOdeljenja &kolekcijaOdeljenja,
         KolekcijaRadnika &kolekcijaRadnika, KolekcijaNagrada &kolekcijaNagrada) {
-    ofstream output("test.txt"); // privremeno
+    ofstream output("podaci.txt");
     output << kolekcijaPreduzeca;
     output << kolekcijaOdeljenja;
     output << kolekcijaRadnika;
