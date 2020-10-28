@@ -20,6 +20,11 @@ protected:
     Fl_Button *izmeniButton;
     Fl_Button *ukloniButton;
 
+    static void dodaj(Fl_Widget *widget, void *data);
+    static void prikazi(Fl_Widget *widget, void *data);
+    static void izmeni(Fl_Widget *widget, void *data);
+    static void ukloni(Fl_Widget *widget, void *data);
+
 public:
     GrupaNagrada(int x, int y, int w, int h, Kolekcije *kolekcije, const char *label = "Nagrade");
     virtual ~GrupaNagrada();

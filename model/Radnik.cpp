@@ -74,6 +74,19 @@ void Radnik::setNadredjeni(Radnik *nadredjeni) {
     this->nadredjeni = nadredjeni;
 }
 
+void Radnik::dodajNagradu(Nagrada *nagrada) {
+    nagrade->push_back(nagrada);
+}
+
+void Radnik::ukloniNagradu(Nagrada *nagrada) {
+    for (size_t i = 0; i < nagrade->size(); i++) {
+        if (nagrada == nagrade->at(i)) {
+            nagrade->erase(nagrade->begin() + i);
+            return;
+        }
+    }
+}
+
 void Radnik::procitaj(istream &input, vector<string> elementi) {
     id = elementi[0];
     ime = elementi[1];

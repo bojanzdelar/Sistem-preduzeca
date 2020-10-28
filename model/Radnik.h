@@ -46,6 +46,9 @@ public:
     void setNadredjeni(Radnik *nadredjeni);
     virtual string getPosao() const = 0;
 
+    void dodajNagradu(Nagrada *nagrada);
+    void ukloniNagradu(Nagrada *nagrada);
+
     virtual void procitaj(istream &input, vector<string> elementi) = 0;
     virtual void zapisi(ostream &output) const = 0;
 
