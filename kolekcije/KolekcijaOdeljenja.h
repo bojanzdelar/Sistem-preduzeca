@@ -14,6 +14,8 @@ public:
     virtual int kolone() const;
     virtual string zaglavljeKolone(int kolona) const;
     virtual string vrednostPolja(int kolona, int red) const;
+    Odeljenje* dobaviId(string id) const;
+    bool idZauzet(string id) const;
 
     friend istream& operator>>(istream &input, KolekcijaOdeljenja &kolekcijaOdeljenja);
     friend ostream& operator<<(ostream &output, const KolekcijaOdeljenja &kolekcijaOdeljenja);

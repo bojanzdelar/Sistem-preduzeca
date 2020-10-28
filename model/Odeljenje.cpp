@@ -5,8 +5,8 @@ Odeljenje::Odeljenje() {
     zaposleni = new vector<Radnik*>;
 }
 
-Odeljenje::Odeljenje(string naziv, Radnik* sef, vector<Radnik*> *zaposleni, Preduzece *preduzece) 
-: naziv(naziv), sef(sef), zaposleni(zaposleni), preduzece(preduzece) {
+Odeljenje::Odeljenje(string id, string naziv, Radnik* sef, Preduzece *preduzece, vector<Radnik*> *zaposleni) 
+: id(id), naziv(naziv), sef(sef), zaposleni(zaposleni), preduzece(preduzece) {
 
 }
 
@@ -101,8 +101,11 @@ istream& operator>>(istream &input, Odeljenje *odeljenje) {
     vector<string> elementi = tokenizacija(linija, SEP);
     odeljenje->id = elementi[0];
     odeljenje->naziv = elementi[1];
-    Radnik *sef = new Revizor(); // privremeno, samo da se sacuva id sefa
-    sef->setId(elementi[2]);
+    Radnik *sef = nullptr;
+    if (elementi[2] != "") {
+        sef = new Revizor(); // privremeno, samo da se sacuva id sefa
+        sef->setId(elementi[2]);
+    }
     odeljenje->sef = sef;
     Preduzece *preduzece = new Preduzece();
     preduzece->setMaticniBroj(stoi(elementi[3]));
@@ -111,6 +114,7 @@ istream& operator>>(istream &input, Odeljenje *odeljenje) {
 }
 
 ostream& operator<<(ostream &output, const Odeljenje *odeljenje) {
-    output << odeljenje->id << SEP << odeljenje->naziv << SEP << odeljenje->sef->getId() << SEP << odeljenje->preduzece->getMaticniBroj() << endl;
+    Radnik *sef = odeljenje->sef;
+    output << odeljenje->id << SEP << odeljenje->naziv << SEP << (sef != nullptr ? sef->getId() : "") << SEP << odeljenje->preduzece->getMaticniBroj() << endl;
     return output;
 }

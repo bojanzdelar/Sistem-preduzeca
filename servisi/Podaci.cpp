@@ -20,7 +20,11 @@ void popuniOdeljenja(KolekcijaOdeljenja &kolekcijaOdeljenja, const KolekcijaRadn
                 radnik->setOdeljenje(odeljenje);
             }
             // Dodela sefa odeljenju
-            if (odeljenje->getSef()->getId() == radnik->getId()) {
+            Radnik *sef = odeljenje->getSef();
+            if (sef == nullptr) {
+                continue;
+            }
+            else if (sef->getId() == radnik->getId()) {
                 odeljenje->setSef(radnik);
             }
         }

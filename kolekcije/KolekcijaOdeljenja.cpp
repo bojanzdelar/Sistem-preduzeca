@@ -43,7 +43,13 @@ string KolekcijaOdeljenja::vrednostPolja(int kolona, int red) const {
         out << kolekcija.at(red)->getNaziv();
     } 
     else if (kolona == 2) {
-        out << kolekcija.at(red)->getSef()->getId();
+        Radnik *sef = kolekcija.at(red)->getSef();
+        if (sef != nullptr) {
+            out << sef->getId();
+        }
+        else {
+            out << "";
+        }
     } 
     else if (kolona == 3) {
         out << kolekcija.at(red)->getPreduzece()->getMaticniBroj();
@@ -51,9 +57,27 @@ string KolekcijaOdeljenja::vrednostPolja(int kolona, int red) const {
     return out.str();
 }
 
+Odeljenje* KolekcijaOdeljenja::dobaviId(string id) const {
+    for (size_t i = 0; i < redovi(); i++) {
+        if (id == kolekcija.at(i)->getId()) {
+            return kolekcija.at(i);
+        }
+    }
+    return nullptr;
+}
+
+bool KolekcijaOdeljenja::idZauzet(string id) const {
+    for (size_t i = 0; i < redovi(); i++) {
+        if (id == kolekcija.at(i)->getId()) {
+            return true;
+        }
+    }
+    return false;
+}
+
 istream& operator>>(istream &input, KolekcijaOdeljenja &kolekcijaOdeljenja) {
     string linija = "";
-    while (linija != "#odeljenje") {
+    while (linija != "#odeljenje" && input.peek() != EOF) {
         getline(input, linija);
     }
     while (input.peek() != '#' && input.peek() != EOF) { 

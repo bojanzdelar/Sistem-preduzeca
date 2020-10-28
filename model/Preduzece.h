@@ -14,7 +14,7 @@ private:
 
 public:
     Preduzece();
-    Preduzece(string naziv, int maticniBroj, int pib, vector<Odeljenje*> *odeljenja);
+    Preduzece(string naziv, int maticniBroj, int pib, vector<Odeljenje*> *odeljenja = new vector<Odeljenje*>);
     virtual ~Preduzece();
 
     string getNaziv() const;

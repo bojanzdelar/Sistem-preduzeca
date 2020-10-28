@@ -21,6 +21,9 @@ public:
 
     TabelarnaKolekcija<T>* getKolekcija();
     void setKolekcija(TabelarnaKolekcija<T>* kolekcija);
+
+    void azuriraj();
+    int izabraniRed();
 };
 
 template <typename T>
@@ -93,6 +96,19 @@ void Tabela<T>::draw_cell(TableContext context, int red, int kolona, int x, int 
     default:
 	    return;
     }
+}
+
+template <typename T>
+void Tabela<T>::azuriraj() {
+    rows(kolekcija->redovi());
+    redraw();
+}
+
+template <typename T>
+int Tabela<T>::izabraniRed() {
+    int red, kolona;
+    Fl_Table::get_selection(red, kolona, red, kolona);
+    return red;
 }
 
 #endif // TABELA_H

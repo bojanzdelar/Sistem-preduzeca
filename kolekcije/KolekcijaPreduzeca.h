@@ -13,6 +13,8 @@ public:
     virtual int kolone() const;
     virtual string zaglavljeKolone(int kolona) const;
     virtual string vrednostPolja(int kolona, int red) const;
+    Preduzece* dobaviId(int maticniBroj) const;
+    bool maticniBrojZauzet(int maticniBroj) const;
 
     friend istream& operator>>(istream &input, KolekcijaPreduzeca &kolekcijaPreduzeca);
     friend ostream& operator<<(ostream &output, const KolekcijaPreduzeca &KolekcijaPreduzeca);

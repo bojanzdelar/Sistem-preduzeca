@@ -45,9 +45,27 @@ string KolekcijaPreduzeca::vrednostPolja(int kolona, int red) const {
     return out.str();
 }
 
+Preduzece* KolekcijaPreduzeca::dobaviId(int maticniBroj) const {
+    for (size_t i = 0; i < redovi(); i++) {
+        if (maticniBroj == kolekcija.at(i)->getMaticniBroj()) {
+            return kolekcija.at(i);
+        }
+    }
+    return nullptr;
+}
+
+bool KolekcijaPreduzeca::maticniBrojZauzet(int maticniBroj) const {
+    for (size_t i = 0; i < redovi(); i++) {
+        if (maticniBroj == kolekcija.at(i)->getMaticniBroj()) {
+            return true;
+        }
+    }
+    return false;
+}
+
 istream& operator>>(istream &input, KolekcijaPreduzeca &kolekcijaPreduzeca) {
     string linija = "";
-    while (linija != "#preduzece") {
+    while (linija != "#preduzece" && input.peek() != EOF) {
         getline(input, linija);
     }
     while (input.peek() != '#' && input.peek() != EOF) { 

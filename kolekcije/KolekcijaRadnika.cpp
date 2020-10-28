@@ -13,7 +13,7 @@ KolekcijaRadnika::~KolekcijaRadnika() {
 }
 
 int KolekcijaRadnika::kolone() const {
-    return 6;
+    return 7;
 }
 
 string KolekcijaRadnika::zaglavljeKolone(int kolona) const {
@@ -33,8 +33,11 @@ string KolekcijaRadnika::zaglavljeKolone(int kolona) const {
         return "Plata";
     } 
     else if (kolona == 5) {
-        return "Nadredjeni";
+        return "Odeljenje";
     } 
+    else if (kolona == 6) {
+        return "Nadredjeni";
+    }
     else {
         return "";
     }
@@ -60,14 +63,35 @@ string KolekcijaRadnika::vrednostPolja(int kolona, int red) const {
         out << fixed << kolekcija.at(red)->getPlata();
     } 
     else if (kolona == 5) {
-        out << kolekcija.at(red)->getNadredjeni()->getId();
+        out << kolekcija.at(red)->getOdeljenje()->getId();
     } 
+    else if (kolona == 6) {
+        out << kolekcija.at(red)->getNadredjeni()->getId();
+    }
     return out.str();
+}
+
+Radnik* KolekcijaRadnika::dobaviId(string id) const {
+    for (size_t i = 0; i < redovi(); i++) {
+        if (id == kolekcija.at(i)->getId()) {
+            return kolekcija.at(i);
+        }
+    }
+    return nullptr;
+}
+
+bool KolekcijaRadnika::idZauzet(string id) const {
+    for (size_t i = 0; i < redovi(); i++) {
+        if (id == kolekcija.at(i)->getId()) {
+            return true;
+        }
+    }
+    return false;
 }
 
 istream& operator>>(istream &input, KolekcijaRadnika &kolekcijaRadnika) {
     string linija = "";
-    while (linija != "#radnik") {
+    while (linija != "#radnik" && input.peek() != EOF) {
         getline(input, linija);
     }
     while (input.peek() != '#' && input.peek() != EOF) { 

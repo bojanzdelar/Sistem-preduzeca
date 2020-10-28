@@ -5,7 +5,9 @@ GrupaPreduzeca::GrupaPreduzeca(int x, int y, int w, int h, Kolekcije *kolekcije,
     tabela = new Tabela<Preduzece*>(x + 50, x + 50, 300, 300, &kolekcije->preduzeca);
     naziv = new Fl_Input(x + 500, y + 10, 150, 30, "Naziv:");
     maticniBroj = new Fl_Int_Input(x + 500, y + 50, 150, 30, "Maticni broj:");
+    maticniBroj->maximum_size(8);
     pib = new Fl_Int_Input(x + 500, y + 90, 150, 30, "Pib:");
+    pib->maximum_size(9);
     dodajButton = new Fl_Button(x + 500, y + 140, 50, 30, "Dodaj");
     dodajButton->callback(dodaj, this);
     prikaziButton = new Fl_Button(x + 500, y + 190, 50, 30, "Prikazi");
@@ -26,38 +28,55 @@ void GrupaPreduzeca::dodaj(Fl_Widget *widget, void *data) {
     string naziv = grupa->naziv->value();
     string maticniBroj = grupa->maticniBroj->value();
     string pib = grupa->pib->value();
-    if (naziv == "" || maticniBroj == "" || pib == "" ) {//|| grupa->tabela->getKolekcija()->maticniBrojZauzet(maticniBroj) {
+    if (naziv == "" || maticniBroj == "" || pib == "" || maticniBroj.find("-") != string::npos || pib.find("-") != string::npos
+            || grupa->kolekcije->preduzeca.maticniBrojZauzet(stoi(maticniBroj))) {
         return;
     }
     Preduzece *preduzece = new Preduzece(naziv, stoi(maticniBroj), stoi(pib));
-    grupa->tabela->getKolekcija()->dodaj(preduzece);
+    grupa->kolekcije->preduzeca.dodaj(preduzece);
     grupa->tabela->azuriraj();
 }
 
 void GrupaPreduzeca::prikazi(Fl_Widget *widget, void *data) {
     GrupaPreduzeca *grupa = (GrupaPreduzeca*) data;
-    int red, kolona;
-    grupa->tabela->Fl_Table::get_selection(red, kolona, red, kolona);// PREPRAVI DA UZIMA PODATKE IZ KOLEKCIJE A NE PREKO TABELE
+    int red = grupa->tabela->izabraniRed();
     if (red == -1) {
         return;
     }
+    Preduzece *preduzece = grupa->kolekcije->preduzeca.dobavi(red);
     ostringstream out;
-    out << grupa->tabela->getKolekcija()->dobavi(red)->getNaziv();
+    out << preduzece->getNaziv();
     grupa->naziv->value(out.str().c_str());
     out.str("");
-    out << grupa->tabela->getKolekcija()->dobavi(red)->getMaticniBroj();
+    out << preduzece->getMaticniBroj();
     grupa->maticniBroj->value(out.str().c_str());
     out.str("");
-    out << grupa->tabela->getKolekcija()->dobavi(red)->getPib();
+    out << preduzece->getPib();
     grupa->pib->value(out.str().c_str());
 }
 
 void GrupaPreduzeca::izmeni(Fl_Widget *widget, void *data) {
     GrupaPreduzeca *grupa = (GrupaPreduzeca*) data;
-
+    string naziv = grupa->naziv->value();
+    string maticniBroj = grupa->maticniBroj->value();
+    string pib = grupa->pib->value();
+    int red = grupa->tabela->izabraniRed();
+    if (naziv == "" || maticniBroj == "" || pib == "" || maticniBroj.find("-") != string::npos || pib.find("-") != string::npos 
+            || red == -1 || stoi(maticniBroj) != grupa->kolekcije->preduzeca.dobavi(red)->getMaticniBroj()) {
+        return;
+    }
+    Preduzece *preduzece = grupa->kolekcije->preduzeca.dobavi(red);
+    preduzece->setNaziv(naziv);
+    preduzece->setPib(stoi(pib));
+    grupa->tabela->azuriraj();
 }
 
 void GrupaPreduzeca::ukloni(Fl_Widget *widget, void *data) {
     GrupaPreduzeca *grupa = (GrupaPreduzeca*) data;
-
+    int red = grupa->tabela->izabraniRed();
+    if (red == -1) {
+        return;
+    }
+    grupa->kolekcije->preduzeca.ukloni(red);
+    grupa->tabela->azuriraj();
 }

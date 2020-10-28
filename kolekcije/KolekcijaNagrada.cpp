@@ -53,7 +53,7 @@ string KolekcijaNagrada::vrednostPolja(int kolona, int red) const {
 
 istream& operator>>(istream &input, KolekcijaNagrada &kolekcijaNagrada) {
     string linija = "";
-    while (linija != "#nagrada") {
+    while (linija != "#nagrada" && input.peek() != EOF) {
         getline(input, linija);
     }
     while (input.peek() != '#' && input.peek() != EOF) { 

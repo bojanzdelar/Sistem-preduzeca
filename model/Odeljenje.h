@@ -21,7 +21,7 @@ private:
 
 public:
     Odeljenje();
-    Odeljenje(string naziv, Radnik* sef, vector<Radnik*>* zaposleni, Preduzece *preduzece);
+    Odeljenje(string id, string naziv, Radnik* sef, Preduzece *preduzece, vector<Radnik*>* zaposleni = new vector<Radnik*>);
     virtual ~Odeljenje();
 
     string getId() const;
