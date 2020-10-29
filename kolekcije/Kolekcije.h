@@ -1,6 +1,8 @@
 #ifndef KOLEKCIJE_H
 #define KOLEKCIJE_H
 
+#include <fstream>
+
 #include "KolekcijaPreduzeca.h"
 #include "KolekcijaOdeljenja.h"
 #include "KolekcijaRadnika.h"
@@ -13,6 +15,21 @@ struct Kolekcije {
     KolekcijaNagrada &nagrade;
 
     Kolekcije(KolekcijaPreduzeca &preduzeca, KolekcijaOdeljenja &odeljenja, KolekcijaRadnika &radnici, KolekcijaNagrada &nagrade);
+
+    void popuniPreduzeca();
+    void popuniOdeljenja();
+    void dodeliNadredjene();
+    void dodeliNagrade();
+
+    void ukloniPreduzece(Preduzece *preduzece);
+    void ukloniOdeljenje(Odeljenje *odeljenje);
+    void ukloniRadnika(Radnik *radnik);
+    void ukloniNagradu(Nagrada *nagrada);
+
+    void procitajPodatke();
+    void poveziPodatke();
+    void ispisiPodatke();
+
 };
 
 #endif // KOLEKCIJE_H

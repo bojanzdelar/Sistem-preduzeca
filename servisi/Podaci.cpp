@@ -53,30 +53,27 @@ void dodeliNagrade(KolekcijaRadnika &kolekcijaRadnika, const KolekcijaNagrada &k
     }
 }
 
-void poveziPodatke(KolekcijaPreduzeca &kolekcijaPreduzeca, KolekcijaOdeljenja &kolekcijaOdeljenja,
-         KolekcijaRadnika &kolekcijaRadnika, KolekcijaNagrada &kolekcijaNagrada) {
-    popuniPreduzeca(kolekcijaPreduzeca, kolekcijaOdeljenja);
-    popuniOdeljenja(kolekcijaOdeljenja, kolekcijaRadnika);
-    dodeliNadredjene(kolekcijaRadnika);
-    dodeliNagrade(kolekcijaRadnika, kolekcijaNagrada);
+void poveziPodatke(Kolekcije &kolekcije) {
+    popuniPreduzeca(kolekcije.preduzeca, kolekcije.odeljenja);
+    popuniOdeljenja(kolekcije.odeljenja, kolekcije.radnici);
+    dodeliNadredjene(kolekcije.radnici);
+    dodeliNagrade(kolekcije.radnici, kolekcije.nagrade);
 }
 
-void procitajPodatke(KolekcijaPreduzeca &kolekcijaPreduzeca, KolekcijaOdeljenja &kolekcijaOdeljenja,
-        KolekcijaRadnika &kolekcijaRadnika, KolekcijaNagrada &kolekcijaNagrada) {
+void procitajPodatke(Kolekcije &kolekcije) {
     ifstream input("podaci.txt");
-    input >> kolekcijaPreduzeca;
-    input >> kolekcijaOdeljenja;
-    input >> kolekcijaRadnika;
-    input >> kolekcijaNagrada;
+    input >> kolekcije.preduzeca;
+    input >> kolekcije.odeljenja;
+    input >> kolekcije.radnici;
+    input >> kolekcije.nagrade;
     input.close();
 }
 
-void ispisiPodatke(KolekcijaPreduzeca &kolekcijaPreduzeca, KolekcijaOdeljenja &kolekcijaOdeljenja,
-        KolekcijaRadnika &kolekcijaRadnika, KolekcijaNagrada &kolekcijaNagrada) {
+void ispisiPodatke(Kolekcije &kolekcije) {
     ofstream output("podaci.txt");
-    output << kolekcijaPreduzeca;
-    output << kolekcijaOdeljenja;
-    output << kolekcijaRadnika;
-    output << kolekcijaNagrada;
+    output << kolekcije.preduzeca;
+    output << kolekcije.odeljenja;
+    output << kolekcije.radnici;
+    output << kolekcije.nagrade;
     output.close();
 }

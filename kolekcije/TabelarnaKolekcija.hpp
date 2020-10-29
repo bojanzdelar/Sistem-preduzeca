@@ -26,6 +26,7 @@ public:
     T dobavi(int red);
     void dodaj(T t);
     void ukloni(int red);
+    void ukloni(T t);
 };
 
 template <typename T>
@@ -79,6 +80,16 @@ void TabelarnaKolekcija<T>::ukloni(int red) {
         return;
     }
     kolekcija.erase(kolekcija.begin() + red);
+}
+
+template <typename T>
+void TabelarnaKolekcija<T>::ukloni(T t) {
+    for (size_t i = 0; i < redovi(); i++) {
+        if (t == kolekcija.at(i)) {
+            kolekcija.erase(kolekcija.begin() + i);
+            return;
+        }
+    }
 }
 
 #endif // TABELARNA_KOLEKCIJA_HPP

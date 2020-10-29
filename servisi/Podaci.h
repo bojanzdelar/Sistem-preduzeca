@@ -3,10 +3,7 @@
 
 #include <fstream>
 
-#include "../kolekcije/KolekcijaPreduzeca.h"
-#include "../kolekcije/KolekcijaOdeljenja.h"
-#include "../kolekcije/KolekcijaRadnika.h"
-#include "../kolekcije/KolekcijaNagrada.h"
+#include "../kolekcije/Kolekcije.h"
 
 void popuniPreduzeca(KolekcijaPreduzeca &kolekcijaPreduzeca, const KolekcijaOdeljenja &kolekcijaOdeljenja);
 
@@ -16,13 +13,10 @@ void dodeliNadredjene(KolekcijaRadnika &kolekcijaRadnika);
 
 void dodeliNagrade(KolekcijaRadnika &KolekcijaRadnika, const KolekcijaNagrada &kolekcijaNagrada);
 
-void procitajPodatke(KolekcijaPreduzeca &kolekcijaPreduzeca, KolekcijaOdeljenja &kolekcijaOdeljenja,
-        KolekcijaRadnika &kolekcijaRadnika, KolekcijaNagrada &kolekcijaNagrada);
+void procitajPodatke(Kolekcije &kolekcije);
 
-void poveziPodatke(KolekcijaPreduzeca &kolekcijaPreduzeca, KolekcijaOdeljenja &kolekcijaOdeljenja,
-        KolekcijaRadnika &kolekcijaRadnika, KolekcijaNagrada &kolekcijaNagrada);
+void poveziPodatke(Kolekcije &kolekcije);
 
-void ispisiPodatke(KolekcijaPreduzeca &kolekcijaPreduzeca, KolekcijaOdeljenja &kolekcijaOdeljenja,
-        KolekcijaRadnika &kolekcijaRadnika, KolekcijaNagrada &kolekcijaNagrada);
+void ispisiPodatke(Kolekcije &kolekcije);
 
 #endif // PODACI_H
