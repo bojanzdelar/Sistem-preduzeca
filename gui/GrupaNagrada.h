@@ -28,6 +28,8 @@ protected:
 public:
     GrupaNagrada(int x, int y, int w, int h, Kolekcije *kolekcije, const char *label = "Nagrade");
     virtual ~GrupaNagrada();
+
+    void azuriraj();
 };
 
 #endif // GRUPA_NAGRADA_H

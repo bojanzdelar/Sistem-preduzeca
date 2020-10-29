@@ -28,6 +28,8 @@ protected:
 public:
     GrupaPreduzeca(int x, int y, int w, int h, Kolekcije *kolekcije, const char *label = "Preduzeca");
     virtual ~GrupaPreduzeca();
+
+    void azuriraj();
 };
 
 #endif // GRUPA_PREUZECE_H

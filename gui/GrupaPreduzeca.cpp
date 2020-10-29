@@ -34,7 +34,7 @@ void GrupaPreduzeca::dodaj(Fl_Widget *widget, void *data) {
     }
     Preduzece *preduzece = new Preduzece(naziv, stoi(maticniBroj), stoi(pib));
     grupa->kolekcije->preduzeca.dodaj(preduzece);
-    grupa->tabela->azuriraj();
+    grupa->azuriraj();
 }
 
 void GrupaPreduzeca::prikazi(Fl_Widget *widget, void *data) {
@@ -66,7 +66,7 @@ void GrupaPreduzeca::izmeni(Fl_Widget *widget, void *data) {
     Preduzece *preduzece = grupa->kolekcije->preduzeca.dobavi(red);
     preduzece->setNaziv(naziv);
     preduzece->setPib(stoi(pib));
-    grupa->tabela->azuriraj();
+    grupa->azuriraj();
 }
 
 void GrupaPreduzeca::ukloni(Fl_Widget *widget, void *data) {
@@ -75,6 +75,12 @@ void GrupaPreduzeca::ukloni(Fl_Widget *widget, void *data) {
     if (red == -1) {
         return;
     }
-    grupa->kolekcije->preduzeca.ukloni(red);
-    grupa->tabela->azuriraj();
+    Preduzece *preduzece = grupa->kolekcije->preduzeca.dobavi(red);
+    grupa->kolekcije->ukloniPreduzece(preduzece);
+    delete preduzece;
+    grupa->azuriraj();
+}
+
+void GrupaPreduzeca::azuriraj() {
+    tabela->azuriraj();
 }

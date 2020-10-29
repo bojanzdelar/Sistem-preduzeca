@@ -29,6 +29,8 @@ protected:
 public:
     GrupaOdeljenja(int x, int y, int w, int h, Kolekcije *kolekcije, const char *label = "Odeljenja");
     virtual ~GrupaOdeljenja();
+
+    void azuriraj();
 };
 
 #endif // GRUPA_ODELJENJA_H

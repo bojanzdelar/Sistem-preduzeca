@@ -36,7 +36,7 @@ void GrupaNagrada::dodaj(Fl_Widget *widget, void *data) {
     Nagrada *nagrada = new Nagrada(radnik, stoi(procenti), stoi(brojMeseci));
     grupa->kolekcije->nagrade.dodaj(nagrada);
     radnik->dodajNagradu(nagrada);
-    grupa->tabela->azuriraj();
+    grupa->azuriraj();
 }
 
 void GrupaNagrada::prikazi(Fl_Widget *widget, void *data) {
@@ -71,7 +71,7 @@ void GrupaNagrada::izmeni(Fl_Widget *widget, void *data) {
     nagrada->getRadnik()->dodajNagradu(nagrada);
     nagrada->setProcenti(stoi(procenti));
     nagrada->setBrojMeseci(stoi(brojMeseci));
-    grupa->tabela->azuriraj();
+    grupa->azuriraj();
 }
 
 void GrupaNagrada::ukloni(Fl_Widget *widget, void *data) {
@@ -80,6 +80,12 @@ void GrupaNagrada::ukloni(Fl_Widget *widget, void *data) {
     if (red == -1) {
          return;
     }
-    grupa->kolekcije->nagrade.ukloni(red);
-    grupa->tabela->azuriraj();
+    Nagrada *nagrada = grupa->kolekcije->nagrade.dobavi(red);
+    grupa->kolekcije->ukloniNagradu(nagrada);
+    delete nagrada;
+    grupa->azuriraj();
+}
+
+void GrupaNagrada::azuriraj() {
+    tabela->azuriraj();
 }

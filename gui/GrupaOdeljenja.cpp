@@ -38,7 +38,7 @@ void GrupaOdeljenja::dodaj(Fl_Widget *widget, void *data) {
     Odeljenje *odeljenje = new Odeljenje(id, naziv, grupa->kolekcije->radnici.dobaviId(sef), grupa->kolekcije->preduzeca.dobavi(stoi(preduzece)));
     grupa->kolekcije->odeljenja.dodaj(odeljenje);
     odeljenje->getPreduzece()->dodajOdeljenje(odeljenje);
-    grupa->tabela->azuriraj();
+    grupa->azuriraj();
 }
 
 void GrupaOdeljenja::prikazi(Fl_Widget *widget, void *data) {
@@ -76,7 +76,7 @@ void GrupaOdeljenja::izmeni(Fl_Widget *widget, void *data) {
     odeljenje->getPreduzece()->ukloniOdeljenje(odeljenje); // brisanje iz starog preduzeca
     odeljenje->setPreduzece(grupa->kolekcije->preduzeca.dobaviId(stoi(preduzece)));
     odeljenje->getPreduzece()->dodajOdeljenje(odeljenje); // dodavanje u novo preduzece
-    grupa->tabela->azuriraj();
+    grupa->azuriraj();
 }
 
 void GrupaOdeljenja::ukloni(Fl_Widget *widget, void *data) {
@@ -85,6 +85,12 @@ void GrupaOdeljenja::ukloni(Fl_Widget *widget, void *data) {
     if (red == -1) {
          return;
     }
-    grupa->kolekcije->odeljenja.ukloni(red);
-    grupa->tabela->azuriraj();
+    Odeljenje *odeljenje = grupa->kolekcije->odeljenja.dobavi(red);
+    grupa->kolekcije->ukloniOdeljenje(odeljenje);
+    delete odeljenje;
+    grupa->azuriraj();
+}
+
+void GrupaOdeljenja::azuriraj() {
+    tabela->azuriraj();
 }

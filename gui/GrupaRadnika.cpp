@@ -171,9 +171,7 @@ void GrupaRadnika::dodaj(Fl_Widget *widget, void *data) {
     }
     grupa->kolekcije->radnici.dodaj(radnik);
     odeljenje->zaposli(radnik);
-    grupa->tabela->azuriraj();
-    grupa->plateOdeljenje->redraw();
-    grupa->platePreduzece->redraw();
+    grupa->azuriraj();
 }
 
 void GrupaRadnika::prikazi(Fl_Widget *widget, void *data) {
@@ -224,6 +222,7 @@ void GrupaRadnika::prikazi(Fl_Widget *widget, void *data) {
         }
     }
     grupa->posao->do_callback();
+    grupa->azuriraj();
     grupa->plateOdeljenje->azuriraj(radnik, radnik->getOdeljenje());
     grupa->platePreduzece->azuriraj(radnik, radnik->getOdeljenje()->getPreduzece());
 }
@@ -297,9 +296,7 @@ void GrupaRadnika::izmeni(Fl_Widget *widget, void *data) {
     radnik->setOdeljenje(grupa->kolekcije->odeljenja.dobaviId(odeljenjeId));
     radnik->getOdeljenje()->zaposli(radnik);
     radnik->setNadredjeni((id == nadredjeniId) ? radnik : grupa->kolekcije->radnici.dobaviId(nadredjeniId));
-    grupa->tabela->azuriraj();
-    grupa->plateOdeljenje->redraw();
-    grupa->platePreduzece->redraw();
+    grupa->azuriraj();
 }
 
 void GrupaRadnika::ukloni(Fl_Widget *widget, void *data) {
@@ -308,8 +305,16 @@ void GrupaRadnika::ukloni(Fl_Widget *widget, void *data) {
     if (red == -1) {
          return;
     }
-    grupa->kolekcije->radnici.ukloni(red);
-    grupa->tabela->azuriraj();
-    grupa->plateOdeljenje->redraw();
-    grupa->platePreduzece->redraw();
+    Radnik *radnik = grupa->kolekcije->radnici.dobavi(red);
+    grupa->kolekcije->ukloniRadnika(radnik);
+    delete radnik;
+    grupa->azuriraj();
+}
+
+void GrupaRadnika::azuriraj() {
+    tabela->azuriraj();
+    plateOdeljenje->setRadnik(nullptr);
+    plateOdeljenje->redraw();
+    platePreduzece->setPoslovnaJedinica(nullptr);
+    platePreduzece->redraw();
 }

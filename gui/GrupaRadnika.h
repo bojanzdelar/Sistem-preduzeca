@@ -55,6 +55,8 @@ protected:
 public:
     GrupaRadnika(int x, int y, int w, int h, Kolekcije *kolekcije, const char *label = "Radnici");
     virtual ~GrupaRadnika();
+
+    void azuriraj();
 };
 
 #endif // GRUPA_RADNIKA_H
