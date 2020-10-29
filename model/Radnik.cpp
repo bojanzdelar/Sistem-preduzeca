@@ -11,7 +11,10 @@ Radnik::Radnik(string id, string ime, string prezime, double plata, vector<Nagra
 }
 
 Radnik::~Radnik() {
-
+    for (size_t i = 0; i < nagrade->size(); i++) {
+        delete nagrade->at(i);
+    }
+    delete nagrade;
 }
 
 string Radnik::getId() const {

@@ -11,7 +11,10 @@ Odeljenje::Odeljenje(string id, string naziv, Radnik* sef, Preduzece *preduzece,
 }
 
 Odeljenje::~Odeljenje() {
-
+    for (size_t i = 0; i < zaposleni->size(); i++) {
+        delete zaposleni->at(i);
+    }
+    delete zaposleni;
 }
 
 string Odeljenje::getId() const {

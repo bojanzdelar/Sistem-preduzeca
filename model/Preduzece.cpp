@@ -10,7 +10,10 @@ Preduzece::Preduzece(string naziv, int maticniBroj, int pib, vector<Odeljenje*> 
 }
 
 Preduzece::~Preduzece() {
-
+    for (size_t i = 0; i < odeljenja->size(); i++) {
+        delete odeljenja->at(i);
+    }
+    delete odeljenja;
 }
 
 string Preduzece::getNaziv() const {
