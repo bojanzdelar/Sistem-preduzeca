@@ -31,6 +31,15 @@ Tabela<T>::Tabela(int x, int y, int w, int h, TabelarnaKolekcija<T> *kolekcija)
 : Fl_Table_Row(x, y, w, h), kolekcija(kolekcija){
     cols(kolekcija->kolone());
     rows(kolekcija->redovi());
+    int sirinaKolone;
+    if (rows() > 10) {
+        sirinaKolone = (w - row_header_width() - Fl::scrollbar_size_ - 1) / cols();
+    }
+    else {
+        sirinaKolone = (w - row_header_width() - 1) / cols();    
+    }
+    col_width_all(sirinaKolone);
+    row_height_all(38);
     col_header(1);
     row_header(1);
     Fl_Table_Row::type(SELECT_SINGLE);
@@ -101,6 +110,14 @@ void Tabela<T>::draw_cell(TableContext context, int red, int kolona, int x, int 
 template <typename T>
 void Tabela<T>::azuriraj() {
     rows(kolekcija->redovi());
+    int sirinaKolone;
+    if (rows() > 10) {
+        sirinaKolone = (w() - row_header_width() - Fl::scrollbar_size_ - 1) / cols();
+    }
+    else {
+        sirinaKolone = (w() - row_header_width() - 1) / cols();    
+    }
+    col_width_all(sirinaKolone);
     redraw();
 }
 
@@ -108,7 +125,7 @@ template <typename T>
 int Tabela<T>::izabraniRed() {
     int red, kolona;
     Fl_Table::get_selection(red, kolona, red, kolona);
-    return red;
+    return (red < kolekcija->redovi()) ? red : -1;
 }
 
 #endif // TABELA_H

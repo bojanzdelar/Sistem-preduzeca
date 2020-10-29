@@ -23,7 +23,7 @@ protected:
     virtual void draw();
 
 public:
-    PrikazPlata(int x, int y, int w, int h);
+    PrikazPlata(int x, int y, int w, int h, const char *label);
     virtual ~PrikazPlata();
 
     Radnik* getRadnik() const;

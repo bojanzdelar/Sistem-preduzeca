@@ -2,55 +2,55 @@
 
 GrupaRadnika::GrupaRadnika(int x, int y, int w, int h, Kolekcije *kolekcije, const char *label) 
 : Fl_Group(x, y, w, h, label), kolekcije(kolekcije) {
-    tabela = new Tabela<Radnik*>(x + 50, y + 50, 300, 300, &kolekcije->radnici);
-    id = new Fl_Input(x + 500, y + 10, 150, 30, "ID:");
-    ime = new Fl_Input(x + 500, y + 50, 150, 30, "Ime:");
-    prezime = new Fl_Input(x + 500, y + 90, 150, 30, "Prezime:");
-    plata = new Fl_Float_Input(x + 500, y + 130, 150, 30, "Plata");
+    tabela = new Tabela<Radnik*>(x + 10, y + 10, 700, 415, &kolekcije->radnici);
+    id = new Fl_Input(x + 800, y + 10, 150, 30, "ID:");
+    ime = new Fl_Input(x + 800, y + 50, 150, 30, "Ime:");
+    prezime = new Fl_Input(x + 800, y + 90, 150, 30, "Prezime:");
+    plata = new Fl_Float_Input(x + 800, y + 130, 150, 30, "Plata");
     plata->maximum_size(9);
-    odeljenje = new Fl_Input(x + 500, y + 170, 150, 30, "Odeljenje");
-    nadredjeni = new Fl_Input(x + 500, y + 210, 150, 30, "Nadredjeni");
-    posao = new Fl_Choice(x + 820, y + 10, 150, 30, "Posao");
+    odeljenje = new Fl_Input(x + 800, y + 170, 150, 30, "Odeljenje:");
+    nadredjeni = new Fl_Input(x + 800, y + 210, 150, 30, "Nadredjeni:");
+    posao = new Fl_Choice(x + 1035, y + 10, 150, 30, "Posao");
     posao->add("Racunovodja|Revizor|Komercijalista");
     posao->value(0);
     posao->callback(promeniPosao, this);
 
     // Racunovodja
-    izdavacLicence = new Fl_Input(x + 820, y + 50, 150, 30, "Izdavac licence:");
-    maksimalniPrihod = new Fl_Float_Input(x + 820, y + 90, 150, 30, "Maksimalni prihod");
+    izdavacLicence = new Fl_Input(x + 1035, y + 50, 150, 30, "Izdavac\nlicence:");
+    maksimalniPrihod = new Fl_Float_Input(x + 1035, y + 90, 150, 30, "Maksimalni\nprihod");
     maksimalniPrihod->maximum_size(9);
 
     // Revizor
-    brojRevizija = new Fl_Choice(x + 820, y + 50, 150, 30, "Broj revizija");
+    brojRevizija = new Fl_Choice(x + 1035, y + 50, 150, 30, "Broj\nrevizija");
     brojRevizija->add("0");
     for (int i = 0; i < MAX_REVIZIJE; i++) {
         brojRevizija->add(to_string(i+1).c_str());
-        revizije[i] = new Fl_Input(x + 820, y + 90 + i * 40, 150, 30, "Revizija:");
+        revizije[i] = new Fl_Input(x + 1035, y + 90 + i * 40, 150, 30, "Revizija:");
     }
     brojRevizija->value(0);
     brojRevizija->callback(promeniBrojRevizija, this);
 
     // Komercijalista
-    brojPoslovnihKontakta = new Fl_Choice(x + 820, y + 50, 150, 30, "Broj poslovnih\nkontakta");
+    brojPoslovnihKontakta = new Fl_Choice(x + 1035, y + 50, 150, 30, "Broj poslovnih\nkontakta");
     brojPoslovnihKontakta->add("0");
     for (int i = 0; i < MAX_KONTAKTI; i++) {
         brojPoslovnihKontakta->add(to_string(i+1).c_str());
-        kontakti[i] = new Fl_Input(x + 820, y + 90 + i * 40, 150, 30, "Kontakt:");
+        kontakti[i] = new Fl_Input(x + 1035, y + 90 + i * 40, 150, 30, "Kontakt:");
     }
     brojPoslovnihKontakta->value(0);
     brojPoslovnihKontakta->callback(promeniBrojKontakta, this);
 
-    dodajButton = new Fl_Button(x + 500, y + 250, 50, 30, "Dodaj");
+    dodajButton = new Fl_Button(x + 750, y + 260, 80, 40, "Dodaj");
     dodajButton->callback(dodaj, this);
-    prikaziButton = new Fl_Button(x + 500, y + 280, 50, 30, "Prikazi");
+    prikaziButton = new Fl_Button(x + 840, y + 260, 80, 40, "Prikazi");
     prikaziButton->callback(prikazi, this);
-    izmeniButton = new Fl_Button(x + 566, y + 250, 50, 30, "Izmeni");
+    izmeniButton = new Fl_Button(x + 930, y + 260, 80, 40, "Izmeni");
     izmeniButton->callback(izmeni, this);
-    ukloniButton = new Fl_Button(x + 632, y + 250, 50, 30, "Ukloni");
+    ukloniButton = new Fl_Button(x + 1020, y + 260, 80, 40, "Ukloni");
     ukloniButton->callback(ukloni, this);
 
-    plateOdeljenje = new PrikazPlata(x + 500, y + 340, 200, 30);
-    platePreduzece = new PrikazPlata(x + 800, y + 340, 200, 30);
+    plateOdeljenje = new PrikazPlata(x + 750, y + 370, 150, 30, "Odeljenje");
+    platePreduzece = new PrikazPlata(x + 975, y + 370, 150, 30, "Preduzece");
 
     posao->do_callback();
     end();

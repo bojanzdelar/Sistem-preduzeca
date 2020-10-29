@@ -2,19 +2,19 @@
 
 GrupaPreduzeca::GrupaPreduzeca(int x, int y, int w, int h, Kolekcije *kolekcije, const char *label) 
 : Fl_Group(x, y, w, h, label), kolekcije(kolekcije) {
-    tabela = new Tabela<Preduzece*>(x + 50, y + 50, 300, 300, &kolekcije->preduzeca);
-    naziv = new Fl_Input(x + 500, y + 10, 150, 30, "Naziv:");
-    maticniBroj = new Fl_Int_Input(x + 500, y + 50, 150, 30, "Maticni broj:");
+    tabela = new Tabela<Preduzece*>(x + 10, y + 10, 700, 415, &kolekcije->preduzeca);
+    naziv = new Fl_Input(x + 800, y + 10, 150, 30, "Naziv:");
+    maticniBroj = new Fl_Int_Input(x + 800, y + 50, 150, 30, "Maticni\nbroj:");
     maticniBroj->maximum_size(8);
-    pib = new Fl_Int_Input(x + 500, y + 90, 150, 30, "Pib:");
+    pib = new Fl_Int_Input(x + 800, y + 90, 150, 30, "Pib:");
     pib->maximum_size(9);
-    dodajButton = new Fl_Button(x + 500, y + 140, 50, 30, "Dodaj");
+    dodajButton = new Fl_Button(x + 750, y + 140, 80, 40, "Dodaj");
     dodajButton->callback(dodaj, this);
-    prikaziButton = new Fl_Button(x + 500, y + 190, 50, 30, "Prikazi");
+    prikaziButton = new Fl_Button(x + 840, y + 140, 80, 40, "Prikazi");
     prikaziButton->callback(prikazi, this);
-    izmeniButton = new Fl_Button(x + 566, y + 140, 50, 30, "Izmeni");
+    izmeniButton = new Fl_Button(x + 930, y + 140, 80, 40, "Izmeni");
     izmeniButton->callback(izmeni, this);
-    ukloniButton = new Fl_Button(x + 632, y + 140, 50, 30, "Ukloni");
+    ukloniButton = new Fl_Button(x + 1020, y + 140, 80, 40, "Ukloni");
     ukloniButton->callback(ukloni, this);
     end();
 }

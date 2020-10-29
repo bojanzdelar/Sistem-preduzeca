@@ -2,19 +2,19 @@
 
 GrupaNagrada::GrupaNagrada(int x, int y, int w, int h, Kolekcije *kolekcije, const char *label) 
 : Fl_Group(x, y, w, h, label), kolekcije(kolekcije) {
-    tabela = new Tabela<Nagrada*>(x + 50, y + 50, 300, 300, &kolekcije->nagrade);
-    radnik = new Fl_Input(x + 500, y + 10, 150, 30, "Radnik:");
-    procenti = new Fl_Int_Input(x + 500, y + 50, 150, 30, "Procenti:");
+    tabela = new Tabela<Nagrada*>(x + 10, y + 10, 700, 415, &kolekcije->nagrade);
+    radnik = new Fl_Input(x + 800, y + 10, 150, 30, "Radnik:");
+    procenti = new Fl_Int_Input(x + 800, y + 50, 150, 30, "Procenti:");
     procenti->maximum_size(2);
-    brojMeseci = new Fl_Int_Input(x + 500, y + 90, 150, 30, "Broj meseci\ntrajanja:");
+    brojMeseci = new Fl_Int_Input(x + 800, y + 90, 150, 30, "Broj meseci\ntrajanja:");
     brojMeseci->maximum_size(1);
-    dodajButton = new Fl_Button(x + 500, y + 130, 50, 30, "Dodaj");
+    dodajButton = new Fl_Button(x + 750, y + 140, 80, 40, "Dodaj");
     dodajButton->callback(dodaj, this);
-    prikaziButton = new Fl_Button(x + 500, y + 280, 50, 30, "Prikazi");
+    prikaziButton = new Fl_Button(x + 840, y + 140, 80, 40, "Prikazi");
     prikaziButton->callback(prikazi, this);
-    izmeniButton = new Fl_Button(x + 566, y + 130, 50, 30, "Izmeni");
+    izmeniButton = new Fl_Button(x + 930, y + 140, 80, 40, "Izmeni");
     izmeniButton->callback(izmeni, this);
-    ukloniButton = new Fl_Button(x + 632, y + 130, 50, 30, "Ukloni");
+    ukloniButton = new Fl_Button(x + 1020, y + 140, 80, 40, "Ukloni");
     ukloniButton->callback(ukloni, this);
     end();
 }

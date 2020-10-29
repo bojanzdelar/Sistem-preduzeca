@@ -1,7 +1,7 @@
 #include "PrikazPlata.h"
 
-PrikazPlata::PrikazPlata(int x, int y, int w, int h) 
-: Fl_Widget(x, y, w, h), radnik(nullptr), poslovnaJedinica(nullptr) {
+PrikazPlata::PrikazPlata(int x, int y, int w, int h, const char* label) 
+: Fl_Widget(x, y, w, h, label), radnik(nullptr), poslovnaJedinica(nullptr) {
 
 }
 
@@ -34,6 +34,10 @@ void PrikazPlata::azuriraj(Radnik *radnik, PoslovnaJedinica *poslovnaJedinica) {
 }
 
 void PrikazPlata::draw() {
+    // Label
+    fl_color(FL_BLACK);
+    fl_draw(label(), x() + w() / 4, y() - 32);
+
     // Pozadina
     fl_color(FL_WHITE);
     fl_rectf(x(), y(), w(), h());
