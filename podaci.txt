@@ -1,0 +1,52 @@
+#preduzece
+MaXi;81271527;128152810
+Vectra;15891581;129912301
+#odeljenje
+MAX001;Sremska Mitrovica;REV001;81271527
+MAX002;Novi Sad;REV002;81271527
+MAX003;Beograd;REV005;81271527
+VEC001;Sremska Mitrovica;REV003;15891581
+#radnik
+racunovodja
+RAC001;Bojan;Zdelar;500.99;MAX003;REV005;Savez racunovodja Srbije;20001
+racunovodja
+RAC002;Marko;Markovic;350.25;MAX001;REV001;Savez racunovodja Srbije;50001
+racunovodja
+RAC003;Ilija;Dragosavljevic;500.99;MAX002;REV002;Savez racunovodja Srbije;20001
+racunovodja
+RAC004;Milica;Kis Milikovic;750.5;MAX003;REV005;Savez racunovodja Srbije;35000.5
+racunovodja
+RAC005;Marija;Dostanic;500.99;VEC001;REV003;Savez racunovodja Srbije;40000.2
+revizor
+REV001;Nenad;Obradovic;1000;MAX001;REV001;1-1-2020;1-4-2020;1-7-2020;1-10-2020
+revizor
+REV002;Mirko;Radosavljevic;1000;MAX002;REV002;8-1-2020;8-4-2020;8-7-2020;8-10-2020
+revizor
+REV003;Luka;Nisovic;500.99;VEC001;REV003;15-1-2020;15-4-2020;15-7-2020;15-10-2020
+revizor
+REV004;Pavle;Nuzdic;500.99;MAX003;REV005;22-1-2020;22-4-2020;22-7-2020;22-10-2020
+revizor
+REV005;Igor;Lagundzic;750.5;MAX003;REV005;29-1-2020;29-4-2020;29-7-2020;29-10-2020
+komercijalista
+KOM001;Nenad;Mirkovic;500.99;MAX001;REV001;Metro;TEMPO;Univerexport
+komercijalista
+KOM002;Ana Marija;Scekcic;350.25;MAX002;REV002;Merkator;Roda;IDEA
+komercijalista
+KOM003;Anastazija;Cergic;750.5;MAX002;REV002;DIS Trgovina;Interex,ES Komerc
+komercijalista
+KOM004;Vuk;Misic;500.99;VEC001;REV003;Michelin;Motul;Pirelli
+komercijalista
+KOM005;Branko;Miletic;1000;MAX003;REV005;Super Vero;Lurdy;Lidl
+#nagrada
+REV005;20;3
+REV005;20;5
+REV005;20;6
+REV002;20;2
+REV002;20;1
+REV002;20;4
+REV001;20;9
+REV001;20;3
+REV001;20;7
+KOM001;20;9
+KOM002;20;2
+KOM003;20;1

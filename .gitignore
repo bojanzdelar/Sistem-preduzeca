@@ -1,5 +1,5 @@
 *.exe
 .vscode
-makefile
 test.cpp
-*.txt
+BACKUP.txt
+bojan_zdelar_19.pdf
