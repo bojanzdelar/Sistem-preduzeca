@@ -18,6 +18,7 @@ struct Kolekcije {
 
     void popuniPreduzeca();
     void popuniOdeljenja();
+    void dodeliSefove();
     void dodeliNadredjene();
     void dodeliNagrade();
 
@@ -25,6 +26,7 @@ struct Kolekcije {
     void ukloniOdeljenje(Odeljenje *odeljenje);
     void ukloniRadnika(Radnik *radnik);
     void ukloniNagradu(Nagrada *nagrada);
+    void ukloniSefa(Radnik *radnik);
 
     void procitajPodatke();
     void poveziPodatke();

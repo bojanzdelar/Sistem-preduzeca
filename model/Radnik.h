@@ -1,12 +1,7 @@
 #ifndef RADNIK_H
 #define RADNIK_H
 
-#include <string>
-#include <vector>
-
 #include "Nagrada.h"
-
-using namespace std;
 
 class Odeljenje;
 

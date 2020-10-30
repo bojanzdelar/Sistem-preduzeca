@@ -11,7 +11,7 @@
 class KolekcijaRadnika : public TabelarnaKolekcija<Radnik*> {
 public:
     KolekcijaRadnika();
-    KolekcijaRadnika(vector<Radnik*> radnici);
+    KolekcijaRadnika(vector<Radnik*> *radnici);
     virtual ~KolekcijaRadnika();
 
     virtual int kolone() const;

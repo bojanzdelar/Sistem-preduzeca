@@ -8,7 +8,7 @@
 class KolekcijaOdeljenja : public TabelarnaKolekcija<Odeljenje*> {
 public:
     KolekcijaOdeljenja();
-    KolekcijaOdeljenja(vector<Odeljenje*> kolekcija);
+    KolekcijaOdeljenja(vector<Odeljenje*> *kolekcija);
     virtual ~KolekcijaOdeljenja();
 
     virtual int kolone() const;

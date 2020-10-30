@@ -4,7 +4,7 @@ KolekcijaNagrada::KolekcijaNagrada() {
 
 }
 
-KolekcijaNagrada::KolekcijaNagrada(vector<Nagrada*> kolekcija) : TabelarnaKolekcija(kolekcija) {
+KolekcijaNagrada::KolekcijaNagrada(vector<Nagrada*> *kolekcija) : TabelarnaKolekcija(kolekcija) {
 
 }
 
@@ -34,13 +34,13 @@ string KolekcijaNagrada::zaglavljeKolone(int kolona) const {
 string KolekcijaNagrada::vrednostPolja(int kolona, int red) const {
     ostringstream out;
     if (kolona == 0) {
-        out << kolekcija.at(red)->getRadnik()->getId();
+        out << kolekcija->at(red)->getRadnik()->getId();
     } 
     else if (kolona == 1) {
-        out << kolekcija.at(red)->getProcenti();
+        out << kolekcija->at(red)->getProcenti();
     } 
     else if (kolona == 2) {
-        out << kolekcija.at(red)->getBrojMeseci();
+        out << kolekcija->at(red)->getBrojMeseci();
     }
     return out.str();
 }
@@ -53,14 +53,14 @@ istream& operator>>(istream &input, KolekcijaNagrada &kolekcijaNagrada) {
     while (input.peek() != '#' && input.peek() != EOF) { 
         Nagrada *nagrada = new Nagrada();
         input >> nagrada;
-        kolekcijaNagrada.kolekcija.push_back(nagrada);
+        kolekcijaNagrada.kolekcija->push_back(nagrada);
     }
     return input;
 }
 
 ostream& operator<<(ostream &output, const KolekcijaNagrada &kolekcijaNagrada) {
     output << "#nagrada" << endl;
-    for (Nagrada *nagrada : kolekcijaNagrada.kolekcija) {
+    for (Nagrada *nagrada : *kolekcijaNagrada.kolekcija) {
         output << nagrada;
     }
     return output;

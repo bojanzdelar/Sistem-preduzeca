@@ -35,7 +35,7 @@ void GrupaOdeljenja::dodaj(Fl_Widget *widget, void *data) {
             || !grupa->kolekcije->preduzeca.maticniBrojZauzet(stoi(preduzece))) {
         return;
     }
-    Odeljenje *odeljenje = new Odeljenje(id, naziv, grupa->kolekcije->radnici.dobaviId(sef), grupa->kolekcije->preduzeca.dobavi(stoi(preduzece)));
+    Odeljenje *odeljenje = new Odeljenje(id, naziv, (sef != "" ) ? grupa->kolekcije->radnici.dobaviId(sef) : nullptr, grupa->kolekcije->preduzeca.dobaviId(stoi(preduzece)));
     grupa->kolekcije->odeljenja.dodaj(odeljenje);
     odeljenje->getPreduzece()->dodajOdeljenje(odeljenje);
     grupa->azuriraj();

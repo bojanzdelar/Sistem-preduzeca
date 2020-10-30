@@ -4,7 +4,7 @@ KolekcijaRadnika::KolekcijaRadnika() {
 
 }
 
-KolekcijaRadnika::KolekcijaRadnika(vector<Radnik*> kolekcija) : TabelarnaKolekcija(kolekcija) {
+KolekcijaRadnika::KolekcijaRadnika(vector<Radnik*> *kolekcija) : TabelarnaKolekcija(kolekcija) {
 
 } 
 
@@ -44,37 +44,37 @@ string KolekcijaRadnika::zaglavljeKolone(int kolona) const {
 }
 
 string KolekcijaRadnika::vrednostPolja(int kolona, int red) const {
-    Radnik* radnik = kolekcija.at(red);
+    Radnik* radnik = kolekcija->at(red);
     ostringstream out;
     if (kolona == 0) {
-        out << kolekcija.at(red)->getPosao();
+        out << kolekcija->at(red)->getPosao();
     } 
     else if (kolona == 1) {
-        out << kolekcija.at(red)->getId();
+        out << kolekcija->at(red)->getId();
     } 
     else if (kolona == 2) {
-        out << kolekcija.at(red)->getIme();
+        out << kolekcija->at(red)->getIme();
     } 
     else if (kolona == 3) {
-        out << kolekcija.at(red)->getPrezime();
+        out << kolekcija->at(red)->getPrezime();
     } 
     else if (kolona == 4) {
         out.precision(2);
-        out << fixed << kolekcija.at(red)->getPlata();
+        out << fixed << kolekcija->at(red)->getPlata();
     } 
     else if (kolona == 5) {
-        out << kolekcija.at(red)->getOdeljenje()->getId();
+        out << kolekcija->at(red)->getOdeljenje()->getId();
     } 
     else if (kolona == 6) {
-        out << kolekcija.at(red)->getNadredjeni()->getId();
+        out << kolekcija->at(red)->getNadredjeni()->getId();
     }
     return out.str();
 }
 
 Radnik* KolekcijaRadnika::dobaviId(string id) const {
     for (size_t i = 0; i < redovi(); i++) {
-        if (id == kolekcija.at(i)->getId()) {
-            return kolekcija.at(i);
+        if (id == kolekcija->at(i)->getId()) {
+            return kolekcija->at(i);
         }
     }
     return nullptr;
@@ -82,7 +82,7 @@ Radnik* KolekcijaRadnika::dobaviId(string id) const {
 
 bool KolekcijaRadnika::idZauzet(string id) const {
     for (size_t i = 0; i < redovi(); i++) {
-        if (id == kolekcija.at(i)->getId()) {
+        if (id == kolekcija->at(i)->getId()) {
             return true;
         }
     }
@@ -108,14 +108,14 @@ istream& operator>>(istream &input, KolekcijaRadnika &kolekcijaRadnika) {
             radnik = new Komercijalista();
         } 
         input >> radnik;
-        kolekcijaRadnika.kolekcija.push_back(radnik);
+        kolekcijaRadnika.kolekcija->push_back(radnik);
     }
     return input;
 }
 
 ostream& operator<<(ostream &output, const KolekcijaRadnika &kolekcijaRadnika) {
     output << "#radnik" << endl;
-    for (Radnik *radnik : kolekcijaRadnika.kolekcija) {
+    for (Radnik *radnik : *kolekcijaRadnika.kolekcija) {
         output << radnik;
     }
     return output;

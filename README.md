@@ -1,1 +1,1 @@
-# Preduzece
+# Upravljanje preduzecima

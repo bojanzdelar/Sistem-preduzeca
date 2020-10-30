@@ -244,6 +244,7 @@ void GrupaRadnika::izmeni(Fl_Widget *widget, void *data) {
         return;
     }
     Radnik *radnik = grupa->kolekcije->radnici.dobavi(red);
+    vector<Nagrada*> *nagrade = radnik->getNagrade();
 
     int posao = grupa->posao->value();
     // Racunovodja
@@ -253,6 +254,8 @@ void GrupaRadnika::izmeni(Fl_Widget *widget, void *data) {
         if (izdavacLicence == "" || maksimalniPrihod == "" || maksimalniPrihod.find("-") != string::npos) {
             return;
         }
+        radnik->getOdeljenje()->otkaz(radnik);
+        radnik = new Racunovodja();
         Racunovodja *racunovodja = (Racunovodja*) radnik;
         racunovodja->setIzdavacLicence(izdavacLicence);
         racunovodja->setMaksimalniPrihod(stod(maksimalniPrihod));
@@ -270,6 +273,8 @@ void GrupaRadnika::izmeni(Fl_Widget *widget, void *data) {
         if (brojRevizija != revizije.size()) {
             return;
         }
+        radnik->getOdeljenje()->otkaz(radnik);
+        radnik = new Revizor();
         Revizor *revizor = (Revizor*) radnik;
         revizor->setRevizije(revizije);
     }
@@ -286,16 +291,18 @@ void GrupaRadnika::izmeni(Fl_Widget *widget, void *data) {
         if (brojPoslovnihKontakta != kontakti.size()) {
             return;
         }
+        radnik->getOdeljenje()->otkaz(radnik);
+        radnik = new Komercijalista();
         Komercijalista *komercijalista = (Komercijalista*) radnik;
         komercijalista->setPoslovniKontakti(kontakti);
     }
     radnik->setIme(ime);
     radnik->setPrezime(prezime);
     radnik->setPlata(stod(plata));
-    radnik->getOdeljenje()->otkaz(radnik);
     radnik->setOdeljenje(grupa->kolekcije->odeljenja.dobaviId(odeljenjeId));
     radnik->getOdeljenje()->zaposli(radnik);
     radnik->setNadredjeni((id == nadredjeniId) ? radnik : grupa->kolekcije->radnici.dobaviId(nadredjeniId));
+    radnik->setNagrade(nagrade);
     grupa->azuriraj();
 }
 
@@ -307,7 +314,9 @@ void GrupaRadnika::ukloni(Fl_Widget *widget, void *data) {
     }
     Radnik *radnik = grupa->kolekcije->radnici.dobavi(red);
     grupa->kolekcije->ukloniRadnika(radnik);
+    grupa->kolekcije->ukloniSefa(radnik);
     delete radnik;
+    grupa->kolekcije->dodeliNadredjene();
     grupa->azuriraj();
 }
 

@@ -2,11 +2,8 @@
 #define NAGRADA_H
 
 #include <iostream>
-#include <string>
 
 #include "../servisi/Util.h"
-
-using namespace std;
 
 const string SEP = ";"; // separator
 

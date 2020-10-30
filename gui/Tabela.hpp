@@ -1,8 +1,6 @@
 #ifndef TABELA_H
 #define TABELA_H
 
-#include <sstream>
-
 #include <FL/Fl.H>
 #include <FL/Fl_Table_Row.H>
 #include <FL/fl_draw.H>

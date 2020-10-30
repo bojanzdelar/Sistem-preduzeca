@@ -4,7 +4,7 @@ KolekcijaPreduzeca::KolekcijaPreduzeca() {
 
 }
 
-KolekcijaPreduzeca::KolekcijaPreduzeca(vector<Preduzece*> kolekcija) : TabelarnaKolekcija(kolekcija) {
+KolekcijaPreduzeca::KolekcijaPreduzeca(vector<Preduzece*> *kolekcija) : TabelarnaKolekcija(kolekcija) {
 
 }
 
@@ -34,21 +34,21 @@ string KolekcijaPreduzeca::zaglavljeKolone(int kolona) const {
 string KolekcijaPreduzeca::vrednostPolja(int kolona, int red) const {
     ostringstream out;
     if (kolona == 0) {
-        out << kolekcija.at(red)->getNaziv();
+        out << kolekcija->at(red)->getNaziv();
     } 
     else if (kolona == 1) {
-        out << kolekcija.at(red)->getMaticniBroj();
+        out << kolekcija->at(red)->getMaticniBroj();
     } 
     else if (kolona == 2) {
-        out << kolekcija.at(red)->getPib();
+        out << kolekcija->at(red)->getPib();
     }
     return out.str();
 }
 
 Preduzece* KolekcijaPreduzeca::dobaviId(int maticniBroj) const {
     for (size_t i = 0; i < redovi(); i++) {
-        if (maticniBroj == kolekcija.at(i)->getMaticniBroj()) {
-            return kolekcija.at(i);
+        if (maticniBroj == kolekcija->at(i)->getMaticniBroj()) {
+            return kolekcija->at(i);
         }
     }
     return nullptr;
@@ -56,7 +56,7 @@ Preduzece* KolekcijaPreduzeca::dobaviId(int maticniBroj) const {
 
 bool KolekcijaPreduzeca::maticniBrojZauzet(int maticniBroj) const {
     for (size_t i = 0; i < redovi(); i++) {
-        if (maticniBroj == kolekcija.at(i)->getMaticniBroj()) {
+        if (maticniBroj == kolekcija->at(i)->getMaticniBroj()) {
             return true;
         }
     }
@@ -71,14 +71,14 @@ istream& operator>>(istream &input, KolekcijaPreduzeca &kolekcijaPreduzeca) {
     while (input.peek() != '#' && input.peek() != EOF) { 
         Preduzece *preduzece = new Preduzece();
         input >> preduzece;
-        kolekcijaPreduzeca.kolekcija.push_back(preduzece);
+        kolekcijaPreduzeca.kolekcija->push_back(preduzece);
     }
     return input;
 }
 
 ostream& operator<<(ostream &output, const KolekcijaPreduzeca &kolekcijaPreduzeca) {
     output << "#preduzece" << endl;
-    for (Preduzece *preduzece : kolekcijaPreduzeca.kolekcija) {
+    for (Preduzece *preduzece : *kolekcijaPreduzeca.kolekcija) {
         output << preduzece;
     }
     return output;

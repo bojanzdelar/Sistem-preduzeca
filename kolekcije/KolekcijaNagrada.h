@@ -8,7 +8,7 @@
 class KolekcijaNagrada : public TabelarnaKolekcija<Nagrada*> {
 public:
     KolekcijaNagrada();
-    KolekcijaNagrada(vector<Nagrada*> kolekcija);
+    KolekcijaNagrada(vector<Nagrada*> *kolekcija);
     virtual ~KolekcijaNagrada();
 
     virtual int kolone() const;

@@ -6,8 +6,8 @@ Kolekcije::Kolekcije(KolekcijaPreduzeca &preduzeca, KolekcijaOdeljenja &odeljenj
 }
 
 void Kolekcije::popuniPreduzeca() {
-    for (Preduzece *preduzece : preduzeca.getKolekcija()) {
-        for (Odeljenje *odeljenje : odeljenja.getKolekcija()) {
+    for (Preduzece *preduzece : *preduzeca.getKolekcija()) {
+        for (Odeljenje *odeljenje : *odeljenja.getKolekcija()) {
             if (preduzece->getMaticniBroj() == odeljenje->getPreduzece()->getMaticniBroj()) {
                 preduzece->getOdeljenja()->push_back(odeljenje);
                 odeljenje->setPreduzece(preduzece);
@@ -17,19 +17,25 @@ void Kolekcije::popuniPreduzeca() {
 }
 
 void Kolekcije::popuniOdeljenja() {
-    for (Odeljenje *odeljenje : odeljenja.getKolekcija()) {
-        for (Radnik *radnik : radnici.getKolekcija()) {
+    for (Radnik *radnik : *radnici.getKolekcija()) {
+        for (Odeljenje *odeljenje : *odeljenja.getKolekcija()) {
             // Dodela zaposlenog odeljenju
             if (odeljenje->getId() == radnik->getOdeljenje()->getId()) {
                 odeljenje->getZaposleni()->push_back(radnik);
                 radnik->setOdeljenje(odeljenje);
             }
-            // Dodela sefa odeljenju
-            Radnik *sef = odeljenje->getSef();
-            if (sef == nullptr) {
-                continue;
-            }
-            else if (sef->getId() == radnik->getId()) {
+        }
+    }
+}
+
+void Kolekcije::dodeliSefove() {
+    for (Odeljenje *odeljenje : *odeljenja.getKolekcija()) {
+        Radnik *sef = odeljenje->getSef();
+        if (sef == nullptr) {
+            continue;
+        }
+        for (Radnik *radnik : *radnici.getKolekcija()) {
+            if (sef->getId() == radnik->getId()) {
                 odeljenje->setSef(radnik);
             }
         }
@@ -37,10 +43,13 @@ void Kolekcije::popuniOdeljenja() {
 }
 
 void Kolekcije::dodeliNadredjene() {
-    for (Radnik *sef : radnici.getKolekcija()) {
-        for (Radnik *radnik : radnici.getKolekcija()) {
+    for (Radnik *radnik : *radnici.getKolekcija()) {
+        // Ukoliko ne pronadjemo nadredjenog, radnik ce sam sebi biti nadredjeni
+        radnik->setNadredjeni(radnik);
+        for (Radnik *sef : *radnici.getKolekcija()) {      
             if (sef->getId() == radnik->getIdNadredjeni()) {
                 radnik->setNadredjeni(sef);
+                break;
             }
         }
     }
@@ -48,8 +57,8 @@ void Kolekcije::dodeliNadredjene() {
 }
 
 void Kolekcije::dodeliNagrade() {
-    for (Radnik *radnik : radnici.getKolekcija()) {
-        for (Nagrada *nagrada : nagrade.getKolekcija()) {
+    for (Radnik *radnik : *radnici.getKolekcija()) {
+        for (Nagrada *nagrada : *nagrade.getKolekcija()) {
             if (radnik->getId() == nagrada->getRadnik()->getId()) {
                 radnik->getNagrade()->push_back(nagrada);
                 nagrada->setRadnik(radnik);
@@ -89,9 +98,18 @@ void Kolekcije::ukloniNagradu(Nagrada *nagrada) {
     nagrade.ukloni(nagrada);
 }
 
+void Kolekcije::ukloniSefa(Radnik *radnik) {
+    for (size_t i = 0; i < odeljenja.getKolekcija()->size(); i++) {
+        if (radnik == odeljenja.dobavi(i)->getSef()) {
+            odeljenja.dobavi(i)->setSef(nullptr);
+        }
+    }
+}
+
 void Kolekcije::poveziPodatke() {
     popuniPreduzeca();
     popuniOdeljenja();
+    dodeliSefove();
     dodeliNadredjene();
     dodeliNagrade();
 }

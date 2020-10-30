@@ -7,7 +7,7 @@
 class KolekcijaPreduzeca : public TabelarnaKolekcija<Preduzece*> {
 public:
     KolekcijaPreduzeca();
-    KolekcijaPreduzeca(vector<Preduzece*> kolekcija);
+    KolekcijaPreduzeca(vector<Preduzece*> *kolekcija);
     virtual ~KolekcijaPreduzeca();
 
     virtual int kolone() const;

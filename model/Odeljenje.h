@@ -1,8 +1,6 @@
 #ifndef ODELJENJE_H
 #define ODELJENJE_H
 
-#include <vector>
-
 #include "PoslovnaJedinica.h"
 #include "Radnik.h"
 #include "Revizor.h"
