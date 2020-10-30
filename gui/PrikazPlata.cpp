@@ -30,10 +30,17 @@ void PrikazPlata::setPoslovnaJedinica(PoslovnaJedinica* poslovnaJedinica) {
 void PrikazPlata::azuriraj(Radnik *radnik, PoslovnaJedinica *poslovnaJedinica) {
     this->radnik = radnik;
     this->poslovnaJedinica = poslovnaJedinica;
-    redraw();
+    draw();
 }
 
 void PrikazPlata::draw() {
+    if (radnik == nullptr || poslovnaJedinica == nullptr) {
+        hide();
+        return;
+    }
+    
+    show();
+
     // Label
     fl_color(FL_BLACK);
     fl_draw(label(), x() + w() / 4, y() - 32);
@@ -45,10 +52,6 @@ void PrikazPlata::draw() {
     // Ivice
     fl_color(FL_BLACK);
     fl_rect(x(), y(), w(), h());
-
-    if (radnik == nullptr || poslovnaJedinica == nullptr) {
-        return;
-    }
 
     double plata = radnik->getPlata();
     double min = poslovnaJedinica->minimalnaPlata();

@@ -31,11 +31,11 @@ GrupaRadnika::GrupaRadnika(int x, int y, int w, int h, Kolekcije *kolekcije, con
     brojRevizija->callback(promeniBrojRevizija, this);
 
     // Komercijalista
-    brojPoslovnihKontakta = new Fl_Choice(x + 1035, y + 50, 150, 30, "Broj poslovnih\nkontakta");
+    brojPoslovnihKontakta = new Fl_Choice(x + 1035, y + 50, 150, 30, "Broj\nkontakta");
     brojPoslovnihKontakta->add("0");
     for (int i = 0; i < MAX_KONTAKTI; i++) {
         brojPoslovnihKontakta->add(to_string(i+1).c_str());
-        kontakti[i] = new Fl_Input(x + 1035, y + 90 + i * 40, 150, 30, "Kontakt:");
+        kontakti[i] = new Fl_Input(x + 1035, y + 90 + i * 40, 150, 30, "Poslovni\nkontakt:");
     }
     brojPoslovnihKontakta->value(0);
     brojPoslovnihKontakta->callback(promeniBrojKontakta, this);
@@ -331,7 +331,9 @@ void GrupaRadnika::ukloni(Fl_Widget *widget, void *data) {
 void GrupaRadnika::azuriraj() {
     tabela->azuriraj();
     plateOdeljenje->setRadnik(nullptr);
+    plateOdeljenje->setPoslovnaJedinica(nullptr);
     plateOdeljenje->redraw();
+    platePreduzece->setRadnik(nullptr);
     platePreduzece->setPoslovnaJedinica(nullptr);
     platePreduzece->redraw();
 }
