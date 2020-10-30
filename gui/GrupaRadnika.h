@@ -5,6 +5,7 @@
 #include <FL/Fl_Float_Input.H>
 #include <FL/Fl_Choice.H>
 #include <FL/Fl_Button.H>
+#include <FL/fl_ask.H>
 
 #include "Tabela.hpp"
 #include "PrikazPlata.h"

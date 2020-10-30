@@ -30,6 +30,7 @@ void GrupaPreduzeca::dodaj(Fl_Widget *widget, void *data) {
     string pib = grupa->pib->value();
     if (naziv == "" || maticniBroj == "" || pib == "" || maticniBroj.find("-") != string::npos || pib.find("-") != string::npos
             || grupa->kolekcije->preduzeca.maticniBrojZauzet(stoi(maticniBroj))) {
+        fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
         return;
     }
     Preduzece *preduzece = new Preduzece(naziv, stoi(maticniBroj), stoi(pib));
@@ -41,6 +42,7 @@ void GrupaPreduzeca::prikazi(Fl_Widget *widget, void *data) {
     GrupaPreduzeca *grupa = (GrupaPreduzeca*) data;
     int red = grupa->tabela->izabraniRed();
     if (red == -1) {
+        fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
         return;
     }
     Preduzece *preduzece = grupa->kolekcije->preduzeca.dobavi(red);
@@ -59,11 +61,13 @@ void GrupaPreduzeca::izmeni(Fl_Widget *widget, void *data) {
     string maticniBroj = grupa->maticniBroj->value();
     string pib = grupa->pib->value();
     int red = grupa->tabela->izabraniRed();
-    if (naziv == "" || maticniBroj == "" || pib == "" || maticniBroj.find("-") != string::npos || pib.find("-") != string::npos 
-            || red == -1 || stoi(maticniBroj) != grupa->kolekcije->preduzeca.dobavi(red)->getMaticniBroj()) {
+    if (naziv == "" || maticniBroj == "" || pib == "" || maticniBroj.find("-") != string::npos || pib.find("-") != string::npos || red == -1 
+            || (stoi(maticniBroj) != grupa->kolekcije->preduzeca.dobavi(red)->getMaticniBroj() && grupa->kolekcije->preduzeca.maticniBrojZauzet(stoi(maticniBroj)))) {            
+        fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
         return;
     }
     Preduzece *preduzece = grupa->kolekcije->preduzeca.dobavi(red);
+    preduzece->setMaticniBroj(stoi(maticniBroj));
     preduzece->setNaziv(naziv);
     preduzece->setPib(stoi(pib));
     grupa->azuriraj();
@@ -73,6 +77,7 @@ void GrupaPreduzeca::ukloni(Fl_Widget *widget, void *data) {
     GrupaPreduzeca *grupa = (GrupaPreduzeca*) data;
     int red = grupa->tabela->izabraniRed();
     if (red == -1) {
+        fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
         return;
     }
     Preduzece *preduzece = grupa->kolekcije->preduzeca.dobavi(red);

@@ -123,10 +123,10 @@ void GrupaRadnika::dodaj(Fl_Widget *widget, void *data) {
     if (id == "" || ime == "" || prezime == "" || plata == "" || odeljenjeId == "" || nadredjeniId == "" 
             || plata.find("-") != string::npos || !grupa->kolekcije->odeljenja.idZauzet(odeljenjeId)
             || (!grupa->kolekcije->radnici.idZauzet(nadredjeniId) && id != nadredjeniId)) {
+        fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
         return;
     }
     Radnik *radnik = nullptr;
-    Radnik *nadredjeni = (id == nadredjeniId) ? radnik : grupa->kolekcije->radnici.dobaviId(nadredjeniId);
     Odeljenje *odeljenje = grupa->kolekcije->odeljenja.dobaviId(odeljenjeId);
 
     int posao = grupa->posao->value();
@@ -135,9 +135,10 @@ void GrupaRadnika::dodaj(Fl_Widget *widget, void *data) {
         string izdavacLicence = grupa->izdavacLicence->value();
         string maksimalniPrihod = grupa->maksimalniPrihod->value();
         if (izdavacLicence == "" || maksimalniPrihod == "" || maksimalniPrihod.find("-") != string::npos) {
+            fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
             return;
         }
-        radnik = new Racunovodja(id, ime, prezime, stod(plata), odeljenje, nadredjeni, izdavacLicence, stod(maksimalniPrihod));
+        radnik = new Racunovodja(id, ime, prezime, stod(plata), odeljenje, nullptr, izdavacLicence, stod(maksimalniPrihod));
     }
     // Revizor
     else if (posao == 1) {
@@ -150,9 +151,10 @@ void GrupaRadnika::dodaj(Fl_Widget *widget, void *data) {
             }
         }
         if (brojRevizija != revizije.size()) {
+            fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
             return;
         }
-        radnik = new Revizor(id, ime, prezime, stod(plata), odeljenje, nadredjeni, revizije);
+        radnik = new Revizor(id, ime, prezime, stod(plata), odeljenje, nullptr, revizije);
     }
     // Komercijalista
     else if (posao == 2) {
@@ -165,10 +167,13 @@ void GrupaRadnika::dodaj(Fl_Widget *widget, void *data) {
             }
         }
         if (brojPoslovnihKontakta != kontakti.size()) {
+            fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
             return;
         }
-        radnik = new Komercijalista(id, ime, prezime, stod(plata), odeljenje, nadredjeni, kontakti);
+        radnik = new Komercijalista(id, ime, prezime, stod(plata), odeljenje, nullptr, kontakti);
     }
+    // moralo je naknadno da se postavi da se ispravi bug
+    radnik->setNadredjeni((id == nadredjeniId) ? radnik : grupa->kolekcije->radnici.dobaviId(nadredjeniId)); 
     grupa->kolekcije->radnici.dodaj(radnik);
     odeljenje->zaposli(radnik);
     grupa->azuriraj();
@@ -179,6 +184,7 @@ void GrupaRadnika::prikazi(Fl_Widget *widget, void *data) {
     GrupaRadnika *grupa = (GrupaRadnika*) data;
     int red = grupa->tabela->izabraniRed();
     if (red == -1) {
+        fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
         return;
     }
     Radnik *radnik = grupa->kolekcije->radnici.dobavi(red);
@@ -238,24 +244,25 @@ void GrupaRadnika::izmeni(Fl_Widget *widget, void *data) {
     string odeljenjeId = grupa->odeljenje->value();
     string nadredjeniId = grupa->nadredjeni->value();
     int red = grupa->tabela->izabraniRed();
-    if (id == "" || ime == "" || prezime == "" || plata == "" || odeljenjeId == "" || nadredjeniId == ""  
-            || plata.find("-") != string::npos || (!grupa->kolekcije->radnici.idZauzet(nadredjeniId) && id != nadredjeniId)
-            || red == -1 || id != grupa->kolekcije->radnici.dobavi(red)->getId()) {
+    if (id == "" || ime == "" || prezime == "" || plata == "" || odeljenjeId == "" || nadredjeniId == ""  || plata.find("-") != string::npos 
+            || (!grupa->kolekcije->radnici.idZauzet(nadredjeniId) && id != nadredjeniId)
+            || red == -1 || (id != grupa->kolekcije->radnici.dobavi(red)->getId() && grupa->kolekcije->radnici.idZauzet(id))) {
+        fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
         return;
     }
     Radnik *radnik = grupa->kolekcije->radnici.dobavi(red);
-    vector<Nagrada*> *nagrade = radnik->getNagrade();
+    bool sebiNadredjen = (radnik->getId() == radnik->getNadredjeni()->getId());
 
     int posao = grupa->posao->value();
     // Racunovodja
     if (posao == 0) {
         string izdavacLicence = grupa->izdavacLicence->value();
         string maksimalniPrihod = grupa->maksimalniPrihod->value();
-        if (izdavacLicence == "" || maksimalniPrihod == "" || maksimalniPrihod.find("-") != string::npos) {
+        if (izdavacLicence == "" || maksimalniPrihod == "" || maksimalniPrihod.find("-") != string::npos || radnik->getPosao() != "racunovodja") {
+            fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
             return;
         }
         radnik->getOdeljenje()->otkaz(radnik);
-        radnik = new Racunovodja();
         Racunovodja *racunovodja = (Racunovodja*) radnik;
         racunovodja->setIzdavacLicence(izdavacLicence);
         racunovodja->setMaksimalniPrihod(stod(maksimalniPrihod));
@@ -270,11 +277,11 @@ void GrupaRadnika::izmeni(Fl_Widget *widget, void *data) {
                 revizije.push_back(revizija);
             }
         }
-        if (brojRevizija != revizije.size()) {
+        if (brojRevizija != revizije.size() || radnik->getPosao() != "revizor") {
+            fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
             return;
         }
         radnik->getOdeljenje()->otkaz(radnik);
-        radnik = new Revizor();
         Revizor *revizor = (Revizor*) radnik;
         revizor->setRevizije(revizije);
     }
@@ -288,21 +295,21 @@ void GrupaRadnika::izmeni(Fl_Widget *widget, void *data) {
                 kontakti.push_back(kontakt);
             }
         }
-        if (brojPoslovnihKontakta != kontakti.size()) {
+        if (brojPoslovnihKontakta != kontakti.size() || radnik->getPosao() != "komercijalista") {
+            fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
             return;
         }
         radnik->getOdeljenje()->otkaz(radnik);
-        radnik = new Komercijalista();
         Komercijalista *komercijalista = (Komercijalista*) radnik;
         komercijalista->setPoslovniKontakti(kontakti);
     }
+    radnik->setId(id);
     radnik->setIme(ime);
     radnik->setPrezime(prezime);
     radnik->setPlata(stod(plata));
     radnik->setOdeljenje(grupa->kolekcije->odeljenja.dobaviId(odeljenjeId));
     radnik->getOdeljenje()->zaposli(radnik);
-    radnik->setNadredjeni((id == nadredjeniId) ? radnik : grupa->kolekcije->radnici.dobaviId(nadredjeniId));
-    radnik->setNagrade(nagrade);
+    radnik->setNadredjeni((sebiNadredjen) ? radnik : grupa->kolekcije->radnici.dobaviId(nadredjeniId));
     grupa->azuriraj();
 }
 
@@ -310,7 +317,8 @@ void GrupaRadnika::ukloni(Fl_Widget *widget, void *data) {
     GrupaRadnika *grupa = (GrupaRadnika*) data;
     int red = grupa->tabela->izabraniRed();
     if (red == -1) {
-         return;
+        fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
+        return;
     }
     Radnik *radnik = grupa->kolekcije->radnici.dobavi(red);
     grupa->kolekcije->ukloniRadnika(radnik);

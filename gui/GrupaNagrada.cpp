@@ -30,6 +30,7 @@ void GrupaNagrada::dodaj(Fl_Widget *widget, void *data) {
     string brojMeseci = grupa->brojMeseci->value();
     if (radnikId == "" || procenti == "" || brojMeseci == "" || procenti.find("-") != string::npos || brojMeseci.find("-") != string::npos
             || !grupa->kolekcije->radnici.idZauzet(radnikId)) {
+        fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
         return;
     }
     Radnik *radnik = grupa->kolekcije->radnici.dobaviId(radnikId);
@@ -43,6 +44,7 @@ void GrupaNagrada::prikazi(Fl_Widget *widget, void *data) {
     GrupaNagrada *grupa = (GrupaNagrada*) data;
     int red = grupa->tabela->izabraniRed();
     if (red == -1) {
+        fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
         return;
     }
     Nagrada *nagrada = grupa->kolekcije->nagrade.dobavi(red);
@@ -63,6 +65,7 @@ void GrupaNagrada::izmeni(Fl_Widget *widget, void *data) {
     int red = grupa->tabela->izabraniRed();
     if (radnikId == "" || procenti == "" || brojMeseci == "" || procenti.find("-") != string::npos || brojMeseci.find("-") != string::npos
             || !grupa->kolekcije->radnici.idZauzet(radnikId) || red == -1) {
+        fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
         return;
     }
     Nagrada *nagrada = grupa->kolekcije->nagrade.dobavi(red);
@@ -78,7 +81,8 @@ void GrupaNagrada::ukloni(Fl_Widget *widget, void *data) {
     GrupaNagrada *grupa = (GrupaNagrada*) data;
     int red = grupa->tabela->izabraniRed();
     if (red == -1) {
-         return;
+        fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
+        return;
     }
     Nagrada *nagrada = grupa->kolekcije->nagrade.dobavi(red);
     grupa->kolekcije->ukloniNagradu(nagrada);

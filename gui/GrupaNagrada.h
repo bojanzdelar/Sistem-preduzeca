@@ -4,6 +4,7 @@
 #include <FL/Fl_Input.H>
 #include <FL/Fl_Int_Input.H>
 #include <FL/Fl_Button.H>
+#include <FL/fl_ask.H>
 
 #include "Tabela.hpp"
 #include "../kolekcije/Kolekcije.h"

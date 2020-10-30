@@ -33,6 +33,7 @@ void GrupaOdeljenja::dodaj(Fl_Widget *widget, void *data) {
             || grupa->kolekcije->odeljenja.idZauzet(id) 
             || (!grupa->kolekcije->radnici.idZauzet(sef) && sef != "") // moguce je kreirati odeljenje bez sefa, pa ga kasnije dodeliti
             || !grupa->kolekcije->preduzeca.maticniBrojZauzet(stoi(preduzece))) {
+        fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
         return;
     }
     Odeljenje *odeljenje = new Odeljenje(id, naziv, (sef != "" ) ? grupa->kolekcije->radnici.dobaviId(sef) : nullptr, grupa->kolekcije->preduzeca.dobaviId(stoi(preduzece)));
@@ -45,6 +46,7 @@ void GrupaOdeljenja::prikazi(Fl_Widget *widget, void *data) {
     GrupaOdeljenja *grupa = (GrupaOdeljenja*) data;
     int red = grupa->tabela->izabraniRed();
     if (red == -1) {
+        fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
         return;
     }
     Odeljenje *odeljenje = grupa->kolekcije->odeljenja.dobavi(red);
@@ -65,12 +67,14 @@ void GrupaOdeljenja::izmeni(Fl_Widget *widget, void *data) {
     string preduzece = grupa->preduzece->value();
     int red = grupa->tabela->izabraniRed();
     if (id == "" || naziv == "" || preduzece == "" || red == -1
-            || id != grupa->kolekcije->odeljenja.dobavi(red)->getId()
+            || (id != grupa->kolekcije->odeljenja.dobavi(red)->getId() && grupa->kolekcije->odeljenja.idZauzet(id))
             || (!grupa->kolekcije->radnici.idZauzet(sef) && sef != "") 
             || !grupa->kolekcije->preduzeca.maticniBrojZauzet(stoi(preduzece))) {
+        fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
         return;
     }
     Odeljenje *odeljenje = grupa->kolekcije->odeljenja.dobavi(red);
+    odeljenje->setId(id);
     odeljenje->setNaziv(naziv);
     odeljenje->setSef(grupa->kolekcije->radnici.dobaviId(sef));
     odeljenje->getPreduzece()->ukloniOdeljenje(odeljenje); // brisanje iz starog preduzeca
@@ -83,7 +87,8 @@ void GrupaOdeljenja::ukloni(Fl_Widget *widget, void *data) {
     GrupaOdeljenja *grupa = (GrupaOdeljenja*) data;
     int red = grupa->tabela->izabraniRed();
     if (red == -1) {
-         return;
+        fl_alert("Niste ispunili zahteve za izvrsavanje funkcije");
+        return;
     }
     Odeljenje *odeljenje = grupa->kolekcije->odeljenja.dobavi(red);
     grupa->kolekcije->ukloniOdeljenje(odeljenje);

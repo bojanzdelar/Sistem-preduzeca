@@ -7,6 +7,8 @@ Kolekcije::Kolekcije(KolekcijaPreduzeca &preduzeca, KolekcijaOdeljenja &odeljenj
 
 void Kolekcije::popuniPreduzeca() {
     for (Preduzece *preduzece : *preduzeca.getKolekcija()) {
+        delete preduzece->getOdeljenja();
+        preduzece->setOdeljenja(new vector<Odeljenje*>);
         for (Odeljenje *odeljenje : *odeljenja.getKolekcija()) {
             if (preduzece->getMaticniBroj() == odeljenje->getPreduzece()->getMaticniBroj()) {
                 preduzece->getOdeljenja()->push_back(odeljenje);
@@ -17,9 +19,10 @@ void Kolekcije::popuniPreduzeca() {
 }
 
 void Kolekcije::popuniOdeljenja() {
-    for (Radnik *radnik : *radnici.getKolekcija()) {
-        for (Odeljenje *odeljenje : *odeljenja.getKolekcija()) {
-            // Dodela zaposlenog odeljenju
+    for (Odeljenje *odeljenje : *odeljenja.getKolekcija()) {
+        delete odeljenje->getZaposleni();
+        odeljenje->setZaposleni(new vector<Radnik*>);
+        for (Radnik *radnik : *radnici.getKolekcija()) {
             if (odeljenje->getId() == radnik->getOdeljenje()->getId()) {
                 odeljenje->getZaposleni()->push_back(radnik);
                 radnik->setOdeljenje(odeljenje);
@@ -58,6 +61,8 @@ void Kolekcije::dodeliNadredjene() {
 
 void Kolekcije::dodeliNagrade() {
     for (Radnik *radnik : *radnici.getKolekcija()) {
+        delete radnik->getNagrade();
+        radnik->setNagrade(new vector<Nagrada*>);
         for (Nagrada *nagrada : *nagrade.getKolekcija()) {
             if (radnik->getId() == nagrada->getRadnik()->getId()) {
                 radnik->getNagrade()->push_back(nagrada);
