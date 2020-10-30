@@ -32,7 +32,7 @@ KOM001;Nenad;Mirkovic;500.99;MAX001;REV001;Metro;TEMPO;Univerexport
 komercijalista
 KOM002;Ana Marija;Scekcic;350.25;MAX002;REV002;Merkator;Roda;IDEA
 komercijalista
-KOM003;Anastazija;Cergic;750.5;MAX002;REV002;DIS Trgovina;Interex,ES Komerc
+KOM003;Anastazija;Cergic;750.5;MAX002;REV002;DIS Trgovina;Interex;ES Komerc
 komercijalista
 KOM004;Vuk;Misic;500.99;VEC001;REV003;Michelin;Motul;Pirelli
 komercijalista
